@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Top Secret Character Sheet</title>
+
+    <!-- Fav icon -->
+    <link rel="shortcut icon" href="img/favicon.ico">
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.css">
+
+    <!-- Custom CMF CS -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Custom CMF JS -->
+    <script src="js/main.js"></script>
+
+    <!-- Quicksand Font -->
+    <link href="fonts/quicksand-family-description.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Top Secret - Character Sheet</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#infoStats" class="scroll">Stats</a></li>
+                <li><a href="#avantagesDisadvantages" class="scroll">Advantages</a></li>
+                <li><a href="#skills" class="scroll">Skills</a></li>
+                <li><a href="#" class="scroll">Link4</a></li>
+                <li><a href="#" class="scroll">Link5</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+
+<div class="container">
+
+    <form>
+        <div class="row section-head" id="infoStats">
+            <div class="col-sm-6 panel">
+                <div id="info">
+                    <div class="form-group form-inline row">
+                        <label for="charName" class="col-sm-2">Name</label>
+                        <div class="col-sm-10">
+                        <input type="text" class="form-control wide-input input-sm" id="charName" placeholder="Name">
+                        </div>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <label for="nationality" class="col-sm-2">Nationality</label>
+                        <div class="col-sm-10">
+                        <input type="text" class="form-control wide-input input-sm" id="nationality" placeholder="Nationality">
+                        </div>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <label for="sex" class="col-sm-2">Sex</label>
+                        <div class="col-sm-10">
+                        <input type="text" class="form-control wide-input input-sm" id="sex" placeholder="Sex">
+                        </div>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <label for="race" class="col-sm-2">Race</label>
+                        <div class="col-sm-10">
+                        <input type="text" class="form-control wide-input input-sm" id="race" placeholder="Race">
+                        </div>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <label for="height" class="col-sm-2">Height</label>
+                        <div class="col-sm-10">
+                        <input type="text" class="form-control wide-input input-sm" id="height" placeholder="Feet' Inches&quot">
+                        </div>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <label for="weight" class="col-sm-2">Weight</label>
+                        <div class="col-sm-10">
+                        <input type="text" class="form-control wide-input input-sm" id="weight" placeholder="lbs.">
+                        </div>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <label for="eyes" class="col-sm-2">Eyes</label>
+                        <div class="col-sm-10">
+                        <input type="text" class="form-control wide-input input-sm" id="eyes" placeholder="Eye Color">
+                        </div>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <label for="hair" class="col-sm-2">Hair</label>
+                        <div class="col-sm-10">
+                        <input type="text" class="form-control wide-input input-sm" id="hair" placeholder="Hair Color">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-sm-6 panel">
+                <div id="stats">
+                    <div class="form-group form-inline row">
+                        <label for="charName" class="col-sm-3">Attribute</label>
+                        <label for="charName" class="col-sm-3">Full</label>
+                        <label for="charName" class="col-sm-3">1/2</label>
+                        <label for="charName" class="col-sm-3">1/4</label>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <label for="charName" class="col-sm-3">Strength</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control wide-input" id="fullStrength" placeholder="Str">
+                        </div>
+                        <label for="charName" class="col-sm-3" id="halfStrength">1/2</label>
+                        <label for="charName" class="col-sm-3" id="quarterStrength">1/4</label>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <label for="charName" class="col-sm-3">Reflex</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control wide-input" id="fullReflex" placeholder="Ref">
+                        </div>
+                        <label for="charName" class="col-sm-3" id="halfRelex">1/2</label>
+                        <label for="charName" class="col-sm-3" id="quarterReflex">1/4</label>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <label for="charName" class="col-sm-3">Intelligence</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control wide-input" id="fullIntelligence" placeholder="Int">
+                        </div>
+                        <label for="charName" class="col-sm-3" id="halfIntelligence">1/2</label>
+                        <label for="charName" class="col-sm-3" id="quarterIntelligence">1/4</label>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <label for="charName" class="col-sm-3">Willpower</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control wide-input" id="fullWillpower" placeholder="Will">
+                        </div>
+                        <label for="charName" class="col-sm-3" id="halfWillpower">1/2</label>
+                        <label for="charName" class="col-sm-3" id="quarterWillpower">1/4</label>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <label for="charName" class="col-sm-3">Constitution</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control wide-input" id="fullConstitution" placeholder="Const">
+                        </div>
+                        <label for="charName" class="col-sm-3" id="halfConstitution">1/2</label>
+                        <label for="charName" class="col-sm-3" id="quarterConstitution">1/4</label>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <label for="charName" class="col-sm-3">Movement</label>
+                        <label for="charName" class="col-sm-3" id="fullMovement">Full</label>
+                        <label for="charName" class="col-sm-3" id="halfMovement">1/2</label>
+                        <label for="charName" class="col-sm-3" id="quarterMovement">1/4</label>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <label for="charName" class="col-sm-3">Dexterity</label>
+                        <label for="charName" class="col-sm-3" id="fullDexterity">Full</label>
+                        <label for="charName" class="col-sm-3" id="halfDexterity">1/2</label>
+                        <label for="charName" class="col-sm-3" id="quarterDexterity">1/4</label>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row section-head" id="avantagesDisadvantages">
+            <div class="col-sm-6 panel">
+                <div id="avantages">
+                    <div class="form-group form-inline row">
+                        <label for="charName" class="col-sm-2">Advantage</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control wide-input" id="advantage1">
+                        </div>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <label for="charName" class="col-sm-2">Advantage</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control wide-input" id="advantage2">
+                        </div>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <label for="charName" class="col-sm-2">Advantage</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control wide-input" id="advantage3">
+                        </div>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <label for="charName" class="col-sm-2">Advantage</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control wide-input" id="advantage4">
+                        </div>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <label for="charName" class="col-sm-2">Advantage</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control wide-input" id="advantage5">
+                        </div>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <label for="charName" class="col-sm-2">Advantage</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control wide-input" id="advantage6">
+                        </div>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <label for="charName" class="col-sm-2">Advantage</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control wide-input" id="advantage7">
+                        </div>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <label for="charName" class="col-sm-2">Advantage</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control wide-input" id="advantage8">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-sm-6 panel">
+                <div id="disavantages">
+                    <div class="form-group form-inline row">
+                        <label for="charName" class="col-sm-2">Disadvantage</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control wide-input" id="disadvantage1">
+                        </div>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <label for="charName" class="col-sm-2">Disadvantage</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control wide-input" id="disadvantage2">
+                        </div>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <label for="charName" class="col-sm-2">Disadvantage</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control wide-input" id="disadvantage3">
+                        </div>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <label for="charName" class="col-sm-2">Disadvantage</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control wide-input" id="disadvantage4">
+                        </div>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <label for="charName" class="col-sm-2">Disadvantage</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control wide-input" id="disadvantage5">
+                        </div>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <label for="charName" class="col-sm-2">Disadvantage</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control wide-input" id="disadvantage6">
+                        </div>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <label for="charName" class="col-sm-2">Disadvantage</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control wide-input" id="disadvantage7">
+                        </div>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <label for="charName" class="col-sm-2">Disadvantage</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control wide-input" id="disadvantage8">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row section-head" id="skills">
+            <div class="col-sm-6 panel">
+                <div id="skills1">
+                    <div class="form-group form-inline row">
+                        <label for="charName" class="col-sm-4">Skill</label>
+                        <label for="charName" class="col-sm-2">Level</label>
+                        <label for="charName" class="col-sm-2">Rating</label>
+                        <label for="charName" class="col-sm-2">1/2</label>
+                        <label for="charName" class="col-sm-2">1/4</label>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control wide-input" id="skillName1">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="skillLevel1">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="fullSkill1">
+                        </div>
+                        <label for="charName" class="col-sm-2" id="halfskill1">1/2</label>
+                        <label for="charName" class="col-sm-2" id="quarterskill1">1/4</label>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control wide-input" id="skillName2">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="skillLevel2">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="fullSkill2">
+                        </div>
+                        <label for="charName" class="col-sm-2" id="halfskill2">1/2</label>
+                        <label for="charName" class="col-sm-2" id="quarterskill2">1/4</label>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control wide-input" id="skillName3">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="skillLevel3">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="fullSkill3">
+                        </div>
+                        <label for="charName" class="col-sm-2" id="halfskill3">1/2</label>
+                        <label for="charName" class="col-sm-2" id="quarterskill3">1/4</label>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control wide-input" id="skillName4">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="skillLevel4">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="fullSkill4">
+                        </div>
+                        <label for="charName" class="col-sm-2" id="halfskill4">1/2</label>
+                        <label for="charName" class="col-sm-2" id="quarterskill4">1/4</label>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control wide-input" id="skillName5">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="skillLevel5">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="fullSkill5">
+                        </div>
+                        <label for="charName" class="col-sm-2" id="halfskill5">1/2</label>
+                        <label for="charName" class="col-sm-2" id="quarterskill5">1/4</label>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control wide-input" id="skillName6">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="skillLevel6">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="fullSkill6">
+                        </div>
+                        <label for="charName" class="col-sm-2" id="halfskill6">1/2</label>
+                        <label for="charName" class="col-sm-2" id="quarterskill6">1/4</label>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control wide-input" id="skillName7">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="skillLevel7">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="fullSkill7">
+                        </div>
+                        <label for="charName" class="col-sm-2" id="halfskill7">1/2</label>
+                        <label for="charName" class="col-sm-2" id="quarterskill7">1/4</label>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control wide-input" id="skillName8">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="skillLevel8">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="fullSkill8">
+                        </div>
+                        <label for="charName" class="col-sm-2" id="halfskill8">1/2</label>
+                        <label for="charName" class="col-sm-2" id="quarterskill8">1/4</label>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control wide-input" id="skillName9">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="skillLevel9">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="fullSkill9">
+                        </div>
+                        <label for="charName" class="col-sm-2" id="halfskill9">1/2</label>
+                        <label for="charName" class="col-sm-2" id="quarterskill9">1/4</label>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control wide-input" id="skillName10">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="skillLevel10">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="fullSkill10">
+                        </div>
+                        <label for="charName" class="col-sm-2" id="halfskill10">1/2</label>
+                        <label for="charName" class="col-sm-2" id="quarterskill10">1/4</label>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control wide-input" id="skillName11">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="skillLevel11">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="fullSkill11">
+                        </div>
+                        <label for="charName" class="col-sm-2" id="halfskill11">1/2</label>
+                        <label for="charName" class="col-sm-2" id="quarterskill11">1/4</label>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control wide-input" id="skillName12">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="skillLevel12">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="fullSkill12">
+                        </div>
+                        <label for="charName" class="col-sm-2" id="halfskill12">1/2</label>
+                        <label for="charName" class="col-sm-2" id="quarterskill12">1/4</label>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control wide-input" id="skillName13">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="skillLevel13">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="fullSkill13">
+                        </div>
+                        <label for="charName" class="col-sm-2" id="halfskill13">1/2</label>
+                        <label for="charName" class="col-sm-2" id="quarterskill13">1/4</label>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control wide-input" id="skillName14">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="skillLevel14">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="fullSkill14">
+                        </div>
+                        <label for="charName" class="col-sm-2" id="halfskill14">1/2</label>
+                        <label for="charName" class="col-sm-2" id="quarterskill14">1/4</label>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control wide-input" id="skillName15">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="skillLevel15">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="fullSkill15">
+                        </div>
+                        <label for="charName" class="col-sm-2" id="halfskill15">1/2</label>
+                        <label for="charName" class="col-sm-2" id="quarterskill15">1/4</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 panel">
+                <div id="skills2">
+                    <div class="form-group form-inline row">
+                        <label for="charName" class="col-sm-4">Skill</label>
+                        <label for="charName" class="col-sm-2">Level</label>
+                        <label for="charName" class="col-sm-2">Rating</label>
+                        <label for="charName" class="col-sm-2">1/2</label>
+                        <label for="charName" class="col-sm-2">1/4</label>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control wide-input" id="skillName16">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="skillLevel16">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="fullSkill16">
+                        </div>
+                        <label for="charName" class="col-sm-2" id="halfskill16">1/2</label>
+                        <label for="charName" class="col-sm-2" id="quarterskill16">1/4</label>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control wide-input" id="skillName17">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="skillLevel17">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="fullSkill17">
+                        </div>
+                        <label for="charName" class="col-sm-2" id="halfskill17">1/2</label>
+                        <label for="charName" class="col-sm-2" id="quarterskill17">1/4</label>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control wide-input" id="skillName18">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="skillLevel18">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="fullSkill18">
+                        </div>
+                        <label for="charName" class="col-sm-2" id="halfskill18">1/2</label>
+                        <label for="charName" class="col-sm-2" id="quarterskill18">1/4</label>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control wide-input" id="skillName19">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="skillLevel19">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="fullSkill19">
+                        </div>
+                        <label for="charName" class="col-sm-2" id="halfskill19">1/2</label>
+                        <label for="charName" class="col-sm-2" id="quarterskill19">1/4</label>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control wide-input" id="skillName20">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="skillLevel20">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="fullSkill20">
+                        </div>
+                        <label for="charName" class="col-sm-2" id="halfskill20">1/2</label>
+                        <label for="charName" class="col-sm-2" id="quarterskill20">1/4</label>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control wide-input" id="skillName21">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="skillLevel21">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="fullSkill21">
+                        </div>
+                        <label for="charName" class="col-sm-2" id="halfskill21">1/2</label>
+                        <label for="charName" class="col-sm-2" id="quarterskill21">1/4</label>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control wide-input" id="skillName22">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="skillLevel22">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="fullSkill22">
+                        </div>
+                        <label for="charName" class="col-sm-2" id="halfskill22">1/2</label>
+                        <label for="charName" class="col-sm-2" id="quarterskill22">1/4</label>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control wide-input" id="skillName23">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="skillLevel23">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="fullSkill23">
+                        </div>
+                        <label for="charName" class="col-sm-2" id="halfskill23">1/2</label>
+                        <label for="charName" class="col-sm-2" id="quarterskill23">1/4</label>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control wide-input" id="skillName24">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="skillLevel24">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="fullSkill24">
+                        </div>
+                        <label for="charName" class="col-sm-2" id="halfskill24">1/2</label>
+                        <label for="charName" class="col-sm-2" id="quarterskill24">1/4</label>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control wide-input" id="skillName25">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="skillLevel25">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="fullSkill25">
+                        </div>
+                        <label for="charName" class="col-sm-2" id="halfskill25">1/2</label>
+                        <label for="charName" class="col-sm-2" id="quarterskill25">1/4</label>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control wide-input" id="skillName26">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="skillLevel26">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="fullSkill26">
+                        </div>
+                        <label for="charName" class="col-sm-2" id="halfskill26">1/2</label>
+                        <label for="charName" class="col-sm-2" id="quarterskill26">1/4</label>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control wide-input" id="skillName27">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="skillLevel27">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="fullSkill27">
+                        </div>
+                        <label for="charName" class="col-sm-2" id="halfskill27">1/2</label>
+                        <label for="charName" class="col-sm-2" id="quarterskill27">1/4</label>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control wide-input" id="skillName28">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="skillLevel28">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="fullSkill28">
+                        </div>
+                        <label for="charName" class="col-sm-2" id="halfskill28">1/2</label>
+                        <label for="charName" class="col-sm-2" id="quarterskill28">1/4</label>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control wide-input" id="skillName29">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="skillLevel29">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="fullSkill29">
+                        </div>
+                        <label for="charName" class="col-sm-2" id="halfskill29">1/2</label>
+                        <label for="charName" class="col-sm-2" id="quarterskill29">1/4</label>
+                    </div>
+                    <div class="form-group form-inline row">
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control wide-input" id="skillName30">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="skillLevel30">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control wide-input" id="fullSkill30">
+                        </div>
+                        <label for="charName" class="col-sm-2" id="halfskill30">1/2</label>
+                        <label for="charName" class="col-sm-2" id="quarterskill30">1/4</label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <button type="submit" id="save" class="btn btn-primary">Save</button>
+    </form>
+
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+/*
+Global
+============================= */
+
+body {
+	font-family: 'Quicksand', sans-serif;
+}
+
+.panel {
+	border: solid 1px grey;
+    padding: 5px;
+}
+
+.section-head {
+    margin-top: 65px !important;
+}
+
+.wide-input{
+    min-width: 95%;
+    max-width: 95%;
+}
+
+.row{
+    padding: 0;
+    margin: 0;
+}
