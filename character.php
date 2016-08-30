@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Top Secret Character Sheet</title>
+    <title>TSSI Agent Dossier</title>
 
     <!-- Fav icon -->
     <link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png">
@@ -63,12 +63,12 @@
 
     function renderInfoSection($data) {
         foreach ($data as $key => $value) {
-            if ($key == 'Name' || $key == 'Player' || $key == 'Notes') {
+            if ($key == 'Name' || $key == 'Player' || $key == 'Notes'  || $key == 'Backstory') {
                 continue;
             } else {
                 echo "<div class=\"form-group form-inline row\">
-                    <label for=\"$key\" class=\"col-sm-2\">$key</label>
-                    <div class=\"col-sm-10\">
+                    <label for=\"$key\" class=\"col-sm-3\">$key</label>
+                    <div class=\"col-sm-9\">
                       <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"$key\" value=\"$value\">
                     </div>
                   </div>";
@@ -81,44 +81,44 @@
             echo "<div class=\"form-group form-inline row\">
                         <label for=\"charName\" class=\"col-sm-3\">$key</label>
                         <div class=\"col-sm-3\">
-                            <input type=\"text\" class=\"form-control wide-input\" id=\"full$key\" value=\"$value\">
+                            <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"full$key\" value=\"$value\">
                         </div>
                         <div class=\"col-sm-3\">
-                            <input type=\"text\" class=\"form-control wide-input\" id=\"half$key\" value=\"".ceil(($value/2))."\" disabled>
+                            <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"half$key\" value=\"".ceil(($value/2))."\" disabled>
                         </div>
                         <div class=\"col-sm-3\">
-                            <input type=\"text\" class=\"form-control wide-input\" id=\"quarter$key\" value=\"".ceil(($value/4))."\" disabled>
+                            <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"quarter$key\" value=\"".ceil(($value/4))."\" disabled>
                         </div>
                     </div>";
         }
 
-        $key = "Movement";
-        $value = ceil(($data->{'Strength'} + $data->{'Reflex'})/2);
+        $key = "MOV";
+        $value = ceil(($data->{'STR'} + $data->{'REF'})/2);
         echo "<div class=\"form-group form-inline row\">
                         <label for=\"charName\" class=\"col-sm-3\">$key</label>
                         <div class=\"col-sm-3\">
-                            <input type=\"text\" class=\"form-control wide-input\" id=\"full$key\" value=\"$value\" disabled>
+                            <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"full$key\" value=\"$value\" disabled>
                         </div>
                         <div class=\"col-sm-3\">
-                            <input type=\"text\" class=\"form-control wide-input\" id=\"half$key\" value=\"".ceil(($value/2))."\" disabled>
+                            <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"half$key\" value=\"".ceil(($value/2))."\" disabled>
                         </div>
                         <div class=\"col-sm-3\">
-                            <input type=\"text\" class=\"form-control wide-input\" id=\"quarter$key\" value=\"".ceil(($value/4))."\" disabled>
+                            <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"quarter$key\" value=\"".ceil(($value/4))."\" disabled>
                         </div>
                     </div>";
 
-        $key = "Dexterity";
-        $value = ceil(($data->{'Intelligence'} + $data->{'Reflex'})/2);
+        $key = "DEX";
+        $value = ceil(($data->{'INT'} + $data->{'REF'})/2);
         echo "<div class=\"form-group form-inline row\">
                         <label for=\"full$key\" class=\"col-sm-3\">$key</label>
                         <div class=\"col-sm-3\">
-                            <input type=\"text\" class=\"form-control wide-input\" id=\"full$key\" value=\"$value\" disabled>
+                            <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"full$key\" value=\"$value\" disabled>
                         </div>
                         <div class=\"col-sm-3\">
-                            <input type=\"text\" class=\"form-control wide-input\" id=\"half$key\" value=\"".ceil(($value/2))."\" disabled>
+                            <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"half$key\" value=\"".ceil(($value/2))."\" disabled>
                         </div>
                         <div class=\"col-sm-3\">
-                            <input type=\"text\" class=\"form-control wide-input\" id=\"quarter$key\" value=\"".ceil(($value/4))."\" disabled>
+                            <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"quarter$key\" value=\"".ceil(($value/4))."\" disabled>
                         </div>
                     </div>";
     }
@@ -220,24 +220,25 @@
                       </div>";
 
         foreach ($data as $key => $value) {
+            $num = str_replace("weapon", "", $key);
             echo "<div class=\"form-group form-inline row weapon-container\">
                       <div class=\"col-sm-6\">
-                          <input type=\"text\" class=\"form-control wide-input\" id=\"weaponName1\">
+                          <input type=\"text\" class=\"form-control wide-input\" id=\"weaponName$num\" value=\"".$value->{'weaponName'}."\">
                       </div>
                       <div class=\"col-sm-1\">
-                          <input type=\"text\" class=\"form-control wide-input\" id=\"weaponShort1\">
+                          <input type=\"text\" class=\"form-control wide-input\" id=\"weaponShort$num\" value=\"".$value->{'shortRange'}."\">
                       </div>
                       <div class=\"col-sm-1\">
-                          <input type=\"text\" class=\"form-control wide-input\" id=\"weaponMed1\">
+                          <input type=\"text\" class=\"form-control wide-input\" id=\"weaponMed$num\" value=\"".$value->{'medRange'}."\">
                       </div>
                       <div class=\"col-sm-1\">
-                          <input type=\"text\" class=\"form-control wide-input\" id=\"weaponLong1\">
+                          <input type=\"text\" class=\"form-control wide-input\" id=\"weaponLong$num\" value=\"".$value->{'longRange'}."\">
                       </div>
                       <div class=\"col-sm-2\">
-                          <input type=\"text\" class=\"form-control wide-input\" id=\"weaponDamage1\">
+                          <input type=\"text\" class=\"form-control wide-input\" id=\"weaponDamage$num\" value=\"".$value->{'damage'}."\">
                       </div>
                       <div class=\"col-sm-1\">
-                          <input type=\"text\" class=\"form-control wide-input\" id=\"weaponReload1\">
+                          <input type=\"text\" class=\"form-control wide-input\" id=\"weaponReload$num\" value=\"".$value->{'reload'}."\">
                       </div>
                   </div>
                   <div class=\"form-group form-inline row\">
@@ -245,7 +246,7 @@
                           <div class=\"col-sm-12 weapon-notes\">
                               <label for=\"weaponNotes1\" class=\"col-sm-1\">Notes</label>
                               <div class=\"col-sm-11\">
-                                  <input type=\"text\" class=\"form-control wide-input\" id=\"weaponNotes1\">
+                                  <input type=\"text\" class=\"form-control wide-input\" id=\"weaponNotes$num\" value=\"".$value->{'notes'}."\">
                               </div>
                           </div>
                       </div>
@@ -253,6 +254,95 @@
         }
 
         echo "</div></div>";
+    }
+
+    function getHitpointClass($hpValue) {
+        switch ($hpValue) {
+            case "1":
+                return "hit-point-healthy";
+                break;
+            case "2":
+                return "hit-point-bruised";
+                break;
+            case "3":
+                return "hit-point-wounded";
+                break;
+            case "4":
+                return "hit-point-not-available";
+                break;
+        }
+    }
+
+    function getHitpointsOrientationClass($section) {
+        if ($section == 1 || $section == 2) {
+            return "hit-points-vertical";
+        }else{
+            return "hit-points-horizontal";
+        }
+    }
+
+    function renderHPSection($data) {
+
+        echo "<div class=\"col-md-4 no-padding\" id=\"hitPoints\">
+                  <div class=\"panel hit-point-row\">
+                      <div class=\"hit-point-image-container\">
+                          <img id=\"hpImage\" src=\"img/body.png\">";
+
+        foreach ($data as $key => $value) {
+            echo "<div class=\"".getHitpointsOrientationClass(str_replace("hitPoints", "", $key))."\" id=\"$key\">
+                      <div class=\"hit-point ".getHitpointClass($value[0])."\" id=\"$key-0\"></div>
+                      <div class=\"hit-point ".getHitpointClass($value[1])."\" id=\"$key-1\"></div>
+                      <div class=\"hit-point ".getHitpointClass($value[2])."\" id=\"$key-2\"></div>
+                      <div class=\"hit-point ".getHitpointClass($value[3])."\" id=\"$key-3\"></div>
+                      <div class=\"hit-point ".getHitpointClass($value[4])."\" id=\"$key-4\"></div>
+                      <div class=\"hit-point ".getHitpointClass($value[5])."\" id=\"$key-5\"></div>
+                      <div class=\"hit-point ".getHitpointClass($value[6])."\" id=\"$key-6\"></div>
+                      <div class=\"hit-point ".getHitpointClass($value[7])."\" id=\"$key-7\"></div>
+                      <div class=\"hit-point ".getHitpointClass($value[8])."\" id=\"$key-8\"></div>
+                      <div class=\"hit-point ".getHitpointClass($value[9])."\" id=\"$key-9\"></div>
+                  </div>";
+        }
+
+        echo "<div class=\"hit-points-label\" id=\"hitPointsLabel0\">0</div>
+              <div class=\"hit-points-label\" id=\"hitPointsLabel1\">1</div>
+              <div class=\"hit-points-label\" id=\"hitPointsLabel2\">2</div>
+              <div class=\"hit-points-label\" id=\"hitPointsLabel3\">3</div>
+              <div class=\"hit-points-label\" id=\"hitPointsLabel4\">4</div>
+              <div class=\"hit-points-label\" id=\"hitPointsLabel5\">5</div>
+              <div class=\"hit-points-label\" id=\"hitPointsLabel6\">6</div>
+              <div class=\"hit-points-label\" id=\"hitPointsLabel7\">7</div>
+              <div class=\"hit-points-label\" id=\"hitPointsLabel8\">8</div>
+              <div class=\"hit-points-label\" id=\"hitPointsLabel9\">9</div>
+
+              <div id=\"hitPointLegend\">
+                  <div class=\"no-padding\">
+                      <div class=\"hit-point-static hit-point-healthy no-padding\"></div>
+                  </div>
+                  <div class=\"no-padding\">
+                      <div class=\"hit-point-legend-label no-padding\">-Healthy</div>
+                  </div>
+                      <div class=\"no-padding\">
+                      <div class=\"hit-point-static hit-point-bruised no-padding\"></div>
+                  </div>
+                  <div class=\"no-padding\">
+                      <div class=\"hit-point-legend-label no-padding\">-Bruised</div>
+                  </div>
+                  <div class=\"no-padding\">
+                      <div class=\"hit-point-static hit-point-wounded no-padding\"></div>
+                  </div>
+                  <div class=\"no-padding\">
+                      <div class=\"hit-point-legend-label no-padding\">-Wounded</div>
+                  </div>
+                  <div class=\"no-padding\">
+                      <div class=\"hit-point-static hit-point-not-available no-padding\"></div>
+                  </div>
+                  <div class=\"no-padding\">
+                      <div class=\"hit-point-legend-label no-padding\">-Unavail</div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>";
     }
 
 
@@ -264,7 +354,7 @@
         foreach ($data as $key => $value) {
             echo "<div class=\"form-group form-inline row\">
                       <div class=\"col-sm-12\">
-                          <input type=\"text\" class=\"form-control wide-input\" id=\"$key\" value=\"$value\">
+                          <input type=\"text\" class=\"form-control input-sm wide-input\" id=\"$key\" value=\"$value\">
                       </div>
                   </div>";
         }
@@ -299,13 +389,13 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#infoStats" class="scroll ts-link">Stats</a></li>
-<!--                <li><a href="#advantagesDisadvantages" class="scroll ts-link">Advantages</a></li>-->
+                <li><a href="#stats" class="scroll ts-link">Stats</a></li>
+                <li><a href="#hitpointsRow" class="scroll ts-link">HP</a></li>
                 <li><a href="#skills" class="scroll ts-link">Skills</a></li>
-                <li><a href="#documentsTechniques" class="scroll ts-link">Docs/Combat</a></li>
+                <li><a href="#documentsTechniques" class="scroll ts-link">Docs</a></li>
                 <li><a href="#weapons" class="scroll ts-link">Weapons</a></li>
                 <li><a href="#equipmentPanel" class="scroll ts-link">Equipment</a></li>
-                <li><a href="#hitPoints" class="scroll ts-link">HP</a></li>
+                <li><button class="btn btn-default btn-sm" id="saveCharacter">Save</button></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -314,9 +404,9 @@
 
 <div class="container">
 
-    <!--======================== START INFO ==========================-->
-    <div class="row page-head" id="infoStats">
-        <div class="row">
+    <!--======================== START NAMES ==========================-->
+    <div class="row page-head" id="stats">
+        <div class="row" id="names">
             <div class="col-sm-6 no-padding">
                 <div class="form-group form-inline row name">
                     <label for="Name" class="col-sm-2">Character Name</label>
@@ -327,40 +417,89 @@
             </div>
             <div class="col-sm-6 no-padding">
                 <div class="form-group form-inline row name">
-                    <label for="Name" class="col-sm-2">Player Name</label>
+                    <label for="Player" class="col-sm-2">Player Name</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control wide-input input-lg" id="Player" value="<?php echo $characterData->{'info'}->{'Player'}; ?>">
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-sm-6 panel" id="info">
-            <?php renderInfoSection($characterData->{'info'}); ?>
-        </div>
 
-        <!--======================== START ATTRIBUTES ==========================-->
-        <div class="col-sm-6 panel" id="attributes">
-            <div class="form-group form-inline row">
-                <label for="charName" class="col-sm-3 ts-header">Attribute</label>
-                <label for="charName" class="col-sm-3 ts-header">Full</label>
-                <label for="charName" class="col-sm-3 ts-header">1/2</label>
-                <label for="charName" class="col-sm-3 ts-header">1/4</label>
-            </div>
-            <?php renderAttributesSection($characterData->{'attributes'}); ?>
-        </div>
-
-        <!--======================== START NOTES ==========================-->
-
+        <!--======================== START INFO ==========================-->
         <div class="row">
-            <div class="col-sm-12 panel">
-                <label class="col-sm-12 ts-header">Notes / Backstory</label>
-                <div class="col-sm-12 text-center">
-                    <textarea id="Notes" rows="4" cols="50" class="wide-input"><?php echo $characterData->{'info'}->{'Notes'}; ?></textarea>
+            <div class="col-sm-4 panel first-row scrollable" id="info">
+                <?php renderInfoSection($characterData->{'info'}); ?>
+            </div>
+
+            <!--======================== START ATTRIBUTES ==========================-->
+            <div class="col-sm-4 panel first-row scrollable" id="attributes">
+                <div class="form-group form-inline row">
+                    <label for="charName" class="col-sm-3 ts-header">Stat</label>
+                    <label for="charName" class="col-sm-3 ts-header">Full</label>
+                    <label for="charName" class="col-sm-3 ts-header">1/2</label>
+                    <label for="charName" class="col-sm-3 ts-header">1/4</label>
+                </div>
+                <?php renderAttributesSection($characterData->{'attributes'}); ?>
+            </div>
+
+            <!--======================== START NOTES ==========================-->
+            <div class="col-sm-4 no-padding first-row scrollable">
+                <div class="col-sm-12 panel no-padding half-height">
+                    <label class="col-sm-12 ts-header">Backstory</label>
+                    <div class="col-sm-12 text-center">
+                        <textarea id="Backstory" rows="5"class="wide-input"><?php echo $characterData->{'info'}->{'Backstory'}; ?></textarea>
+                    </div>
+                </div>
+                <div class="col-sm-12 panel no-padding half-height">
+                    <label class="col-sm-12 ts-header">Campaign Notes</label>
+                    <div class="col-sm-12 text-center">
+                        <textarea id="Notes" rows="5"class="wide-input"><?php echo $characterData->{'info'}->{'Notes'}; ?></textarea>
+                    </div>
                 </div>
             </div>
         </div>
 
+        <!--======================== START HITPOINTS ==========================-->
+        <div class="row" id="hitpointsRow">
+            <?php renderHPSection($characterData->{'hitpoints'}); ?>
+
+            <!--======================== START IMAGES ==========================-->
+
+            <div class="col-sm-4 no-padding hit-point-row scrollable">
+                <div class="col-sm-12 panel no-padding half-height">
+                    <label class="col-sm-12 ts-header">Image 1</label>
+                    <div class="col-sm-12 text-center">
+
+                    </div>
+                </div>
+                <div class="col-sm-12 panel no-padding half-height">
+                    <label class="col-sm-12 ts-header">Image 2</label>
+                    <div class="col-sm-12 text-center">
+
+                    </div>
+                </div>
+            </div>
+
+            <!--======================== START NOTES ==========================-->
+            <div class="col-sm-4 no-padding hit-point-row scrollable">
+                <div class="col-sm-12 panel no-padding half-height">
+                    <label class="col-sm-12 ts-header">Backstory</label>
+                    <div class="col-sm-12 text-center">
+                        <textarea id="Backstory" rows="10"class="wide-input"><?php echo $characterData->{'info'}->{'Notes'}; ?></textarea>
+                    </div>
+                </div>
+                <div class="col-sm-12 panel no-padding half-height">
+                    <label class="col-sm-12 ts-header">Campaign Notes</label>
+                    <div class="col-sm-12 text-center">
+                        <textarea id="Notes" rows="10"class="wide-input"><?php echo $characterData->{'info'}->{'Notes'}; ?></textarea>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
     </div>
+
 
     <!--======================== START ADVANTAGES ==========================-->
     <div class="row" id="advantagesDisadvantages">
@@ -389,7 +528,7 @@
         </div>
     </div>
 
-    <!--======================== START EQUIPMENT ==========================-->
+    <!--======================== START WEAPONS ==========================-->
     <?php renderWeaponsSection($characterData->{'weapons'}); ?>
 
     <!--======================== START EQUIPMENT ==========================-->
@@ -398,6 +537,8 @@
             <?php renderGenericSection("Equipment", $characterData->{'equipment'}); ?>
         </div>
     </div>
+
+
 
 </body>
 </html>

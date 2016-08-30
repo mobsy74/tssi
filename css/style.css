@@ -40,9 +40,17 @@ body {
     font-size: 125%;
 }
 
+#saveCharacter{
+    margin-top: 10px;
+}
+
 .name{
     font-size: 125%;
     text-align: center;
+}
+
+.scrollable{
+    overflow: auto;
 }
 
 .right-border{
@@ -61,7 +69,6 @@ body {
 }
 
 .weapon-container{
-    /*border-top: 1px solid gray;*/
     margin-top: 5px;
 }
 
@@ -75,10 +82,6 @@ body {
     color: white !important;
 }
 
-/*.logo-link{*/
-    /*text-decoration: none;*/
-/*}*/
-
 .ts-link {
     color: white !important;
     text-decoration: none !important;
@@ -89,17 +92,22 @@ body {
     text-decoration: none !important;
 }
 
-/*.logo-link:hover{*/
-    /*text-decoration: none;*/
-/*}*/
-
 .nav-container{
     background: black;
 }
 
-.hit-point-panel{
+.first-row {
+    height: 295px;
+    margin-bottom: 5px;
+}
+
+.hit-point-row {
     height: 491px;
     margin-bottom: 5px;
+}
+
+.half-height{
+    height: 50%
 }
 
 .hit-point-image-container{
@@ -141,10 +149,14 @@ body {
     width: 12px;
     height: 12px;
     border: solid 1px black;
+    float: left;
+    margin-top: 2px;
 }
 
 .hit-point-healthy {
-    background-color: white;
+    /*background-color: limegreen;*/
+    /*background-color: white;*/
+    background-color: #646CBD;
 }
 
 .hit-point-bruised {
@@ -156,7 +168,7 @@ body {
 }
 
 .hit-point-not-available {
-    background-color: black;
+    background-color: #464646;
 }
 
 .hit-points-label{
@@ -315,4 +327,16 @@ body {
 #hitPointLegendLabelNA{
     top: -838px;
     left: 54px;
+}
+
+#hitPointLegend{
+    position: relative;
+    z-index: 100;
+    width: 85px;
+    height: 60px;
+    top: -620px;
+    left: 210px;
+    padding: 0px;
+    color: white;
+    font-size: 12px;
 }

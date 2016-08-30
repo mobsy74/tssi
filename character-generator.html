@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Top Secret JSON Gen</title>
+    <title>TS JSON Generator</title>
 
     <!-- Fav icon -->
     <!--<link rel="shortcut icon" href="img/favicon.ico">-->
@@ -53,19 +53,21 @@
     var numSkills = 50;
     var numEquipmentSlots = 100;
     var numWeapons = 10;
-    var numDocuments = 20;
-    var numCombatTechniques = 20;
+    var numDocuments = 10;
+    var numCombatTechniques = 10;
+    var numHPAreas = 10;
 
     function generateEmptyCharacterJSON() {
 
         var tempObj = {};
         var tempObj2 = {};
+        var tempArr = [];
 
         var characterData = {
             "info": {
                 "Player": "New Player",
                 "Name": "New Character",
-                "Nationality": "",
+                "Nation": "",
                 "Sex": "",
                 "Race": "",
                 "Height": "",
@@ -73,15 +75,16 @@
                 "Eyes": "",
                 "Hair": "",
                 "XP": "",
-                "Luck Pts": "",
+                "Luck Points": "",
+                "Backstory": "",
                 "Notes": ""
             },
             "attributes": {
-                "Strength": "",
-                "Reflex": "",
-                "Intelligence": "",
-                "Willpower": "",
-                "Constitution": ""
+                "STR": "",
+                "REF": "",
+                "INT": "",
+                "WIL": "",
+                "CON": ""
             }
         };
 
@@ -142,6 +145,14 @@
         }
         characterData["skills"] = tempObj;
 
+        tempObj = {};
+        tempArr = [1,1,1,1,1,1,1,1,1,1];
+
+        for (i=0; i < numHPAreas; i++) {
+            tempObj["hitPoints" + i] = tempArr;
+        }
+        characterData["hitpoints"] = tempObj;
+
         var characterDataString = JSON.stringify(characterData, null, 2);
         console.log(characterDataString);
 
@@ -167,12 +178,13 @@
 
         var tempObj = {};
         var tempObj2 = {};
+        var tempArr = [];
 
         var characterData = {
             "info": {
                 "Player": "Tom Schroeder",
                 "Name": "Johnny Five",
-                "Nationality": "USA",
+                "Nation": "USA",
                 "Sex": "Male",
                 "Race": "Caucasian",
                 "Height": "6'1\"",
@@ -180,15 +192,16 @@
                 "Eyes": "Green",
                 "Hair": "Brown",
                 "XP": "5",
-                "Luck Pts": "2",
-                "Notes": "These are some character notes"
+                "Luck Points": "2",
+                "Backstory": "Born in a dumpster.  Died in prison.",
+                "Notes": "This campaign blows."
             },
             "attributes": {
-                "Strength": "40",
-                "Reflex": "45",
-                "Intelligence": "50",
-                "Willpower": "55",
-                "Constitution": "60"
+                "STR": "40",
+                "REF": "45",
+                "INT": "50",
+                "WIL": "55",
+                "CON": "60"
             }
         };
 
@@ -248,6 +261,24 @@
             tempObj["skill" + i] = tempObj2;
         }
         characterData["skills"] = tempObj;
+
+        tempObj = {};
+        var healthyArr = [1,1,1,1,1,1,1,1,4,4];
+        var bruisedArr = [2,2,2,2,2,2,2,2,4,4];
+        var woundedArr = [3,3,3,3,3,3,3,3,4,4];
+
+        for (i=0; i < numHPAreas; i++) {
+            if (i == 4){
+                tempObj["hitPoints" + i] = bruisedArr;
+            } else {
+                if (i == 6) {
+                    tempObj["hitPoints" + i] = woundedArr;
+                } else {
+                    tempObj["hitPoints" + i] = healthyArr;
+                }
+            }
+        }
+        characterData["hitpoints"] = tempObj;
 
         var characterDataString = JSON.stringify(characterData, null, 2);
         console.log(characterDataString);
