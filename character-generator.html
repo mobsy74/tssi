@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Top Secret JSON Gen</title>
+
+    <!-- Fav icon -->
+    <!--<link rel="shortcut icon" href="img/favicon.ico">-->
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.css">
+
+    <!-- Quicksand Font -->
+    <link href="fonts/quicksand-family-description.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+<button class="btn btn-primary" onclick="generateEmptyCharacterJSON()">Generate Empty Character</button>
+<button class="btn btn-primary" onclick="generateDummyCharacterJSON()">Generate Dummy Character</button>
+
+<div id="jsonDisplay"></div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+
+<!-- Custom JS -->
+<script src="js/main.js"></script>
+
+
+<script type="text/javascript">
+
+    var numAdvantages = 8;
+    var numDisadvantages = 8;
+    var numSkills = 50;
+    var numEquipmentSlots = 100;
+    var numWeapons = 10;
+    var numDocuments = 20;
+    var numCombatTechniques = 20;
+
+    function generateEmptyCharacterJSON() {
+
+        var tempObj = {};
+        var tempObj2 = {};
+
+        var characterData = {
+            "info": {
+                "Player": "New Player",
+                "Name": "New Character",
+                "Nationality": "",
+                "Sex": "",
+                "Race": "",
+                "Height": "",
+                "Weight": "",
+                "Eyes": "",
+                "Hair": "",
+                "XP": "",
+                "Luck Pts": "",
+                "Notes": ""
+            },
+            "attributes": {
+                "Strength": "",
+                "Reflex": "",
+                "Intelligence": "",
+                "Willpower": "",
+                "Constitution": ""
+            }
+        };
+
+        for (var i=1; i <= numAdvantages; i++) {
+            tempObj["advantage" + i] = "";
+        }
+        characterData["advantages"] = tempObj;
+
+        tempObj = {};
+        for (i=1; i <= numDisadvantages; i++) {
+            tempObj["disadvantage" + i] = "";
+        }
+        characterData["disadvantages"] = tempObj;
+
+        tempObj = {};
+        for (i=1; i <= numEquipmentSlots; i++) {
+            tempObj["equipment" + i] = "";
+        }
+        characterData["equipment"] = tempObj;
+
+        tempObj = {};
+        for (i=1; i <= numDocuments; i++) {
+            tempObj["document" + i] = "";
+        }
+        characterData["documents"] = tempObj;
+
+        tempObj = {};
+        for (i=1; i <= numCombatTechniques; i++) {
+            tempObj["combatTechnique" + i] = "";
+        }
+        characterData["combatTechniques"] = tempObj;
+
+        tempObj = {};
+        tempObj2 = {
+            "weaponName": "",
+            "shortRange": "",
+            "medRange": "",
+            "longRange": "",
+            "damage": "",
+            "reload": "",
+            "notes": ""
+        };
+
+        for (i=1; i <= numWeapons; i++) {
+            tempObj["weapon" + i] = tempObj2;
+        }
+        characterData["weapons"] = tempObj;
+
+        tempObj = {};
+        tempObj2 = {
+            "skillName": "",
+            "skillLevel": "",
+            "skillFull": ""
+        };
+
+        for (i=1; i <= numSkills; i++) {
+            tempObj["skill" + i] = tempObj2;
+        }
+        characterData["skills"] = tempObj;
+
+        var characterDataString = JSON.stringify(characterData, null, 2);
+        console.log(characterDataString);
+
+        $.ajax({
+            type: "POST",
+            url: "save-character.php",
+            data: {characterData:characterDataString},
+            success: function(data){
+                console.log("Character saved.");
+//                alert('Character saved.');
+                $("#jsonDisplay").html("<pre>" + characterDataString + "</pre>");
+            },
+            error: function(e){
+                console.log("There was a problem saving the character.");
+                if(e.message){
+                    console.log(e.message);
+                }
+            }
+        });
+    }
+
+    function generateDummyCharacterJSON() {
+
+        var tempObj = {};
+        var tempObj2 = {};
+
+        var characterData = {
+            "info": {
+                "Player": "Tom Schroeder",
+                "Name": "Johnny Five",
+                "Nationality": "USA",
+                "Sex": "Male",
+                "Race": "Caucasian",
+                "Height": "6'1\"",
+                "Weight": "180 lbs.",
+                "Eyes": "Green",
+                "Hair": "Brown",
+                "XP": "5",
+                "Luck Pts": "2",
+                "Notes": "These are some character notes"
+            },
+            "attributes": {
+                "Strength": "40",
+                "Reflex": "45",
+                "Intelligence": "50",
+                "Willpower": "55",
+                "Constitution": "60"
+            }
+        };
+
+        for (var i=1; i <= numAdvantages; i++) {
+            tempObj["advantage" + i] = "advantage" + i;
+        }
+        characterData["advantages"] = tempObj;
+
+        tempObj = {};
+        for (i=1; i <= numDisadvantages; i++) {
+            tempObj["disadvantage" + i] = "disadvantage" + i;
+        }
+        characterData["disadvantages"] = tempObj;
+
+        tempObj = {};
+        for (i=1; i <= numEquipmentSlots; i++) {
+            tempObj["equipment" + i] = "equipment" + i;
+        }
+        characterData["equipment"] = tempObj;
+
+        tempObj = {};
+        for (i=1; i <= numDocuments; i++) {
+            tempObj["document" + i] = "document" + i;
+        }
+        characterData["documents"] = tempObj;
+
+        tempObj = {};
+        for (i=1; i <= numCombatTechniques; i++) {
+            tempObj["combatTechnique" + i] = "combatTechnique" + i;
+        }
+        characterData["combatTechniques"] = tempObj;
+
+        tempObj = {};
+
+        for (i=1; i <= numWeapons; i++) {
+            tempObj2 = {
+                "weaponName": "weapon" + i,
+                "shortRange": "50",
+                "medRange": "100",
+                "longRange": "200",
+                "damage": "d6+1",
+                "reload": "30 cap",
+                "notes": "This gun kicks ass!"
+            };
+            tempObj["weapon" + i] = tempObj2;
+        }
+        characterData["weapons"] = tempObj;
+
+        tempObj = {};
+
+        for (i=1; i <= numSkills; i++) {
+            tempObj2 = {
+                "skillName": "skill" + i,
+                "skillLevel": "1",
+                "skillFull": "60"
+            };
+            tempObj["skill" + i] = tempObj2;
+        }
+        characterData["skills"] = tempObj;
+
+        var characterDataString = JSON.stringify(characterData, null, 2);
+        console.log(characterDataString);
+
+        $.ajax({
+            type: "POST",
+            url: "save-character.php",
+            data: {characterData:characterDataString},
+            success: function(data){
+                console.log("Character saved.");
+                $("#jsonDisplay").html("<pre>" + characterDataString + "</pre>");
+//                alert('Character saved.');
+            },
+            error: function(e){
+                console.log("There was a problem saving the character.");
+                if(e.message){
+                    console.log(e.message);
+                }
+            }
+        });
+    }
+
+</script>
+
+</body>
+</html>

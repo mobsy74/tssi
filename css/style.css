@@ -3,16 +3,20 @@ Global
 ============================= */
 
 body {
-	font-family: 'Quicksand', sans-serif;
+	/*font-family: 'Quicksand', sans-serif;*/
+    font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+    font-size: 13px;
+    background: lightgray;
 }
 
 .panel {
 	border: solid 1px grey;
     padding: 5px;
+    margin-bottom: 10px;
 }
 
-.section-head {
-    margin-top: 65px !important;
+.page-head {
+    margin-top: 60px !important;
 }
 
 .wide-input{
@@ -20,7 +24,295 @@ body {
     max-width: 95%;
 }
 
+.no-padding{
+    padding: 0;
+    margin: 0;
+}
+
 .row{
     padding: 0;
     margin: 0;
+}
+
+.ts-header {
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 125%;
+}
+
+.name{
+    font-size: 125%;
+    text-align: center;
+}
+
+.right-border{
+    border-right: 1px solid lightgray;
+}
+
+.weapon-notes{
+    border: 1px solid gray;
+    border-radius: 4px;
+    background: lightgray;
+    margin-bottom: 5px;
+}
+
+.weapon-notes-container{
+    border-bottom: 1px solid gray;
+}
+
+.weapon-container{
+    /*border-top: 1px solid gray;*/
+    margin-top: 5px;
+}
+
+.logo-image{
+    width: 50px;
+    border-radius: 10%;
+}
+
+.logo-text{
+    float: none;
+    color: white !important;
+}
+
+/*.logo-link{*/
+    /*text-decoration: none;*/
+/*}*/
+
+.ts-link {
+    color: white !important;
+    text-decoration: none !important;
+}
+
+.ts-link:hover{
+    color: #fcac45 !important;
+    text-decoration: none !important;
+}
+
+/*.logo-link:hover{*/
+    /*text-decoration: none;*/
+/*}*/
+
+.nav-container{
+    background: black;
+}
+
+.hit-point-panel{
+    height: 491px;
+    margin-bottom: 5px;
+}
+
+.hit-point-image-container{
+    width:352px;
+}
+
+.hit-point-image-backer{
+    min-width: 352px;
+    float: left;
+}
+
+.hit-points-horizontal{
+    position: relative;
+    z-index: 100;
+    width: 60px;
+    height: 24px;
+    padding: 0px;
+}
+
+.hit-points-vertical{
+    position: relative;
+    z-index: 100;
+    width: 24px;
+    height: 60px;
+    top: -440px;
+    left: 110px;
+    padding: 0px;
+}
+
+.hit-point {
+    position: relative;
+    width: 12px;
+    height: 12px;
+    border: solid 1px black;
+    float: left;
+}
+
+.hit-point-static {
+    width: 12px;
+    height: 12px;
+    border: solid 1px black;
+}
+
+.hit-point-healthy {
+    background-color: white;
+}
+
+.hit-point-bruised {
+    background-color: yellow;
+}
+
+.hit-point-wounded {
+    background-color: red;
+}
+
+.hit-point-not-available {
+    background-color: black;
+}
+
+.hit-points-label{
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    position: relative;
+    z-index: 100;
+}
+
+#hitPoints{
+    /*width:302px;*/
+    height: 496px;
+}
+
+#hitPoints0{
+    top: -440px;
+    left: 113px;
+}
+
+#hitPointsLabel0{
+    top: -755px;
+    left: 176px;
+}
+
+#hitPoints1{
+    top: -392px;
+    left: 114px;
+}
+
+#hitPointsLabel1{
+    top: -720px;
+    left: 121px;
+}
+
+#hitPoints2{
+    top: -452px;
+    left: 146px;
+}
+
+#hitPointsLabel2{
+    top: -742px;
+    left: 154px;
+}
+
+#hitPoints3{
+    top: -415px;
+    left: 113px;
+}
+
+#hitPointsLabel3{
+    top: -668px;
+    left: 139px;
+}
+
+#hitPoints4{
+    top: -525px;
+    left: 25px;
+}
+
+#hitPointsLabel4{
+    top: -775px;
+    left: 50px;
+}
+
+#hitPoints5{
+    top: -549px;
+    left: 205px;
+}
+
+#hitPointsLabel5{
+    top: -797px;
+    left: 230px;
+}
+
+#hitPoints6{
+    top: -445px;
+    left: 10px;
+}
+
+#hitPointsLabel6{
+    top: -690px;
+    left: 35px;
+}
+
+#hitPoints7{
+    top: -469px;
+    left: 220px;
+}
+
+#hitPointsLabel7{
+    top: -712px;
+    left: 245px;
+}
+
+#hitPoints8{
+    top: -440px;
+    left: 45px;
+}
+
+#hitPointsLabel8{
+    top: -682px;
+    left: 70px;
+}
+
+#hitPoints9{
+    top: -464px;
+    left: 182px;
+}
+
+#hitPointsLabel9{
+    top: -704px;
+    left: 207px;
+}
+
+.hit-points-legend-label {
+    position: relative;
+    float: left;
+}
+
+#hitPointHealthy{
+    top: -902px;
+    left: 295px;
+}
+
+#hitPointLegendLabelHealthy{
+    top: -904px;
+    left: 300px;
+}
+
+#hitPointBruised{
+    top: -880px;
+    left: 213px;
+}
+
+#hitPointLegendLabelBruised{
+    top: -882px;
+    left: 218px;
+}
+
+#hitPointWounded{
+    top: -858px;
+    left: 131px;
+}
+
+#hitPointLegendLabelWounded{
+    top: -860px;
+    left: 136px;
+}
+
+#hitPointNA{
+    top: -836px;
+    left: 49px;
+}
+
+#hitPointLegendLabelNA{
+    top: -838px;
+    left: 54px;
 }
