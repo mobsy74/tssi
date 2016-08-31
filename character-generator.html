@@ -51,17 +51,18 @@
     var numAdvantages = 8;
     var numDisadvantages = 8;
     var numSkills = 50;
-    var numEquipmentSlots = 100;
+    var numEquipmentSlots = 50;
     var numWeapons = 10;
     var numDocuments = 10;
     var numCombatTechniques = 10;
     var numHPAreas = 10;
+    var numImages = 3;
 
     function generateEmptyCharacterJSON() {
 
-        var tempObj = {};
-        var tempObj2 = {};
-        var tempArr = [];
+        var tempObj;
+        var tempObj2;
+        var tempArr;
 
         var characterData = {
             "info": {
@@ -88,10 +89,24 @@
             }
         };
 
-        for (var i=1; i <= numAdvantages; i++) {
+
+
+        tempObj = {};
+        tempArr = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
+        for (var i=0; i < numHPAreas; i++) {
+            tempObj["hitPoints" + i] = tempArr;
+        }
+        characterData["hitpoints"] = tempObj;
+
+
+
+        tempObj = {};
+        for (i=1; i <= numAdvantages; i++) {
             tempObj["advantage" + i] = "";
         }
         characterData["advantages"] = tempObj;
+
+
 
         tempObj = {};
         for (i=1; i <= numDisadvantages; i++) {
@@ -99,11 +114,7 @@
         }
         characterData["disadvantages"] = tempObj;
 
-        tempObj = {};
-        for (i=1; i <= numEquipmentSlots; i++) {
-            tempObj["equipment" + i] = "";
-        }
-        characterData["equipment"] = tempObj;
+
 
         tempObj = {};
         for (i=1; i <= numDocuments; i++) {
@@ -111,11 +122,36 @@
         }
         characterData["documents"] = tempObj;
 
+
+
         tempObj = {};
         for (i=1; i <= numCombatTechniques; i++) {
             tempObj["combatTechnique" + i] = "";
         }
         characterData["combatTechniques"] = tempObj;
+
+
+
+        tempObj = {};
+        for (i=1; i <= numImages; i++) {
+            tempObj["image" + i] = "";
+        }
+        characterData["images"] = tempObj;
+
+
+
+        tempObj = {};
+        tempObj2 = {
+            "skillName": "",
+            "skillLevel": "",
+            "skillFull": ""
+        };
+        for (i=1; i <= numSkills; i++) {
+            tempObj["skill" + i] = tempObj2;
+        }
+        characterData["skills"] = tempObj;
+
+
 
         tempObj = {};
         tempObj2 = {
@@ -127,31 +163,20 @@
             "reload": "",
             "notes": ""
         };
-
         for (i=1; i <= numWeapons; i++) {
             tempObj["weapon" + i] = tempObj2;
         }
         characterData["weapons"] = tempObj;
 
-        tempObj = {};
-        tempObj2 = {
-            "skillName": "",
-            "skillLevel": "",
-            "skillFull": ""
-        };
 
-        for (i=1; i <= numSkills; i++) {
-            tempObj["skill" + i] = tempObj2;
-        }
-        characterData["skills"] = tempObj;
 
         tempObj = {};
-        tempArr = [1,1,1,1,1,1,1,1,1,1];
-
-        for (i=0; i < numHPAreas; i++) {
-            tempObj["hitPoints" + i] = tempArr;
+        for (i=1; i <= numEquipmentSlots; i++) {
+            tempObj["equipment" + i] = "";
         }
-        characterData["hitpoints"] = tempObj;
+        characterData["equipment"] = tempObj;
+
+
 
         var characterDataString = JSON.stringify(characterData, null, 2);
         console.log(characterDataString);
@@ -174,11 +199,15 @@
         });
     }
 
+
+
+
+
+
     function generateDummyCharacterJSON() {
 
-        var tempObj = {};
-        var tempObj2 = {};
-        var tempArr = [];
+        var tempObj;
+        var tempObj2;
 
         var characterData = {
             "info": {
@@ -205,69 +234,13 @@
             }
         };
 
-        for (var i=1; i <= numAdvantages; i++) {
-            tempObj["advantage" + i] = "advantage" + i;
-        }
-        characterData["advantages"] = tempObj;
+
 
         tempObj = {};
-        for (i=1; i <= numDisadvantages; i++) {
-            tempObj["disadvantage" + i] = "disadvantage" + i;
-        }
-        characterData["disadvantages"] = tempObj;
-
-        tempObj = {};
-        for (i=1; i <= numEquipmentSlots; i++) {
-            tempObj["equipment" + i] = "equipment" + i;
-        }
-        characterData["equipment"] = tempObj;
-
-        tempObj = {};
-        for (i=1; i <= numDocuments; i++) {
-            tempObj["document" + i] = "document" + i;
-        }
-        characterData["documents"] = tempObj;
-
-        tempObj = {};
-        for (i=1; i <= numCombatTechniques; i++) {
-            tempObj["combatTechnique" + i] = "combatTechnique" + i;
-        }
-        characterData["combatTechniques"] = tempObj;
-
-        tempObj = {};
-
-        for (i=1; i <= numWeapons; i++) {
-            tempObj2 = {
-                "weaponName": "weapon" + i,
-                "shortRange": "50",
-                "medRange": "100",
-                "longRange": "200",
-                "damage": "d6+1",
-                "reload": "30 cap",
-                "notes": "This gun kicks ass!"
-            };
-            tempObj["weapon" + i] = tempObj2;
-        }
-        characterData["weapons"] = tempObj;
-
-        tempObj = {};
-
-        for (i=1; i <= numSkills; i++) {
-            tempObj2 = {
-                "skillName": "skill" + i,
-                "skillLevel": "1",
-                "skillFull": "60"
-            };
-            tempObj["skill" + i] = tempObj2;
-        }
-        characterData["skills"] = tempObj;
-
-        tempObj = {};
-        var healthyArr = [1,1,1,1,1,1,1,1,4,4];
-        var bruisedArr = [2,2,2,2,2,2,2,2,4,4];
-        var woundedArr = [3,3,3,3,3,3,3,3,4,4];
-
-        for (i=0; i < numHPAreas; i++) {
+        var healthyArr = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,4,4,4];
+        var bruisedArr = [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,4,4,4,4];
+        var woundedArr = [3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,4,4,4,4];
+        for (var i=0; i < numHPAreas; i++) {
             if (i == 4){
                 tempObj["hitPoints" + i] = bruisedArr;
             } else {
@@ -279,6 +252,86 @@
             }
         }
         characterData["hitpoints"] = tempObj;
+
+
+
+        tempObj = {};
+        for (i=1; i <= numAdvantages; i++) {
+            tempObj["advantage" + i] = "advantage" + i;
+        }
+        characterData["advantages"] = tempObj;
+
+
+
+        tempObj = {};
+        for (i=1; i <= numDisadvantages; i++) {
+            tempObj["disadvantage" + i] = "disadvantage" + i;
+        }
+        characterData["disadvantages"] = tempObj;
+
+
+
+        tempObj = {};
+        for (i=1; i <= numDocuments; i++) {
+            tempObj["document" + i] = "document" + i;
+        }
+        characterData["documents"] = tempObj;
+
+
+
+        tempObj = {};
+        for (i=1; i <= numCombatTechniques; i++) {
+            tempObj["combatTechnique" + i] = "combatTechnique" + i;
+        }
+        characterData["combatTechniques"] = tempObj;
+
+
+
+        tempObj = {};
+        for (i=1; i <= numImages; i++) {
+            tempObj["image" + i] = "generic" + i + ".jpg";
+        }
+        characterData["images"] = tempObj;
+
+
+
+        tempObj = {};
+        for (i=1; i <= numSkills; i++) {
+            tempObj2 = {
+                "skillName": "skill" + i,
+                "skillLevel": "1",
+                "skillFull": "60"
+            };
+            tempObj["skill" + i] = tempObj2;
+        }
+        characterData["skills"] = tempObj;
+
+
+
+        tempObj = {};
+        for (i=1; i <= numWeapons; i++) {
+            tempObj2 = {
+                "weaponName": "weapon" + i,
+                "shortRange": "50",
+                "medRange": "100",
+                "longRange": "200",
+                "damage": "d6+1",
+                "reload": "1",
+                "notes": "Three clips (10 capacity) of .45 dum-dum"
+            };
+            tempObj["weapon" + i] = tempObj2;
+        }
+        characterData["weapons"] = tempObj;
+
+
+
+        tempObj = {};
+        for (i=1; i <= numEquipmentSlots; i++) {
+            tempObj["equipment" + i] = "equipment" + i;
+        }
+        characterData["equipment"] = tempObj;
+
+
 
         var characterDataString = JSON.stringify(characterData, null, 2);
         console.log(characterDataString);

@@ -1,0 +1,10 @@
+<script type="text/javascript" src="highslide/highslide.js"> hs.graphicsDir = 'highslide/graphics/';</script>
+
+<div>
+<a href="Uploads/<?php print $results["IMG1LINK"][0]; ?>" class="highslide" onclick="return hs.expand(this, {captionId: 'captionlg1'})">
+	<img src="Uploads/<?php print $results["IMG1LINK"][0]; ?>" alt="Highslide JS"
+		title="Click to enlarge" height="<?php print $height1 ?>" width="<?php print $width1 ?>" /></a>
+<div class='highslide-caption' id='captionlg1'>
+	<?php print $results["IMG1DESC"][0]; ?>
+</div>
+</div>

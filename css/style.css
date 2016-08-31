@@ -7,6 +7,7 @@ body {
     font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
     font-size: 13px;
     background: lightgray;
+    line-height: normal;
 }
 
 .panel {
@@ -20,8 +21,8 @@ body {
 }
 
 .wide-input{
-    min-width: 95%;
-    max-width: 95%;
+    min-width: 99%;
+    max-width: 99%;
 }
 
 .no-padding{
@@ -32,6 +33,10 @@ body {
 .row{
     padding: 0;
     margin: 0;
+}
+
+.row-with-margin{
+    margin: 5px 0 !important;
 }
 
 .ts-header {
@@ -57,18 +62,19 @@ body {
     border-right: 1px solid lightgray;
 }
 
-.weapon-notes{
-    border: 1px solid gray;
-    border-radius: 4px;
-    background: lightgray;
-    margin-bottom: 5px;
-}
-
-.weapon-notes-container{
-    border-bottom: 1px solid gray;
+.image-filename-label{
+    padding: 5px 0 0 0;
+    text-align: right;
 }
 
 .weapon-container{
+    border-color: gray;
+    border-style: solid;
+    border-width: 1px 2px 1px 2px;
+    border-radius: 4px;
+}
+
+.weapon-stats-container{
     margin-top: 5px;
 }
 
@@ -102,12 +108,35 @@ body {
 }
 
 .hit-point-row {
-    height: 491px;
+    height: 610px;
     margin-bottom: 5px;
 }
 
-.half-height{
+.height-50 {
     height: 50%
+}
+
+.height-45 {
+    height: 45%
+}
+
+.height-55 {
+    height: 55%
+}
+
+.height-90 {
+    height: 90%
+}
+
+.centered-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hp-dimensions{
+    height: 590px;
+    width: 356px;
 }
 
 .hit-point-image-container{
@@ -123,40 +152,35 @@ body {
     position: relative;
     z-index: 100;
     width: 60px;
-    height: 24px;
-    padding: 0px;
+    height: 70px;
+    padding: 0;
 }
 
 .hit-points-vertical{
     position: relative;
     z-index: 100;
-    width: 24px;
-    height: 60px;
-    top: -440px;
-    left: 110px;
-    padding: 0px;
+    width: 48px;
+    height: 82px;
+    padding: 0;
 }
 
 .hit-point {
-    position: relative;
     width: 12px;
     height: 12px;
     border: solid 1px black;
     float: left;
 }
 
-.hit-point-static {
-    width: 12px;
-    height: 12px;
-    border: solid 1px black;
-    float: left;
+.hit-point-legend {
     margin-top: 2px;
 }
 
 .hit-point-healthy {
-    /*background-color: limegreen;*/
     /*background-color: white;*/
-    background-color: #646CBD;
+    /*background-color: limegreen;*/
+    /*background-color: #646CBD;*/
+    /*background-color: #7D88C3;*/
+    background-color: #C1D3FD;
 }
 
 .hit-point-bruised {
@@ -179,109 +203,60 @@ body {
     z-index: 100;
 }
 
-#hitPoints{
-    /*width:302px;*/
-    height: 496px;
+.hit-points-label-static{
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
 }
 
 #hitPoints0{
-    top: -440px;
-    left: 113px;
-}
-
-#hitPointsLabel0{
-    top: -755px;
-    left: 176px;
+    top: -97%;
+    left: 41%;
 }
 
 #hitPoints1{
-    top: -392px;
-    left: 114px;
-}
-
-#hitPointsLabel1{
-    top: -720px;
-    left: 121px;
+    top: -90%;
+    left: 35%;
 }
 
 #hitPoints2{
-    top: -452px;
-    left: 146px;
-}
-
-#hitPointsLabel2{
-    top: -742px;
-    left: 154px;
+    top: -103.9%;
+    left: 50.5%;
 }
 
 #hitPoints3{
-    top: -415px;
-    left: 113px;
-}
-
-#hitPointsLabel3{
-    top: -668px;
-    left: 139px;
+    top: -103%;
+    left: 41%;
 }
 
 #hitPoints4{
-    top: -525px;
-    left: 25px;
-}
-
-#hitPointsLabel4{
-    top: -775px;
-    left: 50px;
+    top: -132%;
+    left: 10%;
 }
 
 #hitPoints5{
-    top: -549px;
-    left: 205px;
-}
-
-#hitPointsLabel5{
-    top: -797px;
-    left: 230px;
+    top: -143.9%;
+    left: 71%;
 }
 
 #hitPoints6{
-    top: -445px;
-    left: 10px;
-}
-
-#hitPointsLabel6{
-    top: -690px;
-    left: 35px;
+    top: -128%;
+    left: 5%;
 }
 
 #hitPoints7{
-    top: -469px;
-    left: 220px;
-}
-
-#hitPointsLabel7{
-    top: -712px;
-    left: 245px;
+    top: -139.8%;
+    left: 77.7%;
 }
 
 #hitPoints8{
-    top: -440px;
-    left: 45px;
-}
-
-#hitPointsLabel8{
-    top: -682px;
-    left: 70px;
+    top: -138%;
+    left: 17%;
 }
 
 #hitPoints9{
-    top: -464px;
-    left: 182px;
-}
-
-#hitPointsLabel9{
-    top: -704px;
-    left: 207px;
+    top: -149.8%;
+    left: 64%;
 }
 
 .hit-points-legend-label {
@@ -332,11 +307,49 @@ body {
 #hitPointLegend{
     position: relative;
     z-index: 100;
-    width: 85px;
-    height: 60px;
-    top: -620px;
-    left: 210px;
-    padding: 0px;
+    width: 103px;
+    height: 70px;
+    top: -140%;
+    left: 70%;
+    padding: 0;
     color: white;
     font-size: 12px;
+}
+
+.healthy-glow {
+    -webkit-box-shadow:0 0 20px #C1D3FD;
+    -moz-box-shadow: 0 0 20px #C1D3FD;
+    box-shadow:0 0 20px #C1D3FD;
+}
+
+.low-danger-glow{
+    -webkit-box-shadow:0 0 30px yellow;
+    -moz-box-shadow: 0 0 30px yellow;
+    box-shadow:0 0 30px yellow;
+}
+
+.medium-danger-glow{
+    -webkit-box-shadow:0 0 40px orange;
+    -moz-box-shadow: 0 0 40px orange;
+    box-shadow:0 0 40px orange;
+}
+
+.high-danger-glow{
+    -webkit-box-shadow:0 0 50px red;
+    -moz-box-shadow: 0 0 50px red;
+    box-shadow:0 0 50px red;
+}
+
+.image-container{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.image{
+    height: auto;
+    width: auto;
+    max-height: 90%;
+    max-width: 90%;
 }
