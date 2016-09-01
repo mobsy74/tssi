@@ -4,16 +4,55 @@ Global
 
 body {
 	/*font-family: 'Quicksand', sans-serif;*/
-    font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+    /*font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;*/
+    /*font-family: Rationale;*/
+    /*font-family: Metrophobic;*/
+    /*font-family: "IM Fell DW Pica SC";*/
+    font-family: Arvo;
+
     font-size: 13px;
-    background: lightgray;
+    background-color: #996633;
+    /*background: url("../img/green-felt.jpg");*/
+    background: url("../img/wood.jpg");
+    /*background: lightgray;*/
     line-height: normal;
 }
+
+.folder{
+    background-color: palegoldenrod;
+    padding-top:12px;
+    border-radius:10px;
+    /*position: relative;*/
+}
+
+/*#tab{*/
+    /*position: relative;*/
+    /*z-index: 100;*/
+    /*width: 103px;*/
+    /*height: 70px;*/
+    /*top: -20%;*/
+    /*left: 0%;*/
+    /*background-color: palegoldenrod;*/
+    /*padding-top:12px;*/
+    /*border-radius:10px*/
+/*}*/
 
 .panel {
 	border: solid 1px grey;
     padding: 5px;
     margin-bottom: 10px;
+}
+
+#names{
+    margin-bottom: 15px;
+}
+
+.stat-label{
+    padding-top: 7px;
+}
+
+.white-text{
+    color: white;
 }
 
 .page-head {
@@ -27,6 +66,11 @@ body {
 
 .no-padding{
     padding: 0;
+    margin: 0;
+}
+
+.equipment-check-box{
+    padding: 5px 0 0 5px;
     margin: 0;
 }
 
@@ -63,7 +107,11 @@ body {
 }
 
 .image-filename-label{
-    padding: 5px 0 0 0;
+    padding: 8px 0 0 0;
+    text-align: right;
+}
+
+.label-right-align{
     text-align: right;
 }
 
@@ -100,6 +148,15 @@ body {
 
 .nav-container{
     background: black;
+}
+
+.notes-textarea{
+    height: 110px !important;
+}
+
+.standard-input-textarea{
+    height: 2em !important;
+    font-size: 12px;
 }
 
 .first-row {
@@ -141,11 +198,6 @@ body {
 
 .hit-point-image-container{
     width:352px;
-}
-
-.hit-point-image-backer{
-    min-width: 352px;
-    float: left;
 }
 
 .hit-points-horizontal{

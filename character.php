@@ -38,8 +38,12 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.css">
 
-    <!-- Quicksand Font -->
-    <link href="fonts/quicksand-family-description.css" rel="stylesheet">
+    <!-- Fonts -->
+<!--    <link href="fonts/quicksand-family-description.css" rel="stylesheet">-->
+<!--    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Rationale" />-->
+<!--    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Metrophobic" />-->
+<!--    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=IM+Fell+DW+Pica+SC" />-->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Arvo" />
 
     <!-- Highslide CSS -->
     <link rel="stylesheet" type="text/css" href="js/highslide/highslide.css" />
@@ -63,7 +67,7 @@
                 continue;
             } else {
                 echo "<div class=\"form-group form-inline row\">
-                    <label for=\"$key\" class=\"col-sm-3\">$key</label>
+                    <label for=\"$key\" class=\"col-sm-3 stat-label\">$key</label>
                     <div class=\"col-sm-9\">
                       <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"$key\" value=\"$value\">
                     </div>
@@ -75,7 +79,7 @@
     function renderAttributesSection($data) {
         foreach ($data as $key => $value) {
             echo "<div class=\"form-group form-inline row row-with-margin\">
-                        <label for=\"charName\" class=\"col-sm-3\">$key</label>
+                        <label for=\"charName\" class=\"col-sm-3 stat-label\">$key</label>
                         <div class=\"col-sm-3 no-padding\">
                             <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"full$key\" value=\"$value\">
                         </div>
@@ -91,7 +95,7 @@
         $key = "MOV";
         $value = ceil(($data->{'STR'} + $data->{'REF'})/2);
         echo "<div class=\"form-group form-inline row row-with-margin\">
-                        <label for=\"charName\" class=\"col-sm-3\">$key</label>
+                        <label for=\"charName\" class=\"col-sm-3 stat-label\">$key</label>
                         <div class=\"col-sm-3 no-padding\">
                             <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"full$key\" value=\"$value\" disabled>
                         </div>
@@ -106,7 +110,7 @@
         $key = "DEX";
         $value = ceil(($data->{'INT'} + $data->{'REF'})/2);
         echo "<div class=\"form-group form-inline row row-with-margin\">
-                        <label for=\"full$key\" class=\"col-sm-3\">$key</label>
+                        <label for=\"full$key\" class=\"col-sm-3 stat-label\">$key</label>
                         <div class=\"col-sm-3 no-padding\">
                             <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"full$key\" value=\"$value\" disabled>
                         </div>
@@ -143,16 +147,16 @@
                           <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"skillName$num\" value=\"".$value->{'skillName'}."\">
                       </div>
                       <div class=\"col-sm-2 no-padding\">
-                          <input type=\"text\" class=\"form-control wide-input\" id=\"skillLevel$num\" value=\"".$value->{'skillLevel'}."\">
+                          <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"skillLevel$num\" value=\"".$value->{'skillLevel'}."\">
                       </div>
                       <div class=\"col-sm-2 no-padding\">
-                          <input type=\"text\" class=\"form-control wide-input\" id=\"skillFull$num\" value=\"".$value->{'skillFull'}."\">
+                          <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"skillFull$num\" value=\"".$value->{'skillFull'}."\">
                       </div>
                       <div class=\"col-sm-2 no-padding\">
-                          <input type=\"text\" class=\"form-control wide-input\" id=\"skillHalf$num\" value=\"".ceil($value->{'skillFull'}/2)."\" disabled>
+                          <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"skillHalf$num\" value=\"".ceil($value->{'skillFull'}/2)."\" disabled>
                       </div>
                       <div class=\"col-sm-2 no-padding\">
-                          <input type=\"text\" class=\"form-control wide-input\" id=\"skillQuarter$num\" value=\"".ceil($value->{'skillFull'}/4)."\" disabled>
+                          <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"skillQuarter$num\" value=\"".ceil($value->{'skillFull'}/4)."\" disabled>
                       </div>
                   </div>";
             }else{
@@ -183,16 +187,16 @@
                               <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"skillName$num\" value=\"".$value->{'skillName'}."\">
                           </div>
                           <div class=\"col-sm-2 no-padding\">
-                              <input type=\"text\" class=\"form-control wide-input\" id=\"skillLevel$num\" value=\"".$value->{'skillLevel'}."\">
+                              <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"skillLevel$num\" value=\"".$value->{'skillLevel'}."\">
                           </div>
                           <div class=\"col-sm-2 no-padding\">
-                              <input type=\"text\" class=\"form-control wide-input\" id=\"skillFull$num\" value=\"".$value->{'skillFull'}."\">
+                              <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"skillFull$num\" value=\"".$value->{'skillFull'}."\">
                           </div>
                           <div class=\"col-sm-2 no-padding\">
-                              <input type=\"text\" class=\"form-control wide-input\" id=\"skillHalf$num\" value=\"".ceil($value->{'skillFull'}/2)."\" disabled>
+                              <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"skillHalf$num\" value=\"".ceil($value->{'skillFull'}/2)."\" disabled>
                           </div>
                           <div class=\"col-sm-2 no-padding\">
-                              <input type=\"text\" class=\"form-control wide-input\" id=\"skillQuarter$num\" value=\"".ceil($value->{'skillFull'}/4)."\" disabled>
+                              <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"skillQuarter$num\" value=\"".ceil($value->{'skillFull'}/4)."\" disabled>
                           </div>
                       </div>";
             }
@@ -220,22 +224,22 @@
             echo "<div class=\"weapon-container\">
                   <div class=\"form-group form-inline row weapon-stats-container\">
                       <div class=\"col-sm-6 no-padding\">
-                          <input type=\"text\" class=\"form-control wide-input\" id=\"weaponName$num\" value=\"".$value->{'weaponName'}."\">
+                          <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"weaponName$num\" value=\"".$value->{'weaponName'}."\">
                       </div>
                       <div class=\"col-sm-1 no-padding\">
-                          <input type=\"text\" class=\"form-control wide-input\" id=\"weaponShort$num\" value=\"".$value->{'shortRange'}."\">
+                          <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"weaponShort$num\" value=\"".$value->{'shortRange'}."\">
                       </div>
                       <div class=\"col-sm-1 no-padding\">
-                          <input type=\"text\" class=\"form-control wide-input\" id=\"weaponMed$num\" value=\"".$value->{'medRange'}."\">
+                          <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"weaponMed$num\" value=\"".$value->{'medRange'}."\">
                       </div>
                       <div class=\"col-sm-1 no-padding\">
-                          <input type=\"text\" class=\"form-control wide-input\" id=\"weaponLong$num\" value=\"".$value->{'longRange'}."\">
+                          <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"weaponLong$num\" value=\"".$value->{'longRange'}."\">
                       </div>
                       <div class=\"col-sm-2 no-padding\">
-                          <input type=\"text\" class=\"form-control wide-input\" id=\"weaponDamage$num\" value=\"".$value->{'damage'}."\">
+                          <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"weaponDamage$num\" value=\"".$value->{'damage'}."\">
                       </div>
                       <div class=\"col-sm-1 no-padding\">
-                          <input type=\"text\" class=\"form-control wide-input\" id=\"weaponReload$num\" value=\"".$value->{'reload'}."\">
+                          <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"weaponReload$num\" value=\"".$value->{'reload'}."\">
                       </div>
                   </div>
                   <div class=\"form-group form-inline row\">
@@ -243,7 +247,7 @@
                           <div class=\"col-sm-12 weapon-notes no-padding\">
                               <label for=\"weaponNotes1\" class=\"col-sm-1 ts-header\">Notes</label>
                               <div class=\"col-sm-11 no-padding\">
-                                  <input type=\"text\" class=\"form-control wide-input\" id=\"weaponNotes$num\" value=\"".$value->{'notes'}."\">
+                                  <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"weaponNotes$num\" value=\"".$value->{'notes'}."\">
                               </div>
                           </div>
                       </div>
@@ -362,6 +366,101 @@
     }
 
 
+    function renderEquipmentSection($data, $uploadDir) {
+        echo "<div class=\"row\" id=\"equipmentPanel\">
+                  <div class=\"col-sm-12 panel\">
+                      <div class=\"col-sm-6 right-border\" id=\"equipment1\">
+                          <div class=\"form-group form-inline row\">
+                              <label class=\"col-sm-7 ts-header\">Equipment</label>
+                              <label class=\"col-sm-3 ts-header\">File</label>
+                              <label class=\"col-sm-2 ts-header no-padding label-right-align\">On Hand</label>
+                          </div>";
+
+        $halfKeys = (count((array)$data))/2;
+        $counter = 0;
+        foreach ($data as $key => $value) {
+            $counter++;
+            if ($counter <= $halfKeys ){
+                $num = str_replace("equipment", "", $key);
+                echo "<div class=\"form-group form-inline row\">
+                          <div class=\"col-sm-7 no-padding\">
+                              <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"equipmentName$num\" value=\"".$value->{'equipmentName'}."\">
+                          </div>
+                          <div class=\"col-sm-4 no-padding\">
+                              <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"equipmentImage$num\" value=\"".$value->{'equipmentImage'}."\">
+                          </div>
+                          <div class=\"col-sm-1 no-padding\">
+                              <div class=\"col-sm-9 no-padding\">
+                                  <a href=\"$uploadDir/".$value->{'equipmentImage'}."\" class=\"highslide\" onclick=\"return hs.expand(this, {captionId: 'equipmentImageCaption".$num."'})\">
+                                      <img class=\"image\" src=\"img/photo1-sm.jpg\" title=\"Click to enlarge\"/>
+                                  </a>
+                                  <div class=\"highslide-caption\" id=\"equipmentImageCaption$num\">
+                                      ".$value->{'equipmentImage'}."
+                                  </div>
+                              </div>
+                              <div class=\"col-sm-3 equipment-check-box\">
+                                  <input type=\"checkbox\" id=\"equipmentCarrying$num\" ".getEquipmentCarryingFlag($value->{'equipmentCarrying'}).">
+                              </div>
+                          </div>
+                      </div>";
+            }else{
+                break;
+            }
+        }
+
+        echo "</div>";
+
+        echo "<div class=\"col-sm-6 \" id=\"equipment1\">
+                  <div class=\"form-group form-inline row\">
+                      <label class=\"col-sm-7 ts-header\">Equipment</label>
+                      <label class=\"col-sm-3 ts-header\">File</label>
+                      <label class=\"col-sm-2 ts-header no-padding label-right-align\">On Hand</label>
+                  </div>";
+
+        $counter = 0;
+        foreach ($data as $key => $value) {
+            $counter++;
+            if ($counter <= $halfKeys ) {
+                continue;
+            }else{
+                $num = str_replace("equipment", "", $key);
+                echo "<div class=\"form-group form-inline row\">
+                          <div class=\"col-sm-7 no-padding\">
+                              <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"equipmentName$num\" value=\"".$value->{'equipmentName'}."\">
+                          </div>
+                          <div class=\"col-sm-4 no-padding\">
+                              <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"equipmentImage$num\" value=\"".$value->{'equipmentImage'}."\">
+                          </div>
+                          <div class=\"col-sm-1 no-padding\">
+                              <div class=\"col-sm-9 no-padding\">
+                                  <a href=\"$uploadDir/".$value->{'equipmentImage'}."\" class=\"highslide\" onclick=\"return hs.expand(this, {captionId: 'equipmentImageCaption".$num."'})\">
+                                      <img class=\"image\" src=\"img/photo1-sm.jpg\" title=\"Click to enlarge\"/>
+                                  </a>
+                                  <div class=\"highslide-caption\" id=\"equipmentImageCaption$num\">
+                                      ".$value->{'equipmentImage'}."
+                                  </div>
+                              </div>
+                              <div class=\"col-sm-3 equipment-check-box\">
+                                  <input type=\"checkbox\" id=\"equipmentCarrying$num\" ".getEquipmentCarryingFlag($value->{'equipmentCarrying'}).">
+                              </div>
+                          </div>
+                      </div>";
+            }
+        }
+
+        echo "</div></div></div>";
+    }
+
+
+    function getEquipmentCarryingFlag($flag) {
+        if ($flag == "true") {
+            return "checked";
+        }else{
+            return "";
+        }
+    }
+
+
     function renderGenericSection($heading, $data) {
 
         echo "<div class=\"row\">
@@ -419,12 +518,13 @@
 
 <div class="container">
 
+
     <!--======================== START NAMES ==========================-->
     <div class="row page-head" id="stats">
         <div class="row" id="names">
             <div class="col-sm-6 no-padding">
                 <div class="form-group form-inline row name">
-                    <label for="Name" class="col-sm-2">Character Name</label>
+                    <label for="Name" class="col-sm-2 white-text">Character Name</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control wide-input input-lg" id="Name" value="<?php echo $characterData->{'info'}->{'Name'}; ?>">
                     </div>
@@ -432,82 +532,85 @@
             </div>
             <div class="col-sm-6 no-padding">
                 <div class="form-group form-inline row name">
-                    <label for="Player" class="col-sm-2">Player Name</label>
+                    <label for="Player" class="col-sm-2 white-text">Player Name</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control wide-input input-lg" id="Player" value="<?php echo $characterData->{'info'}->{'Player'}; ?>">
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
-        <!--======================== START INFO ==========================-->
-        <div class="row">
-            <div class="col-sm-4 panel first-row scrollable" id="info">
-                <?php renderInfoSection($characterData->{'info'}); ?>
+<div class="container folder">
+
+    <!--======================== START INFO ==========================-->
+    <div class="row">
+        <div class="col-sm-4 panel first-row scrollable" id="info">
+            <?php renderInfoSection($characterData->{'info'}); ?>
+        </div>
+
+        <!--======================== START ATTRIBUTES ==========================-->
+        <div class="col-sm-4 panel first-row scrollable" id="attributes">
+            <div class="form-group form-inline row">
+                <label for="charName" class="col-sm-3 ts-header">Stat</label>
+                <label for="charName" class="col-sm-3 ts-header">Full</label>
+                <label for="charName" class="col-sm-3 ts-header">1/2</label>
+                <label for="charName" class="col-sm-3 ts-header">1/4</label>
             </div>
+            <?php renderAttributesSection($characterData->{'attributes'}); ?>
+        </div>
 
-            <!--======================== START ATTRIBUTES ==========================-->
-            <div class="col-sm-4 panel first-row scrollable" id="attributes">
-                <div class="form-group form-inline row">
-                    <label for="charName" class="col-sm-3 ts-header">Stat</label>
-                    <label for="charName" class="col-sm-3 ts-header">Full</label>
-                    <label for="charName" class="col-sm-3 ts-header">1/2</label>
-                    <label for="charName" class="col-sm-3 ts-header">1/4</label>
+        <!--======================== START NOTES ==========================-->
+        <div class="col-sm-4 no-padding first-row scrollable">
+            <div class="col-sm-12 panel no-padding height-50">
+                <label class="col-sm-12 ts-header">Backstory</label>
+                <div class="col-sm-12 text-center">
+                    <textarea id="Backstory" class="form-control wide-input input-sm notes-textarea"><?php echo $characterData->{'info'}->{'Backstory'}; ?></textarea>
                 </div>
-                <?php renderAttributesSection($characterData->{'attributes'}); ?>
             </div>
-
-            <!--======================== START NOTES ==========================-->
-            <div class="col-sm-4 no-padding first-row scrollable">
-                <div class="col-sm-12 panel no-padding height-50">
-                    <label class="col-sm-12 ts-header">Backstory</label>
-                    <div class="col-sm-12 text-center">
-                        <textarea id="Backstory" rows="7"class="wide-input"><?php echo $characterData->{'info'}->{'Backstory'}; ?></textarea>
-                    </div>
-                </div>
-                <div class="col-sm-12 panel no-padding height-50">
-                    <label class="col-sm-12 ts-header">Campaign Notes</label>
-                    <div class="col-sm-12 text-center">
-                        <textarea id="Notes" rows="7"class="wide-input"><?php echo $characterData->{'info'}->{'Notes'}; ?></textarea>
-                    </div>
+            <div class="col-sm-12 panel no-padding height-50">
+                <label class="col-sm-12 ts-header">Campaign Notes</label>
+                <div class="col-sm-12 text-center">
+                    <textarea id="Notes" class="form-control wide-input input-sm notes-textarea"><?php echo $characterData->{'info'}->{'Notes'}; ?></textarea>
                 </div>
             </div>
         </div>
+    </div>
 
 
-        <div class="row" id="hitpointsRow">
-            <!--======================== START HITPOINTS ==========================-->
-            <?php renderHPSection($characterData->{'hitpoints'}); ?>
+    <div class="row" id="hitpointsRow">
+        <!--======================== START HITPOINTS ==========================-->
+        <?php renderHPSection($characterData->{'hitpoints'}); ?>
 
-            <!--======================== START ADVANTAGES ==========================-->
-            <div class="col-sm-4 no-padding hit-point-row">
-                <div class="col-sm-12 panel no-padding height-45 scrollable">
-                    <?php renderGenericSection("Advantages", $characterData->{'advantages'}); ?>
-                </div>
-
-
-                <!--======================== START DOCUMENTS ==========================-->
-                <div class="col-sm-12 panel no-padding height-55 scrollable">
-                    <?php renderGenericSection("Documents / Finances", $characterData->{'documents'}); ?>
-                </div>
+        <!--======================== START ADVANTAGES ==========================-->
+        <div class="col-sm-4 no-padding hit-point-row">
+            <div class="col-sm-12 panel no-padding height-45 scrollable">
+                <?php renderGenericSection("Advantages", $characterData->{'advantages'}); ?>
             </div>
 
-            <!--======================== START DISADVANTAGES ==========================-->
-            <div class="col-sm-4 no-padding hit-point-row">
-                <div class="col-sm-12 panel no-padding height-45 scrollable">
-                    <?php renderGenericSection("Disadvantages", $characterData->{'disadvantages'}); ?>
-                </div>
 
+            <!--======================== START DOCUMENTS ==========================-->
+            <div class="col-sm-12 panel no-padding height-55 scrollable">
+                <?php renderGenericSection("Documents / Finances", $characterData->{'documents'}); ?>
+            </div>
+        </div>
 
-                <!--======================== START COMBAT TECHNIQUES ==========================-->
-                <div class="col-sm-12 panel no-padding height-55 scrollable">
-                    <?php renderGenericSection("Close Combat Techniques", $characterData->{'combatTechniques'}); ?>
-                </div>
+        <!--======================== START DISADVANTAGES ==========================-->
+        <div class="col-sm-4 no-padding hit-point-row">
+            <div class="col-sm-12 panel no-padding height-45 scrollable">
+                <?php renderGenericSection("Disadvantages", $characterData->{'disadvantages'}); ?>
             </div>
 
+
+            <!--======================== START COMBAT TECHNIQUES ==========================-->
+            <div class="col-sm-12 panel no-padding height-55 scrollable">
+                <?php renderGenericSection("Close Combat Techniques", $characterData->{'combatTechniques'}); ?>
+            </div>
         </div>
 
     </div>
+
 
 
     <!--======================== START IMAGES ==========================-->
@@ -524,11 +627,11 @@
     <?php renderWeaponsSection($characterData->{'weapons'}); ?>
 
     <!--======================== START EQUIPMENT ==========================-->
-    <div class="row" id="equipmentPanel">
-        <div class="col-sm-12 panel" id="equipment">
-            <?php renderGenericSection("Equipment", $characterData->{'equipment'}); ?>
-        </div>
-    </div>
+    <?php renderEquipmentSection($characterData->{'equipment'}, $uploadDir); ?>
+
+<!--    <div class="tab"></div>-->
+
+</div>
 
 
     <!--======================== START JAVASCRIPT ==========================-->
@@ -539,8 +642,6 @@
     <script src="js/bootstrap.min.js"></script>
 
     <!-- Highslide JS -->
-<!--    <script type="text/javascript" src="js/highslide/highslide.js"></script>-->
-
     <script type="text/javascript" src="js/highslide/highslide.js"></script>
     <script type="text/javascript">
         // override Highslide settings here

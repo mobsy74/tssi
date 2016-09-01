@@ -170,9 +170,22 @@
 
 
 
+//        tempObj = {};
+//        for (i=1; i <= numEquipmentSlots; i++) {
+//            tempObj["equipment" + i] = "";
+//        }
+//        characterData["equipment"] = tempObj;
+
+
+
         tempObj = {};
         for (i=1; i <= numEquipmentSlots; i++) {
-            tempObj["equipment" + i] = "";
+            tempObj2 = {
+                "equipmentName": "",
+                "equipmentImage": "",
+                "equipmentCarrying": "false"
+            };
+            tempObj["equipment" + i] = tempObj2;
         }
         characterData["equipment"] = tempObj;
 
@@ -325,9 +338,22 @@
 
 
 
+//        tempObj = {};
+//        for (i=1; i <= numEquipmentSlots; i++) {
+//            tempObj["equipment" + i] = "equipment" + i;
+//        }
+//        characterData["equipment"] = tempObj;
+
+
+
         tempObj = {};
         for (i=1; i <= numEquipmentSlots; i++) {
-            tempObj["equipment" + i] = "equipment" + i;
+            tempObj2 = {
+                "equipmentName": "equipment" + i,
+                "equipmentImage": "equipment-placeholder-image.jpg",
+                "equipmentCarrying": "true"
+            };
+            tempObj["equipment" + i] = tempObj2;
         }
         characterData["equipment"] = tempObj;
 
