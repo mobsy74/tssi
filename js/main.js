@@ -143,7 +143,7 @@ function generateDummyCharacterJSON() {
 
     var characterData = {
         "info": {
-            "Player": "Tom Schroeder",
+            "Player": "Demo Character",
             "Name": "Johnny Five",
             "Nation": "USA",
             "Sex": "Male",
@@ -510,14 +510,18 @@ function updateImage(){
     var imageNum = divID.replace("imageFile", "");
     var imageContainerID = "imageContainer" + imageNum;
 
-    var imageHTML = '<a href="' + uploadDir + '/' + fileName + '" class="highslide" onclick="return hs.expand(this, {captionId: \'imageCaption' + imageNum + '\'})">';
-    imageHTML += '       <img class="image" src="' + uploadDir + '/' + fileName + '" title="Click to enlarge"/>';
-    imageHTML += '   </a>';
-    imageHTML += '   <div class="highslide-caption" id="imageCaption' + imageNum + '">';
-    imageHTML += '       ' + fileName;
-    imageHTML += '   </div>';
+    if (fileName == ""){
+        $("#" + imageContainerID).html("");
+    }else {
+        var imageHTML = '<a href="' + uploadDir + '/' + fileName + '" class="highslide" onclick="return hs.expand(this, {captionId: \'imageCaption' + imageNum + '\'})">';
+        imageHTML += '       <img class="image" src="' + uploadDir + '/' + fileName + '" title="Click to enlarge"/>';
+        imageHTML += '   </a>';
+        imageHTML += '   <div class="highslide-caption" id="imageCaption' + imageNum + '">';
+        imageHTML += '       ' + fileName;
+        imageHTML += '   </div>';
 
-    $("#" + imageContainerID).html(imageHTML);
+        $("#" + imageContainerID).html(imageHTML);
+    }
 }
 
 function updateEquipmentImage(){
@@ -527,14 +531,18 @@ function updateEquipmentImage(){
     var imageNum = divID.replace("equipmentImage", "");
     var imageContainerID = "equipmentImageContainer" + imageNum;
 
-    var imageHTML = '<a href="' + uploadDir + '/' + fileName + '" class="highslide" onclick="return hs.expand(this, {captionId: \'imageCaption' + imageNum + '\'})">';
-    imageHTML += '       <img class="image" src="img/photo1-sm.jpg" title="Click to enlarge"/>';
-    imageHTML += '   </a>';
-    imageHTML += '   <div class="highslide-caption" id="imageCaption' + imageNum + '">';
-    imageHTML += '       ' + fileName;
-    imageHTML += '   </div>';
+    if (fileName == ""){
+        $("#" + imageContainerID).html("");
+    }else{
+        var imageHTML = '<a href="' + uploadDir + '/' + fileName + '" class="highslide" onclick="return hs.expand(this, {captionId: \'imageCaption' + imageNum + '\'})">';
+        imageHTML += '       <img class="image" src="img/photo1-sm.jpg" title="Click to enlarge"/>';
+        imageHTML += '   </a>';
+        imageHTML += '   <div class="highslide-caption" id="imageCaption' + imageNum + '">';
+        imageHTML += '       ' + fileName;
+        imageHTML += '   </div>';
 
-    $("#" + imageContainerID).html(imageHTML);
+        $("#" + imageContainerID).html(imageHTML);
+    }
 }
 
 // Run function upon script load to add click events to elements

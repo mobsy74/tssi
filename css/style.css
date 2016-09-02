@@ -195,27 +195,16 @@ body {
     align-items: center;
 }
 
-.hit-point-clickable:hover{
-    border-color: #fcac45;
-    border-width: 2px;
-}
-
-#hitPoints:hover{
-    cursor: url(../img/sniper-cursor2.cur), auto;
-}
-
-.form-control:hover:enabled{
-    border-color: #fcac45;
-    border-width: 2px;
-}
-
-.checkbox:hover:enabled{
-    border-color: #fcac45;
-    border-width: 2px;
+.form-control:hover:enabled, .hit-point-clickable:hover{
+    border: 2px solid #fcac45;
 }
 
 input[type=checkbox]:hover:enabled {
     outline: 2px solid #fcac45;
+}
+
+#hitPoints:hover{
+    cursor: url(../img/sniper-cursor2.cur), auto;
 }
 
 .hp-dimensions{

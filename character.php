@@ -55,10 +55,20 @@
     <!--======================== START PHP FUNCTIONS ==========================-->
     <?php
 //    $filename = "characters/Tom_Schroeder-Johnny_Five.json";
-    $filename = "characters/blank-blank.json";
-    $uploadDir = "uploads";
-    $handle = fopen($filename, "r");
-    $characterData = json_decode(fread($handle, filesize($filename)));
+//    $filename = "characters/blank-blank.json";
+
+//    $_GET['characterFile'] = "blank-blank.json";
+
+    if( isset($_GET['characterFile']) && !empty($_GET['characterFile']) )
+//        if( isset($_POST['characterFile']) )
+    {
+        $characterFile = "characters/".$_GET['characterFile'];
+    } else{
+        $characterFile = "characters/blank-blank.json";
+    }
+
+    $handle = fopen($characterFile, "r");
+    $characterData = json_decode(fread($handle, filesize($characterFile)));
     fclose($handle);
 
     include 'php/php-functions.php';

@@ -3,8 +3,9 @@
 if(isset($_POST['characterData'])){
     $obj = json_decode($_POST['characterData']);
 
-    $playerName = str_replace(" ", "_", $obj->{'info'}->{'Player'});
-    $charName = str_replace(" ", "_", $obj->{'info'}->{'Name'});
+    // Convert all spaces and dashes to underscores for final file name
+    $playerName = str_replace("-", "_",str_replace(" ", "_", $obj->{'info'}->{'Player'}));
+    $charName = str_replace("-", "_",str_replace(" ", "_", $obj->{'info'}->{'Name'}));
 
     if (str_replace("_", "", $playerName) == ""){
         $playerName = "blank";

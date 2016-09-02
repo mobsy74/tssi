@@ -1,0 +1,50 @@
+body {
+    /*font-family: Arvo;*/
+    font-family: Orbitron;
+
+    font-size: 13px;
+    background: url("../img/gray1.jpg");
+    line-height: normal;
+    color: white;
+}
+
+#main{
+    background: url("../img/gray2.jpg");
+}
+
+.center-align{
+    font-size: 125%;
+    text-align: center;
+}
+
+.character-link{
+    margin-bottom: 20px;
+}
+
+.character-link a{
+    color: white;
+    text-decoration: none;
+}
+
+.character-link a:hover{
+    color: #fcac45;
+    text-decoration: none;
+}
+
+.banner{
+    color: #fcac45 !important;
+    font-weight: bold !important;
+    text-decoration: underline !important;
+    font-style: italic !important;
+    font-size: 500% !important;
+    margin-top:20px;
+}
+
+.welcome{
+    font-size: 300% !important;
+    margin-top: 40px;
+}
+
+.section-title{
+    color: #fcac45;
+}

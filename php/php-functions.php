@@ -1,5 +1,7 @@
 <?php
 
+$uploadDir = "uploads";
+
 function renderInfoSection($data) {
     foreach ($data as $key => $value) {
         if ($key == 'Name' || $key == 'Player' || $key == 'Notes'  || $key == 'Backstory') {
@@ -425,6 +427,32 @@ function renderGenericSection($heading, $data) {
                       <input type=\"text\" class=\"form-control input-sm wide-input\" id=\"".$key."\" value=\"".$value."\">
                   </div>
               </div>";
+    }
+}
+
+
+//================================ INDEX PAGE FUNCTIONS =======================================
+
+function getCharacterList(){
+    $characterDir = "characters";
+    $blankCharacterFileName = "blank-blank.json";
+    $characterFileList = scandir($characterDir);
+//    print_r($characterFileList);
+
+    echo "<div class=\"character-link\">
+              <a href=\"character.php\" target=\"_blank\">Create New Character</a>
+          </div>";
+
+    foreach ($characterFileList as $arrayKey => $characterFile){
+        if ($characterFile != "." && $characterFile != ".." &&$characterFile != $blankCharacterFileName) {
+            $charPiecesArray = explode("-", $characterFile);
+            $playerName = str_replace("_", " ",$charPiecesArray[0]);
+            $characterName = str_replace(".json", "",str_replace("_", " ",$charPiecesArray[1]));
+            $linkText = $characterName." (".$playerName.")";
+            echo "<div class=\"character-link\">
+                      <a href=\"character.php?characterFile=$characterFile\" target=\"_blank\">$linkText</a>
+                  </div>";
+        }
     }
 }
 
