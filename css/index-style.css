@@ -3,32 +3,66 @@ body {
     font-family: Orbitron;
 
     font-size: 13px;
-    background: url("../img/gray1.jpg");
+    /*background: url("../img/gray1.jpg");*/
+    background: url("../img/gray2.jpg");
+    /*background: url("../img/black.jpg");*/
+    /*background: url("../img/metal.jpg");*/
+    /*background-color: black;*/
     line-height: normal;
     color: white;
 }
 
 #main{
-    background: url("../img/gray2.jpg");
+    /*background: url("../img/gray2.jpg");*/
+    /*background: url("../img/gray1.jpg");*/
+    background: url("../img/black.jpg");
+    /*background-color: black;*/
+    border: 10px ridge darkgray;
+    border-radius: 10px;
 }
+
+#logo{
+    height: 250px;
+    width: 300px;
+    border-radius: 20px;
+    border: 5px ridge navajowhite;
+}
+
+.italic{
+    font-style: italic !important;
+}
+
+/*.link-container{*/
+    /*background: url("../img/gray1.jpg");*/
+    /*border-radius: 10px;*/
+/*}*/
 
 .center-align{
     font-size: 125%;
     text-align: center;
 }
 
-.character-link{
+.left-align{
+    font-size: 100%;
+    text-align: left;
+}
+
+.safe-house-link{
     margin-bottom: 20px;
 }
 
-.character-link a{
+.safe-house-link a{
     color: white;
     text-decoration: none;
 }
 
-.character-link a:hover{
+.safe-house-link a:hover{
     color: #fcac45;
     text-decoration: none;
+    background-color: black;
+    border-radius: 10%;
+    border: 3px ridge white;
+    padding: 10px;
 }
 
 .banner{

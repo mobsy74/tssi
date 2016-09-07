@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>TSSI Agent Dossier</title>
+    <title>TS/SI Agent Dossier</title>
 
     <!-- Fav icon -->
     <link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png">
@@ -90,12 +90,16 @@
                 <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-left logo-link ts-link" href="#">
+            <a class="navbar-left logo-link" href="index.php">
                 <img class="logo-image" src="img/favicon/favicon-96x96.png" />
-                <span class="navbar-brand logo-text ts-link">
-                    TS/SI Agent Dossier
+            </a>
+            <div class="navbar-left header-link">
+            <a href="#" class="ts-link">
+                <span>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Agent Dossier
                 </span>
             </a>
+            </div>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->

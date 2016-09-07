@@ -135,6 +135,10 @@ body {
     border-radius: 10%;
 }
 
+.logo-image:hover{
+    border: 2px solid #fcac45 !important;
+}
+
 .logo-text{
     float: none;
     color: white !important;
@@ -148,6 +152,12 @@ body {
 .ts-link:hover{
     color: #fcac45 !important;
     text-decoration: none !important;
+}
+
+.header-link{
+    line-height:20px;
+    padding: 15px;
+    font-size: 150%;
 }
 
 .nav-container{

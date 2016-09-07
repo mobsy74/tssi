@@ -439,7 +439,7 @@ function getCharacterList(){
     $characterFileList = scandir($characterDir);
 //    print_r($characterFileList);
 
-    echo "<div class=\"character-link\">
+    echo "<div class=\"safe-house-link\">
               <a href=\"character.php\" target=\"_blank\">Create New Character</a>
           </div>";
 
@@ -449,7 +449,7 @@ function getCharacterList(){
             $playerName = str_replace("_", " ",$charPiecesArray[0]);
             $characterName = str_replace(".json", "",str_replace("_", " ",$charPiecesArray[1]));
             $linkText = $characterName." (".$playerName.")";
-            echo "<div class=\"character-link\">
+            echo "<div class=\"safe-house-link\">
                       <a href=\"character.php?characterFile=$characterFile\" target=\"_blank\">$linkText</a>
                   </div>";
         }

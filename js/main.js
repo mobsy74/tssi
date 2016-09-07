@@ -545,6 +545,227 @@ function updateEquipmentImage(){
     }
 }
 
+function calculateShot(){
+
+    var div = $(this);
+    var divID = div.prop("id");
+
+    preventDuplicateChecks(divID);
+
+    var baseValue = $("#base-skill").val();
+
+    if (baseValue == "" || !($.isNumeric(baseValue))){
+        $("#to-hit").val("");
+        return;
+    }
+
+    var currentValue = Number(baseValue);
+    if ($("#called-shot-half").is(":checked")){
+        currentValue = Math.ceil(currentValue/2);
+    }
+
+    if ($("#called-shot-quarter").is(":checked")){
+        currentValue = Math.ceil(currentValue/4);
+    }
+
+    if ($("#cover-half").is(":checked")){
+        currentValue = Math.ceil(currentValue/2);
+    }
+
+    if ($("#cover-quarter").is(":checked")){
+        currentValue = Math.ceil(currentValue/4);
+    }
+
+    if ($("#braced").is(":checked")){
+        currentValue = currentValue + 10;
+    }
+
+    if ($("#prepared").is(":checked")){
+        currentValue = currentValue + 5;
+    }
+
+    if ($("#short-burst").is(":checked")){
+        currentValue = currentValue + 5;
+    }
+
+    if ($("#long-burst").is(":checked")){
+        currentValue = currentValue + 10;
+    }
+
+    if ($("#point-blank-range").is(":checked")){
+        currentValue = currentValue + 30;
+    }
+    if ($("#short-range").is(":checked")){
+        currentValue = currentValue + 10;
+    }
+    //if ($("#medium-range").is(":checked")){
+    //    currentValue = currentValue + 0;
+    //}
+
+    if ($("#long-range").is(":checked")){
+        currentValue = currentValue - 40;
+    }
+    if ($("#scope").is(":checked")){
+        currentValue = currentValue + 25;
+    }
+    if ($("#regular-shotgun").is(":checked")){
+        currentValue = currentValue + 10;
+    }
+    if ($("#sawed-off-shotgun").is(":checked")){
+        currentValue = currentValue + 20;
+    }
+    if ($("#slow-movement").is(":checked")){
+        currentValue = currentValue - 10;
+    }
+    if ($("#medium-movement").is(":checked")){
+        currentValue = currentValue - 25;
+    }
+    if ($("#fast-movement").is(":checked")){
+        currentValue = currentValue - 40;
+    }
+    if ($("#one-hand").is(":checked")){
+        currentValue = currentValue - 20;
+    }
+    if ($("#off-hand").is(":checked")){
+        currentValue = currentValue - 30;
+    }
+    if ($("#rapid-fire").is(":checked")){
+        currentValue = currentValue - 30;
+    }
+
+    $("#to-hit").val(currentValue);
+}
+
+
+function resetCalculator(){
+    $("#base-skill").val("");
+    $("#to-hit").val("");
+    $("#called-shot-half").prop('checked', false);
+    $("#called-shot-quarter").prop('checked', false);
+    $("#cover-half").prop('checked', false);
+    $("#cover-quarter").prop('checked', false);
+    $("#braced").prop('checked', false);
+    $("#prepared").prop('checked', false);
+    $("#short-burst").prop('checked', false);
+    $("#long-burst").prop('checked', false);
+    $("#point-blank-range").prop('checked', false);
+    $("#short-range").prop('checked', false);
+    $("#medium-range").prop('checked', false);
+    $("#long-range").prop('checked', false);
+    $("#scope").prop('checked', false);
+    $("#regular-shotgun").prop('checked', false);
+    $("#sawed-off-shotgun").prop('checked', false);
+    $("#slow-movement").prop('checked', false);
+    $("#medium-movement").prop('checked', false);
+    $("#fast-movement").prop('checked', false);
+    $("#one-hand").prop('checked', false);
+    $("#off-hand").prop('checked', false);
+    $("#rapid-fire").prop('checked', false);
+}
+
+
+function preventDuplicateChecks(divID) {
+
+    switch(divID){
+        case "called-shot-half":
+            if( $("#called-shot-half").is(":checked") ){
+                $("#called-shot-quarter").prop('checked', false);
+            }
+            break;
+        case "called-shot-quarter":
+            if( $("#called-shot-quarter").is(":checked") ){
+                $("#called-shot-half").prop('checked', false);
+            }
+            break;
+        case "cover-half":
+            if( $("#cover-half").is(":checked") ){
+                $("#cover-quarter").prop('checked', false);
+            }
+            break;
+        case "cover-quarter":
+            if( $("#cover-quarter").is(":checked") ){
+                $("#cover-half").prop('checked', false);
+            }
+            break;
+        case "short-burst":
+            if( $("#short-burst").is(":checked") ){
+                $("#long-burst").prop('checked', false);
+            }
+            break;
+        case "long-burst":
+            if( $("#long-burst").is(":checked") ){
+                $("#short-burst").prop('checked', false);
+            }
+            break;
+        case "point-blank-range":
+            if( $("#point-blank-range").is(":checked") ){
+                $("#short-range").prop('checked', false);
+                $("#medium-range").prop('checked', false);
+                $("#long-range").prop('checked', false);
+            }
+            break;
+        case "short-range":
+            if( $("#short-range").is(":checked") ){
+                $("#point-blank-range").prop('checked', false);
+                $("#medium-range").prop('checked', false);
+                $("#long-range").prop('checked', false);
+            }
+            break;
+        case "medium-range":
+            if( $("#medium-range").is(":checked") ){
+                $("#short-range").prop('checked', false);
+                $("#point-blank-range").prop('checked', false);
+                $("#long-range").prop('checked', false);
+            }
+            break;
+        case "long-range":
+            if( $("#long-range").is(":checked") ){
+                $("#short-range").prop('checked', false);
+                $("#medium-range").prop('checked', false);
+                $("#point-blank-range").prop('checked', false);
+            }
+            break;
+        case "regular-shotgun":
+            if( $("#regular-shotgun").is(":checked") ){
+                $("#sawed-off-shotgun").prop('checked', false);
+            }
+            break;
+        case "sawed-off-shotgun":
+            if( $("#sawed-off-shotgun").is(":checked") ){
+                $("#regular-shotgun").prop('checked', false);
+            }
+            break;
+        case "slow-movement":
+            if( $("#slow-movement").is(":checked") ){
+                $("#medium-movement").prop('checked', false);
+                $("#fast-movement").prop('checked', false);
+            }
+            break;
+        case "medium-movement":
+            if( $("#medium-movement").is(":checked") ){
+                $("#slow-movement").prop('checked', false);
+                $("#fast-movement").prop('checked', false);
+            }
+            break;
+        case "fast-movement":
+            if( $("#fast-movement").is(":checked") ){
+                $("#slow-movement").prop('checked', false);
+                $("#medium-movement").prop('checked', false);
+            }
+            break;
+        case "one-hand":
+            if( $("#one-hand").is(":checked") ){
+                $("#off-hand").prop('checked', false);
+            }
+            break;
+        case "off-hand":
+            if( $("#off-hand").is(":checked") ){
+                $("#one-hand").prop('checked', false);
+            }
+            break;
+    }
+}
+
 // Run function upon script load to add click events to elements
 function main() {
 
@@ -576,6 +797,12 @@ function main() {
             $(".image-filename").on("input", updateImage);
 
             $(".equipment-image-filename").on("input", updateEquipmentImage);
+
+            $(".shot-calc-input").on("input", calculateShot);
+
+            $(".shot-calc-checkbox").on("click", calculateShot);
+
+            $("#reset-calculator").on("click", resetCalculator);
 
         });
     }());

@@ -1,0 +1,99 @@
+body {
+    font-family: Arvo;
+
+    font-size: 16px;
+    background: url("../img/green-felt.jpg");
+    line-height: normal;
+    color: white;
+}
+
+.main-section{
+    border: 5px ridge white;
+}
+
+.subsection{
+    padding: 5px 2px 15px 2px;
+}
+
+.section-heading{
+    font-size:150%;
+}
+
+.left-aligned {
+    text-align: left;
+}
+
+.right-aligned {
+    text-align: right;
+}
+
+.center-align{
+    text-align: center;
+}
+
+
+/*===================CALCULATOR STYLES===================*/
+.calc-text-padding{
+    padding-top: 10px;
+}
+
+.calc-value{
+    max-width: 70px;
+    color: black;
+    margin-right: 25px;
+}
+
+.value-label{
+    padding-top:10px;
+}
+
+.calc-divider{
+    margin-top: 15px;
+}
+
+
+
+/*===================DICE ROLLER STYLES===================*/
+.large-select{
+    height: 100px;
+    width: 180px;
+    font-size: 70px;
+    background-color: #386646;
+    /*background: url("../img/green-felt.jpg");*/
+}
+
+#die-type{
+    height: 100px;
+    width: 180px;
+}
+
+#die-count{
+    height: 100px;
+    width: 135px;
+}
+
+.dee{
+    font-size: 70px;
+    display: inline-block;
+}
+
+#roll{
+    margin-top: 20px;
+}
+
+.die-result-container{
+    height: 200px;
+    border: 2px solid blue;
+}
+
+.die-result{
+    border: 5px solid white;
+    margin: 0 15px 0 15px;
+    height: 80%;
+}
+
+#results-area{
+    border: 5px solid black;
+    margin: 50px;
+    padding: 50px;
+}
