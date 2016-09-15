@@ -77,23 +77,74 @@ body {
     display: inline-block;
 }
 
-#roll{
-    margin-top: 20px;
+#top-of-single-dice{
+    margin-top: 35px;
+}
+
+.single-die-row{
+    margin: 8px 25px 8px 25px;
+    /*padding: 25px;*/
 }
 
 .die-result-container{
-    height: 200px;
-    border: 2px solid blue;
 }
 
 .die-result{
+    margin: 10px;
+    padding: 5px;
+    font-size: 70px;
+}
+
+.die-result-active{
     border: 5px solid white;
-    margin: 0 15px 0 15px;
-    height: 80%;
 }
 
 #results-area{
     border: 5px solid black;
-    margin: 50px;
-    padding: 50px;
+    margin: 25px;
+    padding: 25px;
+}
+
+
+@media all and (max-width: 1360px) {
+    .die-result {font-size:50px;}
+}
+
+@media all and (max-width: 900px) {
+    .die-result {font-size:25px;}
+}
+
+.norm{
+    font-size:16px !important;
+}
+
+#user{
+    color: black !important;
+}
+
+#historyContainer{
+    border: 5px ridge white;
+}
+
+.historical-roll{
+    font-size: 16px;
+}
+
+.roll-section-header{
+    font-size: 150%;
+}
+
+.last-roll{
+    font-size: 150%;
+    color: #fcac45;
+}
+
+.history-timestamp{
+    font-size: 13px;
+    color: darkgray;
+}
+
+#historyHeader{
+    font-size: 150%;
+    margin-bottom: 15px;
 }

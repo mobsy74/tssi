@@ -101,6 +101,13 @@
             <h4 class="section-title">File Uploads:</h4>
             <div class="center-align link-container" id="uploads">
                 <div class="safe-house-link">
+                    <br>Open a Windows Explorer window and paste the following link:<br><br>
+                    <span id="ftp-link">ftp://rhf.ubertom.com</span>
+                    <br>
+                </div>
+            </div>
+            <div class="center-align link-container" id="uploads">
+                <div class="safe-house-link">
                     <a href="uploads" target="_blank">View the Uploads Directory</a>
                 </div>
             </div>
@@ -149,7 +156,13 @@
                     <button class="btn btn-default" onclick="generateEmptyCharacterJSON(true)">Generate Empty Character JSON</button>
                 </div>
                 <div class="safe-house-link">
-                    <button class="btn btn-default" onclick="generateDummyCharacterJSON()">Generate Dummy Character JSON</button>
+                    <button class="btn btn-default" onclick="generateDummyCharacterJSON()">Generate Generic Character JSON</button>
+                </div>
+                <div class="safe-house-link">
+                    <button class="btn btn-default" onclick="generateEmptyGameJSON(true)">Generate Empty Game JSON</button>
+                </div>
+                <div class="safe-house-link">
+                    <button class="btn btn-default" onclick="generateGenericGameJSON()">Generate Generic Game JSON</button>
                 </div>
                 <div class="safe-house-link">
                     <a href="concept-work.html" target="_blank">Concept Work</a>

@@ -47,8 +47,21 @@
     <!-- Custom TS CSS -->
     <link href="css/dice-style.css" rel="stylesheet">
 
+
     <!--======================== START PHP FUNCTIONS ==========================-->
     <?php
+    if( isset($_GET['characterFile']) && !empty($_GET['characterFile']) )
+    {
+        $characterFile = "data/characters/".$_GET['characterFile'];
+    } else{
+        $characterFile = "data/characters/blank-blank.json";
+    }
+
+    $gameDataFile = "data/game-data.json";
+    $handle = fopen($gameDataFile, "r");
+    $gameData = json_decode(fread($handle, filesize($gameDataFile)));
+    fclose($handle);
+
     include 'php/php-functions.php';
     ?>
     <!--======================== STOP PHP FUNCTIONS ==========================-->
@@ -285,7 +298,22 @@
     </div>
     <div id="dice-roller" class="col-lg-9 main-section">
         <div class="row section-heading">
-            Dice Roller
+            <div class="col-sm-4">
+                Dice Roller
+            </div>
+            <div class="col-sm-4 norm">
+                User:&nbsp;&nbsp;<select id="user" class="norm">
+                    <option value="None"></option>
+                    <option value="Mark">Mark</option>
+                    <option value="Matt">Matt</option>
+                    <option value="Mike">Mike</option>
+                    <option value="Reem">Reem</option>
+                    <option value="Tom">Tom</option>
+                </select>
+            </div>
+            <div class="col-sm-4 norm">
+                Private Roll?&nbsp;&nbsp;<input type="checkbox" class="left-aligned" id="privateRoll">
+            </div>
         </div>
         <div class="row">
             <div class="col-sm-2"></div>
@@ -306,85 +334,151 @@
                 </select>
             </div>
             <div class="col-sm-4">
-                <div class="dee">D</div>
+                <div class="dee">d</div>
                 <select class="large-select" id="die-type">
                     <option value="4">4</option>
                     <option value="6">6</option>
                     <option value="8">8</option>
                     <option value="10">10</option>
                     <option value="12">12</option>
+                    <option value="20">20</option>
                     <option value="100">100</option>
                 </select>
             </div>
             <div class="col-sm-3">
                 <button class="btn btn-default btn-lg" id="roll">Roll 'em</button>
+                <br><br>
+                <button class="btn btn-default btn-lg" id="reset">Reset Roll</button>
+            </div>
+        </div>
+        <div class="row single-die-row" id="top-of-single-dice">
+            <div class="col-sm-3">
+                <button class="btn btn-default" id="1d4" onclick="rollSpecificDice(1,4)">Roll 1d4</button>
+            </div>
+            <div class="col-sm-3">
+                <button class="btn btn-default" id="1d6" onclick="rollSpecificDice(1,6)">Roll 1d6</button>
+            </div>
+            <div class="col-sm-3">
+                <button class="btn btn-default" id="1d8" onclick="rollSpecificDice(1,8)">Roll 1d8</button>
+            </div>
+            <div class="col-sm-3">
+                <button class="btn btn-default" id="1d10" onclick="rollSpecificDice(1,10)">Roll 1d10</button>
+            </div>
+        </div>
+        <div class="row single-die-row">
+            <div class="col-sm-3">
+                <button class="btn btn-default" id="1d12" onclick="rollSpecificDice(1,12)">Roll 1d12</button>
+            </div>
+            <div class="col-sm-3">
+                <button class="btn btn-default" id="1d20" onclick="rollSpecificDice(1,20)">Roll 1d20</button>
+            </div>
+            <div class="col-sm-3">
+                <button class="btn btn-default" id="1d100" onclick="rollSpecificDice(1,100)">Roll 1d100</button>
             </div>
         </div>
         <div class="row" id="results-area">
+            <div class="row center-align" id="roll-type">
+
+            </div>
             <div class="row">
                 <div class="col-sm-2 die-result-container">
-                    <div class="die-result" id="die1">
+                    <div class="die-result center-align" id="die1">
 
                     </div>
                 </div>
                 <div class="col-sm-2 die-result-container">
-                    <div class="die-result" id="die2">
+                    <div class="die-result center-align" id="die2">
 
                     </div>
                 </div>
                 <div class="col-sm-2 die-result-container">
-                    <div class="die-result" id="die3">
+                    <div class="die-result center-align" id="die3">
 
                     </div>
                 </div>
                 <div class="col-sm-2 die-result-container">
-                    <div class="die-result" id="die4">
+                    <div class="die-result center-align" id="die4">
 
                     </div>
                 </div>
                 <div class="col-sm-2 die-result-container">
-                    <div class="die-result" id="die5">
+                    <div class="die-result center-align" id="die5">
 
                     </div>
                 </div>
                 <div class="col-sm-2 die-result-container">
-                    <div class="die-result" id="die6">
+                    <div class="die-result center-align" id="die6">
 
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-2 die-result-container">
-                    <div class="die-result" id="die7">
+                    <div class="die-result center-align" id="die7">
 
                     </div>
                 </div>
                 <div class="col-sm-2 die-result-container">
-                    <div class="die-result" id="die8">
+                    <div class="die-result center-align" id="die8">
 
                     </div>
                 </div>
                 <div class="col-sm-2 die-result-container">
-                    <div class="die-result" id="die9">
+                    <div class="die-result center-align" id="die9">
 
                     </div>
                 </div>
                 <div class="col-sm-2 die-result-container">
-                    <div class="die-result" id="die10">
+                    <div class="die-result center-align" id="die10">
 
                     </div>
                 </div>
                 <div class="col-sm-2 die-result-container">
-                    <div class="die-result" id="die11">
+                    <div class="die-result center-align" id="die11">
 
                     </div>
                 </div>
                 <div class="col-sm-2 die-result-container">
-                    <div class="die-result" id="die12">
+                    <div class="die-result center-align" id="die12">
 
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="row" id="historyContainer">
+            <div class="col-sm-12" id="historyHeader">
+                Die Roll History
+            </div>
+            <div class="col-sm-12" id="history">
+                <?php
+
+                $dieRolls = $gameData->{'dieRolls'};
+                $numRolls = (count((array)$dieRolls)) - 1;
+
+                for ($i = ($numRolls); $i >= 0; $i--) {
+                    if ($i == $numRolls){
+                        echo "<div class=\"roll-section-header\">Last Roll: </div><div class=\"last-roll\">";
+                    } else {
+                        if ($i == ($numRolls - 1)){
+                            echo "<div class=\"roll-section-header\">Previous Rolls:</div>";
+                        }
+                        echo "<div class=\"historical-roll\">";
+                    }
+
+                    echo $dieRolls[$i]->{'user'}." rolled ".$dieRolls[$i]->{'dieCount'}." d".$dieRolls[$i]->{'dieType'}.": [";
+                    for ($j = 0; $j < (count((array)$dieRolls[$i]->{'values'})); $j++){
+                        echo $dieRolls[$i]->{'values'}[$j];
+                        if ($j != ((count((array)$dieRolls[$i]->{'values'})) - 1)) {
+                            echo ", ";
+                        }
+                    }
+
+                    echo "]&nbsp;&nbsp; <span class=\"history-timestamp\">(".$dieRolls[$i]->{'timestamp'}.")</span></div>";
+                }
+
+                ?>
+            </div>
+
         </div>
     </div>
 </div>

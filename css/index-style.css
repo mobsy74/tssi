@@ -1,22 +1,14 @@
 body {
-    /*font-family: Arvo;*/
     font-family: Orbitron;
 
     font-size: 13px;
-    /*background: url("../img/gray1.jpg");*/
     background: url("../img/gray2.jpg");
-    /*background: url("../img/black.jpg");*/
-    /*background: url("../img/metal.jpg");*/
-    /*background-color: black;*/
     line-height: normal;
     color: white;
 }
 
 #main{
-    /*background: url("../img/gray2.jpg");*/
-    /*background: url("../img/gray1.jpg");*/
     background: url("../img/black.jpg");
-    /*background-color: black;*/
     border: 10px ridge darkgray;
     border-radius: 10px;
 }
@@ -31,11 +23,6 @@ body {
 .italic{
     font-style: italic !important;
 }
-
-/*.link-container{*/
-    /*background: url("../img/gray1.jpg");*/
-    /*border-radius: 10px;*/
-/*}*/
 
 .center-align{
     font-size: 125%;
@@ -81,4 +68,9 @@ body {
 
 .section-title{
     color: #fcac45;
+}
+
+#ftp-link{
+    color: #fcac45;
+    font-size: 200%;
 }

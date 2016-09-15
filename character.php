@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>TS/SI Agent Dossier</title>
 
     <!-- Fav icon -->
     <link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png">
@@ -62,18 +61,25 @@
     if( isset($_GET['characterFile']) && !empty($_GET['characterFile']) )
 //        if( isset($_POST['characterFile']) )
     {
-        $characterFile = "characters/".$_GET['characterFile'];
+        $characterFile = "data/characters/".$_GET['characterFile'];
     } else{
-        $characterFile = "characters/blank-blank.json";
+        $characterFile = "data/characters/blank-blank.json";
     }
 
     $handle = fopen($characterFile, "r");
     $characterData = json_decode(fread($handle, filesize($characterFile)));
     fclose($handle);
 
+    $title = $characterData->{'info'}->{'Name'};
+    if ($title == ""){
+        $title = "TS/SI Agent Dossier";
+    }
+
     include 'php/php-functions.php';
     ?>
     <!--======================== STOP PHP FUNCTIONS ==========================-->
+
+    <title><?php echo $title ?></title>
 
 </head>
 <body>

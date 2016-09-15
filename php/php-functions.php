@@ -434,7 +434,7 @@ function renderGenericSection($heading, $data) {
 //================================ INDEX PAGE FUNCTIONS =======================================
 
 function getCharacterList(){
-    $characterDir = "characters";
+    $characterDir = "data/characters";
     $blankCharacterFileName = "blank-blank.json";
     $characterFileList = scandir($characterDir);
 //    print_r($characterFileList);

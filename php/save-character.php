@@ -16,7 +16,7 @@ if(isset($_POST['characterData'])){
     }
 
     $fileName = $playerName."-".$charName.".json";
-    $filePath = "../characters/".$fileName;
+    $filePath = "../data/characters/".$fileName;
 
     $charFile = fopen($filePath, "w") or die("Unable to open file!");
     fwrite($charFile, $_POST['characterData']);

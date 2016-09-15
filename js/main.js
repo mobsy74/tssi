@@ -10,9 +10,95 @@ var numHPAreas = 10;
 var numHPs = 20;
 var numImages = 3;
 var uploadDir = "uploads";
+var numDice = 12;
+var whiteboardBaseURL = "https://awwapp.com";
+var defaultGameDataFileName = "game-data.json";
+
 
 function indentJson(json){
     return JSON.stringify(json, null, 2);
+}
+
+
+function generateEmptyGameJSON(save) {
+    var gameState = {
+        "gameDataFileName": defaultGameDataFileName,
+        "dieRolls": [],
+        "whiteBoardLink": whiteboardBaseURL
+    };
+
+    gameState.dieRolls[0] = getEmptyDieRoll();
+
+    if (save) {
+        saveGameData(gameState);
+    }
+
+    return gameState;
+}
+
+function getEmptyDieRoll() {
+
+    return {
+        "user": "",
+        "timestamp": "",
+        "dieType": "",
+        "dieCount": "",
+        "values": []
+    };
+}
+
+function generateGenericGameJSON() {
+    var gameState = {
+        "gameDataFileName": defaultGameDataFileName,
+        "dieRolls": [],
+        "whiteBoardLink": whiteboardBaseURL
+    };
+
+    gameState.dieRolls[0] = getEmptyDieRoll();
+
+    gameState.dieRolls[0].user = "Tom";
+    gameState.dieRolls[0].timestamp = new Date().toUTCString().split(", ")[1].replace(" GMT","");
+    gameState.dieRolls[0].dieType = "100";
+    gameState.dieRolls[0].dieCount = "2";
+    gameState.dieRolls[0].values = [50,99];
+
+    gameState.dieRolls[1] = getEmptyDieRoll();
+    gameState.dieRolls[1].user = "Tom";
+    gameState.dieRolls[1].timestamp = new Date().toUTCString().split(", ")[1].replace(" GMT","");
+    gameState.dieRolls[1].dieType = "100";
+    gameState.dieRolls[1].dieCount = "2";
+    gameState.dieRolls[1].values = [50,99];
+
+    gameState.dieRolls[2] = getEmptyDieRoll();
+    gameState.dieRolls[2].user = "Tom";
+    gameState.dieRolls[2].timestamp = new Date().toUTCString().split(", ")[1].replace(" GMT","");
+    gameState.dieRolls[2].dieType = "100";
+    gameState.dieRolls[2].dieCount = "2";
+    gameState.dieRolls[2].values = [50,99];
+
+    saveGameData(gameState);
+}
+
+function saveGameData(gameState){
+    var gameDataString = indentJson(gameState);
+    //console.log(gameDataString);
+
+    $.ajax({
+        type: "POST",
+        url: "php/save-game-data.php",
+        data: {gameData:gameDataString},
+        success: function(data){
+            console.log("Game data saved.");
+            $("#jsonDisplay").html("<pre>" + gameDataString + "</pre>");
+        },
+        error: function(e){
+            console.log("There was a problem saving the game data.");
+            if(e.message){
+                alert('An error occurred when attempting to save the game data.  Ask the administrator to check the server logs for more information.');
+                console.log(e.message);
+            }
+        }
+    });
 }
 
 
@@ -766,6 +852,141 @@ function preventDuplicateChecks(divID) {
     }
 }
 
+function resetRoll(){
+    $("#die-count").val(1);
+    $("#die-type").val(4);
+    clearRoll();
+}
+
+function clearRoll(){
+    for (var i=1; i<=numDice; i++){
+        var div = $("#die" + i);
+        div.html("");
+        div.removeClass("die-result-active");
+        $("#roll-type").html("");
+    }
+}
+
+function rollDice(){
+    rollSpecificDice($("#die-count").val(), $("#die-type").val())
+}
+
+function rollSpecificDice(dieCount, dieType){
+    clearRoll();
+
+    var dieRoll = getEmptyDieRoll();
+
+    dieRoll.user = $("#user").val();
+    dieRoll.timestamp = new Date().toUTCString().split(", ")[1].replace(" GMT","");
+    dieRoll.dieType = dieType;
+    dieRoll.dieCount = dieCount;
+
+
+    jQuery.ajaxSetup({
+        cache: false
+    });
+
+    $.ajax({
+        'async': false,
+        'global': false,
+        'url': "data/" + defaultGameDataFileName,
+        'dataType': "json",
+        'success': function (gameData) {
+            for (var i=1; i<=dieCount; i++){
+                var div = $("#die" + i);
+                var dieValue = Math.floor((Math.random() * dieType) + 1);
+                var dieValueString;
+                switch (true) {
+                    case (dieType == 100 && dieValue < 10):
+                        dieValueString = "0" + dieValue;
+                        div.html(dieValueString);
+                        dieRoll.values[i-1] = dieValueString;
+                        break;
+                    case (dieType == 100 && dieValue == 100):
+                        dieValueString = "00";
+                        div.html(dieValueString);
+                        dieRoll.values[i-1] = dieValueString;
+                        break;
+                    case (dieType == 10 && dieValue == 10):
+                        dieValueString = "0";
+                        div.html(dieValueString);
+                        dieRoll.values[i-1] = dieValueString;
+                        break;
+                    default:
+                        div.html(dieValue);
+                        dieRoll.values[i-1] = dieValue;
+                        break;
+                }
+                div.addClass("die-result-active");
+                $("#roll-type").html("<p>Value(s) rolled on a d" + dieType + "</p>");
+            }
+
+            if (!$("#privateRoll").is(":checked")) {
+
+                var history = gameData.dieRolls;
+
+                if (history.length == 10) {
+                    history.shift();
+                }
+
+                history.push(dieRoll);
+                gameData.dieRolls = history;
+
+                var gameDataString = indentJson(gameData);
+
+                $("#history").html("<img id='loading-image' src='img/spinner.gif' alt='Loading...' />");
+
+                $.ajax({
+                    type: "POST",
+                    url: "php/save-game-data.php",
+                    data: {gameData:gameDataString},
+                    success: function(data){
+                        console.log("Game data saved.");
+                        console.log(data);
+
+                        var historyHtmlString = "";
+
+                        for (var j = (history.length - 1); j >= 0; j--) {
+                            if (j == (history.length - 1)) {
+                                historyHtmlString += '<div class="roll-section-header">Last Roll: </div><div class="last-roll">';
+                            } else {
+                                if (j == (history.length - 2)) {
+                                    historyHtmlString += '<div class="roll-section-header">Previous Rolls:</div>'
+                                }
+                                historyHtmlString += '<div class="historical-roll">';
+                            }
+
+                            historyHtmlString += history[j].user + ' rolled ' + history[j].dieCount + ' d' + history[j].dieType + ': [';
+                            for (var k = 0; k < history[j].values.length; k++) {
+                                historyHtmlString += history[j].values[k];
+                                if (k != (history[j].values.length - 1)) {
+                                    historyHtmlString += ', ';
+                                }
+                            }
+                            historyHtmlString += ']&nbsp;&nbsp; <span class="history-timestamp">(' + history[j].timestamp + ')</span></div>';
+                        }
+
+                        $("#history").html(historyHtmlString);
+                    },
+                    error: function(e){
+                        console.log("There was a problem saving the game data.");
+                        if(e.message){
+                            alert('An error occurred when attempting to save the game data.  Ask the administrator to check the server logs for more information.');
+                            console.log(e.message);
+                        }
+                    }
+                });
+            }
+        }
+    });
+}
+
+function test(){
+    var arr = [1,2,3,4,5,6,7,8,9,0];
+    arr.shift();
+    console.log(indentJson(arr));
+}
+
 // Run function upon script load to add click events to elements
 function main() {
 
@@ -804,8 +1025,15 @@ function main() {
 
             $("#reset-calculator").on("click", resetCalculator);
 
+            $("#reset").click(resetRoll);
+
+            $("#roll").click(rollDice);
         });
     }());
 }
 
 main();
+
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});

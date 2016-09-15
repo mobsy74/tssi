@@ -1,0 +1,35 @@
+Extras:
+-Convert all text slots to textareas?
+	-Have to use absolute height in em or px to make Firefox look the same as Chrome and IE
+	-IE textareas not resizable dy default?
+	-Click in textarea goes to top row first column
+-Create a new dice roller
+	-Wire in history
+		-read from json on page render
+		-render history
+		-save history with every roll and re-render history section
+	-Track user rolling dice?
+-Add a file upload mechanism
+   Uploaded DM material for sharing - Could we maybe just use dropbox for all of this?
+-Add link to current whiteboard on landing page (editable)
+-Fix header bar - single row at all browser sizes
+
+
+Other things:
+-Figure out how to record live skype sessions again (I did this years ago, but don't remember exactly how)
+-Make page items dynamic, + and - buttons
+-Hit point section auras or glows (progressively brighter with more damage)
+	-Algorithm: bruise=1, wound = 2 - total bruise + wound/(total available hps * 2)
+	-0-25% = blue glow, 26-50% = yellow glow, 51-75% = orange glow, 75%+ = red glow
+-Mike's car diagram
+page login and user tracking?
+can I prevent 404s when image urls are added?
+	show/hide editable title and filenme fields for images
+-Adjust minimum/maximum widths for shot calculator
+	custom bootstrap breakpoint?
+-Add tabs to regions to add real-estate
+
+
+Super long-shot "nice-to-haves":
+-Create HTML5 media player on landing page that can pull mp3s from file upload (Dropbox?) location to allow people to upload soundtrack titles (maybe videos?)
+-Investigate Google Hangouts/Skype (or other mechanism) for all to be listening to same music at the same time (low volume in background) (Google - listening party?)
