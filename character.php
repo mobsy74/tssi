@@ -53,17 +53,13 @@
 
     <!--======================== START PHP FUNCTIONS ==========================-->
     <?php
-//    $filename = "characters/Tom_Schroeder-Johnny_Five.json";
-//    $filename = "characters/blank-blank.json";
-
-//    $_GET['characterFile'] = "blank-blank.json";
+    include 'php/php-functions.php';
 
     if( isset($_GET['characterFile']) && !empty($_GET['characterFile']) )
-//        if( isset($_POST['characterFile']) )
     {
-        $characterFile = "data/characters/".$_GET['characterFile'];
+        $characterFile = $characterDir."/".$_GET['characterFile'];
     } else{
-        $characterFile = "data/characters/blank-blank.json";
+        $characterFile = $blankCharacterFile;
     }
 
     $handle = fopen($characterFile, "r");
@@ -74,8 +70,6 @@
     if ($title == ""){
         $title = "TS/SI Agent Dossier";
     }
-
-    include 'php/php-functions.php';
     ?>
     <!--======================== STOP PHP FUNCTIONS ==========================-->
 
@@ -96,7 +90,7 @@
                 <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-left logo-link" href="index.php">
+            <a class="navbar-left logo-link" href="index.php?agent= <?php echo $agent ?>">
                 <img class="logo-image" src="img/favicon/favicon-96x96.png" />
             </a>
             <div class="navbar-left header-link">

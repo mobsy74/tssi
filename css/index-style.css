@@ -74,3 +74,52 @@ body {
     color: #fcac45;
     font-size: 200%;
 }
+
+.extra-space{
+    line-height: 25px;
+}
+
+.agent-select{
+    height: 80px;
+    width: 180px;
+    font-size: 40px;
+    background-color: black;
+    color: white;
+}
+
+.warning-text{
+    color: red;
+}
+
+.new-agent-text{
+    font-size: 38%;
+}
+
+.new-agent-link {
+    color: #fcac45;
+    text-decoration: none;
+    font-style: italic !important;
+}
+
+.new-agent-link:hover{
+    color: #fcac45;
+    text-decoration: underline;
+}
+
+#leeroy{
+    max-width: 200px;
+    margin: 10px 0 10px 0;
+    border-radius: 10%;
+    border: 3px ridge navajowhite;
+}
+
+#whiteboardInputContainer{
+    margin-bottom: 10px;
+}
+
+#newWhiteboardURL{
+    color: black;
+    font-size: 90%;
+    width: 250px;
+    /*padding-bottom: 3px;*/
+}

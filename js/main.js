@@ -854,7 +854,6 @@ function preventDuplicateChecks(divID) {
 
 function resetRoll(){
     $("#die-count").val(1);
-    $("#die-type").val(4);
     clearRoll();
 }
 
@@ -874,7 +873,10 @@ function rollDice(){
 function rollSpecificDice(dieCount, dieType){
     clearRoll();
 
+    dieCount = $("#die-count").val();
     var dieRoll = getEmptyDieRoll();
+
+    playDiceRoll();
 
     dieRoll.user = $("#user").val();
     dieRoll.timestamp = new Date().toUTCString().split(", ")[1].replace(" GMT","");
@@ -942,7 +944,6 @@ function rollSpecificDice(dieCount, dieType){
                     data: {gameData:gameDataString},
                     success: function(data){
                         console.log("Game data saved.");
-                        console.log(data);
 
                         var historyHtmlString = "";
 
@@ -956,7 +957,7 @@ function rollSpecificDice(dieCount, dieType){
                                 historyHtmlString += '<div class="historical-roll">';
                             }
 
-                            historyHtmlString += history[j].user + ' rolled ' + history[j].dieCount + ' d' + history[j].dieType + ': [';
+                            historyHtmlString += '<span class="' + history[j].user + '">' + history[j].user + '</span> rolled ' + history[j].dieCount + ' d' + history[j].dieType + ': [';
                             for (var k = 0; k < history[j].values.length; k++) {
                                 historyHtmlString += history[j].values[k];
                                 if (k != (history[j].values.length - 1)) {
@@ -981,10 +982,66 @@ function rollSpecificDice(dieCount, dieType){
     });
 }
 
-function test(){
-    var arr = [1,2,3,4,5,6,7,8,9,0];
-    arr.shift();
-    console.log(indentJson(arr));
+function playDiceRoll(){
+    var audio = document.getElementById("audio");
+    audio.play();
+}
+
+
+function updateWhiteBoard(){
+
+    jQuery.ajaxSetup({
+        cache: false
+    });
+
+    $.ajax({
+        'async': false,
+        'global': false,
+        'url': "data/" + defaultGameDataFileName,
+        'dataType': "json",
+        'success': function (gameData) {
+
+            var newWhiteboardURL = $("#newWhiteboardURL").val();
+            if (newWhiteboardURL == ""){
+                newWhiteboardURL = whiteboardBaseURL;
+            }
+
+            gameData.whiteBoardLink = newWhiteboardURL;
+
+            var gameDataString = indentJson(gameData);
+
+            $("#whiteBoardLinkContainer").html("<img id='loading-image' src='img/spinner.gif' alt='Loading...' />");
+
+            $.ajax({
+                type: "POST",
+                url: "php/save-game-data.php",
+                data: {gameData:gameDataString},
+                success: function(data){
+                    console.log("Game data saved.");
+
+                    var URLHtmlString = '<a href="' + newWhiteboardURL + '" target="_blank" id="whiteBoardLink">' + newWhiteboardURL + '</a>';
+                    URLHtmlString += '&nbsp;&nbsp;&nbsp';
+                    URLHtmlString += '<button class="btn btn-default btn-small" id="refreshWhiteBoardURL" onclick="refreshPage()" data-toggle="tooltip" title="Refresh Latest Whiteboard Link"><i class="fa fa-refresh" aria-hidden="true"></i></button>';
+
+                    $("#whiteBoardLinkContainer").html(URLHtmlString);
+                    $("#newWhiteboardURL").val("");
+
+                },
+                error: function(e){
+                    console.log("There was a problem saving the game data.");
+                    if(e.message){
+                        alert('An error occurred when attempting to save the game data.  Ask the administrator to check the server logs for more information.');
+                        console.log(e.message);
+                    }
+                }
+            });
+        }
+
+    });
+}
+
+function refreshPage(){
+    location.reload();
 }
 
 // Run function upon script load to add click events to elements
@@ -1028,6 +1085,13 @@ function main() {
             $("#reset").click(resetRoll);
 
             $("#roll").click(rollDice);
+
+            document.getElementById('newWhiteboardURL').onkeydown = function(e){
+                if(e.keyCode == 13){
+                    updateWhiteBoard();
+                }
+            };
+
         });
     }());
 }

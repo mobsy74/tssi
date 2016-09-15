@@ -1,12 +1,10 @@
 Extras:
--Set up user selection on home page - pass to linked pages
--Dice roller
-	-Reformat with 7 even columns
-	-add pictures of dice
--Add link to current whiteboard on landing page (editable)
+-Redo Advantages quick reference
 -Fix header bar - single row at all browser sizes
 -Change color of save button when character data has changed
--cron job to backup character and game data
+-Alert Confirm if saving a character that doesn't belong to you
+-Escape single and double quotes in character info and filenames
+-Cron job to backup character and game data
 -Convert all text slots to textareas?
 	-Have to use absolute height in em or px to make Firefox look the same as Chrome and IE
 	-IE textareas not resizable dy default?
@@ -14,6 +12,7 @@ Extras:
 
 
 Other things:
+-Timed auto-save for characters?  Only on your own character!
 -Make page items dynamic, + and - buttons
 -Hit point section auras or glows (progressively brighter with more damage)
 	-Algorithm: bruise=1, wound = 2 - total bruise + wound/(total available hps * 2)

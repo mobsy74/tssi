@@ -288,12 +288,6 @@
 
         </div>
 
-
-        <!--======================== END SHOT CALCULATOR ==========================-->
-
-
-        <!--======================== BEGIN DICE ROLLER ==========================-->
-
     </div>
     <div id="dice-roller" class="col-lg-9 main-section">
         <div class="row section-heading">
@@ -302,101 +296,72 @@
             </div>
             <div class="col-sm-4 norm">
                 <input type="hidden" name="user" id="user" value=" <?php echo $agent?> ">
-                <audio id="audio" src="sounds/dice-1.ogg"></audio>
+            </div>
+            <div class="col-sm-4 norm">
+                Private Roll?&nbsp;&nbsp;<input type="checkbox" class="left-aligned" id="privateRoll">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-3">
+                <select class="large-select" id="die-count">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
             </div>
             <div class="col-sm-4">
-                <button class="btn btn-default btn-lg pull-right" onclick="refreshPage()"><i class="fa fa-refresh" aria-hidden="true"></i> Refresh Page</button>
+                <div class="dee">d</div>
+                <select class="large-select" id="die-type">
+                    <option value="4">4</option>
+                    <option value="6">6</option>
+                    <option value="8">8</option>
+                    <option value="10">10</option>
+                    <option value="12">12</option>
+                    <option value="20">20</option>
+                    <option value="100">100</option>
+                </select>
+            </div>
+            <div class="col-sm-3">
+                <button class="btn btn-default btn-lg" id="roll">Roll 'em</button>
+                <br><br>
+                <button class="btn btn-default btn-lg" id="reset">Reset Roll</button>
             </div>
         </div>
-
         <div class="row single-die-row" id="top-of-single-dice">
             <div class="col-sm-3">
-                <div class="col-sm-12 center-align">
-                    <img src="img/d4.jpg" class="die-picture" onclick="rollSpecificDice(1,4)">
-                </div>
-                <div class="col-sm-12 center-align">
-                    d4
-                </div>
+                <button class="btn btn-default" id="1d4" onclick="rollSpecificDice(1,4)">Roll 1d4</button>
             </div>
             <div class="col-sm-3">
-                <div class="col-sm-12 center-align">
-                    <img src="img/d6.jpg" class="die-picture" onclick="rollSpecificDice(1,6)">
-                </div>
-                <div class="col-sm-12 center-align">
-                    d6
-                </div>
+                <button class="btn btn-default" id="1d6" onclick="rollSpecificDice(1,6)">Roll 1d6</button>
             </div>
             <div class="col-sm-3">
-                <div class="col-sm-12 center-align">
-                    <img src="img/d8.jpg" class="die-picture" onclick="rollSpecificDice(1,8)">
-                </div>
-                <div class="col-sm-12 center-align">
-                    d8
-                </div>
+                <button class="btn btn-default" id="1d8" onclick="rollSpecificDice(1,8)">Roll 1d8</button>
             </div>
             <div class="col-sm-3">
-                <div class="col-sm-12 center-align">
-                    <img src="img/d10.jpg" class="die-picture" onclick="rollSpecificDice(1,10)">
-                </div>
-                <div class="col-sm-12 center-align">
-                    d10
-                </div>
+                <button class="btn btn-default" id="1d10" onclick="rollSpecificDice(1,10)">Roll 1d10</button>
             </div>
         </div>
-        <br>
         <div class="row single-die-row">
             <div class="col-sm-3">
-                <div class="col-sm-12 center-align">
-                    <img src="img/d12.jpg" class="die-picture" onclick="rollSpecificDice(1,12)">
-                </div>
-                <div class="col-sm-12 center-align">
-                    d12
-                </div>
+                <button class="btn btn-default" id="1d12" onclick="rollSpecificDice(1,12)">Roll 1d12</button>
             </div>
             <div class="col-sm-3">
-                <div class="col-sm-12 center-align">
-                    <img src="img/d20.jpg" class="die-picture" onclick="rollSpecificDice(1,20)">
-                </div>
-                <div class="col-sm-12 center-align">
-                    d20
-                </div>
+                <button class="btn btn-default" id="1d20" onclick="rollSpecificDice(1,20)">Roll 1d20</button>
             </div>
             <div class="col-sm-3">
-                <div class="col-sm-12 center-align">
-                    <img src="img/d100.jpg" class="die-picture" onclick="rollSpecificDice(1,100)">
-                </div>
-                <div class="col-sm-12 center-align">
-                    d100
-                </div>
+                <button class="btn btn-default" id="1d100" onclick="rollSpecificDice(1,100)">Roll 1d100</button>
             </div>
-            <div class="col-sm-3">
-                <div class="col-sm-12 center-align die-controls-container">
-                    How many dice?:
-                    <select id="die-count">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                    </select>
-                </div>
-                <div class="col-sm-12 center-align die-controls-container">
-                    <button class="btn btn-default btn-sm" id="reset">Reset Die Count</button>
-                </div>
-                <div class="col-sm-12 center-align die-controls-container">
-                    Private Roll?&nbsp;&nbsp;<input type="checkbox" class="left-aligned" id="privateRoll">
-                </div>
-            </div>
-
         </div>
-
         <div class="row" id="results-area">
             <div class="row center-align" id="roll-type">
 
@@ -486,7 +451,7 @@
                         echo "<div class=\"historical-roll\">";
                     }
 
-                    echo "<span class=\"".$dieRolls[$i]->{'user'}."\">".$dieRolls[$i]->{'user'}."</span> rolled ".$dieRolls[$i]->{'dieCount'}." d".$dieRolls[$i]->{'dieType'}.": [";
+                    echo $dieRolls[$i]->{'user'}." rolled ".$dieRolls[$i]->{'dieCount'}." d".$dieRolls[$i]->{'dieType'}.": [";
                     for ($j = 0; $j < (count((array)$dieRolls[$i]->{'values'})); $j++){
                         echo $dieRolls[$i]->{'values'}[$j];
                         if ($j != ((count((array)$dieRolls[$i]->{'values'})) - 1)) {

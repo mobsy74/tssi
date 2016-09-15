@@ -1,6 +1,20 @@
 <?php
 
 $uploadDir = "uploads";
+$dataDir = "data";
+$characterDir = $dataDir."/characters";
+$blankCharacterFile = $characterDir."/blank-blank.json";
+$gameDataFile = $dataDir."/game-data.json";
+
+//    print "REQUEST ARRAY: <pre>";
+//    print_r($_REQUEST);
+//    print "</pre>";
+
+if(isset($_REQUEST['agent'])){
+    $agent = $_REQUEST['agent'];
+}else{
+    $agent = "None";
+}
 
 function renderInfoSection($data) {
     foreach ($data as $key => $value) {
@@ -433,15 +447,11 @@ function renderGenericSection($heading, $data) {
 
 //================================ INDEX PAGE FUNCTIONS =======================================
 
-function getCharacterList(){
+function getCharacterList($agent){
     $characterDir = "data/characters";
     $blankCharacterFileName = "blank-blank.json";
     $characterFileList = scandir($characterDir);
 //    print_r($characterFileList);
-
-    echo "<div class=\"safe-house-link\">
-              <a href=\"character.php\" target=\"_blank\">Create New Character</a>
-          </div>";
 
     foreach ($characterFileList as $arrayKey => $characterFile){
         if ($characterFile != "." && $characterFile != ".." &&$characterFile != $blankCharacterFileName) {
@@ -450,10 +460,14 @@ function getCharacterList(){
             $characterName = str_replace(".json", "",str_replace("_", " ",$charPiecesArray[1]));
             $linkText = $characterName." (".$playerName.")";
             echo "<div class=\"safe-house-link\">
-                      <a href=\"character.php?characterFile=$characterFile\" target=\"_blank\">$linkText</a>
+                      <a href=\"character.php?characterFile=$characterFile&agent=$agent\" target=\"_blank\">$linkText</a>
                   </div>";
         }
     }
+
+    echo "<br><div class=\"safe-house-link\">
+              <a href=\"character.php\" target=\"_blank\">Create <span class=\"section-title italic\">New Character</span></a>
+          </div>";
 }
 
 

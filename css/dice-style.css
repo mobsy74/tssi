@@ -15,6 +15,10 @@ body {
     padding: 5px 2px 15px 2px;
 }
 
+.no-padding{
+    padding: 0 !important;
+}
+
 .section-heading{
     font-size:150%;
 }
@@ -54,22 +58,38 @@ body {
 
 
 /*===================DICE ROLLER STYLES===================*/
-.large-select{
-    height: 100px;
-    width: 180px;
-    font-size: 70px;
-    background-color: #386646;
-    /*background: url("../img/green-felt.jpg");*/
-}
+/*.large-select{*/
+    /*height: 100px;*/
+    /*width: 180px;*/
+    /*font-size: 70px;*/
+    /*background-color: #386646;*/
+    /*/!*background: url("../img/green-felt.jpg");*!/*/
+/*}*/
 
-#die-type{
-    height: 100px;
-    width: 180px;
-}
+/*#die-type{*/
+    /*height: 100px;*/
+    /*width: 180px;*/
+/*}*/
 
 #die-count{
-    height: 100px;
-    width: 135px;
+    height: 35px;
+    width: 50px;
+    color: black;
+}
+
+.die-controls-container{
+    margin-bottom: 10px;
+}
+
+.die-picture{
+    border-radius: 50%;
+    height: 95px;
+    width: 95px;
+}
+
+.die-picture:hover{
+    border: 3px solid #fcac45;;
+    cursor: pointer;
 }
 
 .dee{
@@ -132,11 +152,12 @@ body {
 
 .roll-section-header{
     font-size: 150%;
+    text-decoration: underline;
 }
 
 .last-roll{
     font-size: 150%;
-    color: #fcac45;
+    /*color: #fcac45;*/
 }
 
 .history-timestamp{
@@ -147,4 +168,24 @@ body {
 #historyHeader{
     font-size: 150%;
     margin-bottom: 15px;
+}
+
+.Mike{
+    color:NavajoWhite;
+}
+
+.Matt{
+    color: LightSteelBlue;
+}
+
+.Mark{
+    color: CornflowerBlue;
+}
+
+.Reem{
+    color: LawnGreen;
+}
+
+.Tom{
+    color: Yellow;
 }

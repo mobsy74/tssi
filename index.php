@@ -55,6 +55,13 @@
     <!--======================== START PHP FUNCTIONS ==========================-->
     <?php
     include 'php/php-functions.php';
+
+    $handle = fopen($gameDataFile, "r");
+    $gameData = json_decode(fread($handle, filesize($gameDataFile)));
+    fclose($handle);
+
+    $whiteBoardLink = $gameData->{'whiteBoardLink'};
+
     ?>
     <!--======================== STOP PHP FUNCTIONS ==========================-->
 
@@ -73,96 +80,150 @@
                 <img src="img/orion.png" id="logo">
             </div>
             <br>
-            Welcome to the Safe House, <span class="italic">bitches</span>!
+
+            <?php
+            if($agent == "None"){
+            echo "Please select an Agent ID to enter the Safe House.";
+            ?>
+
+            <div class="col-sm-12">
+                <form name="agent-select" action="index.php" method="get">
+                    <span class="section-title">Agent:</span>&nbsp;&nbsp;
+                    <select id="agent" name="agent" class="agent-select" onchange="this.form.submit()">
+                        <option value="None"></option>
+                        <option value="Mark">Mark</option>
+                        <option value="Matt">Matt</option>
+                        <option value="Mike">Mike</option>
+                        <option value="Reem">Reem</option>
+                        <option value="Tom">Tom</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+
+        <?php
+        }else{
+        echo "Welcome to the Safe House, <span class=\"section-title\">$agent</span>.";
+        echo "<br>
+            <span class=\"new-agent-text\">Not $agent? <a href=\"index.php\" class=\"new-agent-link\">Click here</a> to select a different agent.</span>"
+            ?>
+    </div>
+
+
+    <div id="section-headers">
+        <br><br><br><br>
+        <h4 class="section-title">Characters:</h4>
+        <div class="center-align link-container" id="characters">
+            <?php getCharacterList($agent); ?>
         </div>
 
 
-        <div id="section-headers">
-            <br><br><br><br>
-            <h4 class="section-title">Characters:</h4>
-            <div class="center-align link-container" id="characters">
-                <?php getCharacterList(); ?>
+        <br><br><br><br>
+        <h4 class="section-title">Dice Roller / Shot Calculator:</h4>
+        <div class="center-align link-container" id="diceRoller">
+            <div class="safe-house-link">
+                <a href="dice-roller.php?agent=<?php echo $agent ?>" target="_blank">Roll them bones...</a>
             </div>
-
-
-            <br><br><br><br>
-            <h4 class="section-title">Dice Roller / Shot Calculator:</h4>
-            <div class="center-align link-container" id="diceRoller">
-                <div class="safe-house-link">
-                    <a href="dice-roller.php" target="_blank">Roll them bones...</a>
-                </div>
-                <div class="safe-house-link">
-                    <a href="http://rhf.gingertom.com/game/dice.php?loggedin=yes&username=Tom" target="_blank">Old Vamps Dice Roller</a>
-                </div>
+            <div class="safe-house-link">
+                <a href="http://rhf.gingertom.com/game/dice.php?loggedin=yes&username=Tom" target="_blank">Old Dice Roller</a>
             </div>
+        </div>
 
 
-            <br><br><br><br>
-            <h4 class="section-title">File Uploads:</h4>
-            <div class="center-align link-container" id="uploads">
-                <div class="safe-house-link">
-                    <br>Open a Windows Explorer window and paste the following link:<br><br>
-                    <span id="ftp-link">ftp://rhf.ubertom.com</span>
-                    <br>
-                </div>
+        <br><br><br><br>
+        <h4 class="section-title">File Uploads:</h4>
+        <div class="center-align link-container" id="uploads">
+
+
+            <div class="safe-house-link">
+                <a href="uploads" target="_blank">View the Uploads Directory</a>
             </div>
-            <div class="center-align link-container" id="uploads">
-                <div class="safe-house-link">
-                    <a href="uploads" target="_blank">View the Uploads Directory</a>
-                </div>
+            <br>
+            <div class="safe-house-link extra-space">
+                <br>
+                To upload new files, open a Windows Explorer window<br>
+                (<span class="warning-text italic">NOT Internet Explorer </span>)<br>
+                and paste in the following URL :
+                <br><br>
+                <span id="ftp-link">ftp://rhf.ubertom.com</span>
+                <br>
             </div>
+        </div>
 
 
-            <br><br><br><br>
-            <h4 class="section-title">Current White Board:</h4>
-            <div class="center-align link-container" id="whiteBoard">
-                Under Development
+
+        <br><br><br><br>
+        <h4 class="section-title">Current White Board:</h4>
+        <div class="center-align link-container" id="whiteBoard">
+            <div class="safe-house-link" id="whiteBoardLinkContainer">
+                <a href="<?php echo $whiteBoardLink ?>" target="_blank" id="whiteBoardLink"><?php echo $whiteBoardLink ?></a>
+                &nbsp;&nbsp;&nbsp;
+                <button class="btn btn-default btn-small" id="refreshWhiteBoardURL" onclick="refreshPage()" data-toggle="tooltip" title="Refresh Latest Whiteboard Link"><i class="fa fa-refresh" aria-hidden="true"></i></button>
             </div>
-
-
-            <br><br><br><br>
-            <h4 class="section-title">References:</h4>
-            <div class="center-align link-container" id="references">
-                <div class="safe-house-link">
-                    <a href="docs/tsr-top-secret-s-i-rpg-players-guide-boxed-set.pdf" target="_blank">Players Guide</a>
-                </div>
-                <div class="safe-house-link">
-                    <a href="docs/tsr-top-secret-s-i-rpg-administrators-guide-boxed-set.pdf" target="_blank">Administrators Guide</a>
-                </div>
-                <div class="safe-house-link">
-                    <a href="docs/tsr-top-secret-s-i-rpg-equipment-inventory-boxed-set.pdf" target="_blank">Equipment & Inventory</a>
-                </div>
-                <div class="safe-house-link">
-                    <a href="docs/tsr-top-secret-s-i-rpg-settings-scenarios-boxed-set.pdf" target="_blank">Scenarios</a>
-                </div>
-                <div class="safe-house-link">
-                    <a href="docs/advantages-and-skills-quick-reference.pdf" target="_blank">Advantages & Skills Quick Reference</a>
-                </div>
-                <div class="safe-house-link">
-                    <a href="docs/CHARSHEET1.png" target="_blank">Original Character Sheet - Page 1</a>
-                </div>
-                <div class="safe-house-link">
-                    <a href="docs/CHARSHEET2.png" target="_blank">Original Character Sheet - Page 2</a>
-                </div>
-                <div class="safe-house-link">
-                    <a href="docs/CHARSHEET3.png" target="_blank">Original Character Sheet - Page 3</a>
-                </div>
+            <div clas="col-sm-12" id="whiteboardInputContainer">
+                New whiteboard URL:
+                <input type="text" placeholder="Paste in new whiteboard URL" id="newWhiteboardURL">
             </div>
+            <div>
+                <button class="btn btn-default" onclick="updateWhiteBoard()">
+                    Submit New Whiteboard URL
+                </button>
+            </div>
+        </div>
 
+
+        <br><br><br><br>
+        <h4 class="section-title">References:</h4>
+        <div class="center-align link-container" id="references">
+            <div class="safe-house-link">
+                <a href="docs/tsr-top-secret-s-i-rpg-players-guide-boxed-set.pdf" target="_blank">Players Guide</a>
+            </div>
+            <div class="safe-house-link">
+                <a href="docs/tsr-top-secret-s-i-rpg-administrators-guide-boxed-set.pdf" target="_blank">Administrators Guide</a>
+            </div>
+            <div class="safe-house-link">
+                <a href="docs/tsr-top-secret-s-i-rpg-equipment-inventory-boxed-set.pdf" target="_blank">Equipment & Inventory</a>
+            </div>
+            <div class="safe-house-link">
+                <a href="docs/tsr-top-secret-s-i-rpg-settings-scenarios-boxed-set.pdf" target="_blank">Scenarios</a>
+            </div>
+            <div class="safe-house-link">
+                <a href="docs/advantages-and-skills-quick-reference.pdf" target="_blank">Advantages & Skills Quick Reference</a>
+            </div>
+            <div class="safe-house-link">
+                <a href="docs/CHARSHEET1.png" target="_blank">Original Character Sheet - Page 1</a>
+            </div>
+            <div class="safe-house-link">
+                <a href="docs/CHARSHEET2.png" target="_blank">Original Character Sheet - Page 2</a>
+            </div>
+            <div class="safe-house-link">
+                <a href="docs/CHARSHEET3.png" target="_blank">Original Character Sheet - Page 3</a>
+            </div>
+        </div>
+
+        <?php
+        if($agent == "Tom") {
+            ?>
             <br><br><br><br>
             <h4 class="section-title">Administration:</h4>
             <div class="center-align link-container" id="uploads">
                 <div class="safe-house-link">
-                    <button class="btn btn-default" onclick="generateEmptyCharacterJSON(true)">Generate Empty Character JSON</button>
+                    <button class="btn btn-default" onclick="generateEmptyCharacterJSON(true)">Generate Empty
+                        Character JSON
+                    </button>
                 </div>
                 <div class="safe-house-link">
-                    <button class="btn btn-default" onclick="generateDummyCharacterJSON()">Generate Generic Character JSON</button>
+                    <button class="btn btn-default" onclick="generateDummyCharacterJSON()">Generate Generic
+                        Character JSON
+                    </button>
                 </div>
                 <div class="safe-house-link">
-                    <button class="btn btn-default" onclick="generateEmptyGameJSON(true)">Generate Empty Game JSON</button>
+                    <button class="btn btn-default" onclick="generateEmptyGameJSON(true)">Generate Empty Game JSON
+                    </button>
                 </div>
                 <div class="safe-house-link">
-                    <button class="btn btn-default" onclick="generateGenericGameJSON()">Generate Generic Game JSON</button>
+                    <button class="btn btn-default" onclick="generateGenericGameJSON()">Generate Generic Game JSON
+                    </button>
                 </div>
                 <div class="safe-house-link">
                     <a href="concept-work.html" target="_blank">Concept Work</a>
@@ -171,9 +232,27 @@
                     <div id="jsonDisplay"></div>
                 </div>
             </div>
+            <?php
+        }
+        ?>
 
+        <br><br><br><br>
+        <div class="center-align link-container" id="references">
+            <div>
+                Sponsored By:
+            </div>
+            <div>
+                <img src="img/leeroy.jpg" id="leeroy">
+            </div>
         </div>
+
     </div>
+
+    <?php
+    }
+    ?>
+
+</div>
 </div>
 
 
