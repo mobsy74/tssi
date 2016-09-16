@@ -13,6 +13,7 @@ var uploadDir = "uploads";
 var numDice = 12;
 var whiteboardBaseURL = "https://awwapp.com";
 var defaultGameDataFileName = "game-data.json";
+var pageIsDirty = false;
 
 
 function indentJson(json){
@@ -349,26 +350,36 @@ function generateDummyCharacterJSON() {
 }
 
 function saveCharacter(characterData){
-    var characterDataString = indentJson(characterData);
-    //console.log(characterDataString);
 
-    $.ajax({
-        type: "POST",
-        url: "php/save-character.php",
-        data: {characterData:characterDataString},
-        success: function(data){
-            console.log("Character saved.");
-            $("#jsonDisplay").html("<pre>" + characterDataString + "</pre>");
-                alert('Character was successfully saved.');
-        },
-        error: function(e){
-            console.log("There was a problem saving the character.");
-            if(e.message){
-                alert('An error occurred when attempting to save the character.  Ask the administrator to check the server logs for more information.');
-                console.log(e.message);
+    var agent = $("#user").val();
+    var response = true;
+    if (agent != $("#Player").val()) {
+        response = confirm("This character does not belong to you, " + agent + ".  Are you sure you wish to save it?");
+    }
+
+    if (response){
+        var characterDataString = indentJson(characterData);
+        //console.log(characterDataString);
+
+        $.ajax({
+            type: "POST",
+            url: "php/save-character.php",
+            data: {characterData:characterDataString},
+            success: function(data){
+                console.log("Character saved.");
+                $("#jsonDisplay").html("<pre>" + characterDataString + "</pre>");
+                //alert('Character was successfully saved.');
+                markPageAsClean();
+            },
+            error: function(e){
+                console.log("There was a problem saving the character.");
+                if(e.message){
+                    alert('An error occurred when attempting to save the character.  Ask the administrator to check the server logs for more information.');
+                    console.log(e.message);
+                }
             }
-        }
-    });
+        });
+    }
 }
 
 function getHitPointValue(divID){
@@ -1044,6 +1055,16 @@ function refreshPage(){
     location.reload();
 }
 
+function markPageAsDirty(){
+    pageIsDirty = true;
+    $("#saveCharacter").removeClass("btn-default").addClass("btn-warning");
+}
+
+function markPageAsClean(){
+    pageIsDirty = false;
+    $("#saveCharacter").removeClass("btn-warning").addClass("btn-default");
+}
+
 // Run function upon script load to add click events to elements
 function main() {
 
@@ -1085,12 +1106,6 @@ function main() {
             $("#reset").click(resetRoll);
 
             $("#roll").click(rollDice);
-
-            document.getElementById('newWhiteboardURL').onkeydown = function(e){
-                if(e.keyCode == 13){
-                    updateWhiteBoard();
-                }
-            };
 
         });
     }());

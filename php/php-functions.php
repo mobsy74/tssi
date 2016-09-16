@@ -11,7 +11,7 @@ $gameDataFile = $dataDir."/game-data.json";
 //    print "</pre>";
 
 if(isset($_REQUEST['agent'])){
-    $agent = $_REQUEST['agent'];
+    $agent = trim($_REQUEST['agent']);
 }else{
     $agent = "None";
 }

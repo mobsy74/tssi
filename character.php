@@ -48,7 +48,7 @@
     <link rel="stylesheet" type="text/css" href="js/highslide/highslide.css" />
 
     <!-- Custom TS CSS -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="css/character-style.css" rel="stylesheet">
 
 
     <!--======================== START PHP FUNCTIONS ==========================-->
@@ -233,26 +233,33 @@
 
 <!--    <div class="tab"></div>-->
 
+    <input type="hidden" name="user" id="user" value="<?php echo $agent?>">
+
 </div>
 
 
-    <!--======================== START JAVASCRIPT ==========================-->
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery.min.js"></script>
+<!--======================== START JAVASCRIPT ==========================-->
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
 
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
 
-    <!-- Highslide JS -->
-    <script type="text/javascript" src="js/highslide/highslide.js"></script>
-    <script type="text/javascript">
-        // override Highslide settings here
-        // instead of editing the highslide.js file
-        hs.graphicsDir = 'js/highslide/graphics/';
-    </script>
+<!-- Highslide JS -->
+<script type="text/javascript" src="js/highslide/highslide.js"></script>
+<script type="text/javascript">
+    // override Highslide settings here
+    // instead of editing the highslide.js file
+    hs.graphicsDir = 'js/highslide/graphics/';
+</script>
 
-    <!-- Custom TS JS -->
-    <script src="js/main.js"></script>
+<!-- Custom TS JS -->
+<script src="js/main.js"></script>
+
+<script>
+    $(":input").on("input", markPageAsDirty);
+    $(":checkbox").on("click", markPageAsDirty);
+</script>
 
 </body>
 </html>

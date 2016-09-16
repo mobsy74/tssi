@@ -1,8 +1,4 @@
 Extras:
--Redo Advantages quick reference
--Fix header bar - single row at all browser sizes
--Change color of save button when character data has changed
--Alert Confirm if saving a character that doesn't belong to you
 -Escape single and double quotes in character info and filenames
 -Cron job to backup character and game data
 -Convert all text slots to textareas?
@@ -12,6 +8,7 @@ Extras:
 
 
 Other things:
+-Printer-friendly version
 -Timed auto-save for characters?  Only on your own character!
 -Make page items dynamic, + and - buttons
 -Hit point section auras or glows (progressively brighter with more damage)
@@ -23,6 +20,7 @@ Other things:
 -Adjust minimum/maximum widths for shot calculator
 	custom bootstrap breakpoint?
 -Add tabs to regions to add real-estate
+-Download fonts?
 
 
 Super long-shot "nice-to-haves":

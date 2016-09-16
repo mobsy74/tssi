@@ -165,9 +165,7 @@
                 <input type="text" placeholder="Paste in new whiteboard URL" id="newWhiteboardURL">
             </div>
             <div>
-                <button class="btn btn-default" onclick="updateWhiteBoard()">
-                    Submit New Whiteboard URL
-                </button>
+                <button class="btn btn-default" onclick="updateWhiteBoard()">Submit New Whiteboard URL</button>
             </div>
         </div>
 
@@ -242,9 +240,12 @@
                 Sponsored By:
             </div>
             <div>
-                <img src="img/leeroy.jpg" id="leeroy">
+<!--                <img src="img/leeroy.jpg" id="leeroy">-->
+                <a href="https://www.youtube.com/watch?v=-N6sqdrJzVo" target="_blank"><img src="img/leeroy.jpg" id="leeroy"></a>
             </div>
         </div>
+
+
 
     </div>
 
@@ -273,6 +274,26 @@
 
 <!-- Custom TS JS -->
 <script src="js/main.js"></script>
+
+<?php
+if($agent != "None"){
+    ?>
+
+    <script>
+
+        $(document).ready(function(){
+            document.getElementById("newWhiteboardURL").onkeydown = function(e){
+                if(e.keyCode == 13){
+                    updateWhiteBoard();
+                }
+            };
+        });
+
+    </script>
+
+    <?php
+}
+?>
 
 </body>
 </html>

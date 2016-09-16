@@ -113,6 +113,10 @@ body {
     border: 3px ridge navajowhite;
 }
 
+#leeroy:hover{
+    border: 3px ridge #fcac45;;
+}
+
 #whiteboardInputContainer{
     margin-bottom: 10px;
 }
@@ -121,5 +125,4 @@ body {
     color: black;
     font-size: 90%;
     width: 250px;
-    /*padding-bottom: 3px;*/
 }

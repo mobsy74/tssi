@@ -301,7 +301,7 @@
                 <?php echo $agent?>'s Dice Roller
             </div>
             <div class="col-sm-4 norm">
-                <input type="hidden" name="user" id="user" value=" <?php echo $agent?> ">
+                <input type="hidden" name="user" id="user" value="<?php echo $agent?>">
                 <audio id="audio" src="sounds/dice-1.ogg"></audio>
             </div>
             <div class="col-sm-4">
