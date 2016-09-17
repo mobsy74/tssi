@@ -1,22 +1,31 @@
 <?php
 
+include './php-functions.php';
+
 if(isset($_POST['characterData'])){
     $obj = json_decode($_POST['characterData']);
 
-    // Convert all spaces and dashes to underscores for final file name
-    $playerName = str_replace("-", "_",str_replace(" ", "_", $obj->{'info'}->{'Player'}));
-    $charName = str_replace("-", "_",str_replace(" ", "_", $obj->{'info'}->{'Name'}));
+    // Escape all spaces, single and double quotes for final file name
+    $playerName = str_replace(" ", $spaceReplacement, $obj->{'info'}->{'Player'});
+    $charName = str_replace(" ", $spaceReplacement, $obj->{'info'}->{'Name'});
 
-    if (str_replace("_", "", $playerName) == ""){
+    $playerName = str_replace("\"", $doubleQuoteReplacement,$playerName);
+    $charName = str_replace("\"", $doubleQuoteReplacement,$charName);
+
+    $playerName = str_replace("'", $singleQuoteReplacement,$playerName);
+    $charName = str_replace("'", $singleQuoteReplacement,$charName);
+
+    //Convert blank names to "blank"
+    if (str_replace($spaceReplacement, "", $playerName) == ""){
         $playerName = "blank";
     }
 
-    if (str_replace("_", "", $charName) == ""){
+    if (str_replace($spaceReplacement, "", $charName) == ""){
         $charName = "blank";
     }
 
-    $fileName = $playerName."-".$charName.".json";
-    $filePath = "../data/characters/".$fileName;
+    $fileName = $playerName.$charFileNameDelimiter.$charName.".json";
+    $filePath = "../".$characterDir."/".$fileName;
 
     $charFile = fopen($filePath, "w") or die("Unable to open file!");
     fwrite($charFile, $_POST['characterData']);

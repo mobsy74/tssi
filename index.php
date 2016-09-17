@@ -114,7 +114,7 @@
         <br><br><br><br>
         <h4 class="section-title">Characters:</h4>
         <div class="center-align link-container" id="characters">
-            <?php getCharacterList($agent); ?>
+            <?php getCharacterList($agent, $characterDir, $blankCharacterFile, $spaceReplacement, $singleQuoteReplacement, $doubleQuoteReplacement, $charFileNameDelimiter); ?>
         </div>
 
 

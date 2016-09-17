@@ -1,20 +1,13 @@
-Extras:
--Escape single and double quotes in character info and filenames
--Cron job to backup character and game data
 -Convert all text slots to textareas?
 	-Have to use absolute height in em or px to make Firefox look the same as Chrome and IE
 	-IE textareas not resizable dy default?
 	-Click in textarea goes to top row first column
-
-
-Other things:
--Printer-friendly version
--Timed auto-save for characters?  Only on your own character!
--Make page items dynamic, + and - buttons
+-Consider war room setup for GW
 -Hit point section auras or glows (progressively brighter with more damage)
 	-Algorithm: bruise=1, wound = 2 - total bruise + wound/(total available hps * 2)
 	-0-25% = blue glow, 26-50% = yellow glow, 51-75% = orange glow, 75%+ = red glow
--Mike's car diagram - online
+-Timed auto-save for characters?  Only on your own character!
+-Mike's car diagram - online?
 -can I prevent 404s when image urls are added?
 	show/hide editable title and filename fields for images
 -Adjust minimum/maximum widths for shot calculator
@@ -23,6 +16,11 @@ Other things:
 -Download fonts?
 
 
-Super long-shot "nice-to-haves":
+"Nice-to-haves":
+-----------------------------------
+-Printer-friendly version
+	may have to completely re-render age without image link inputs
+	expand text area fields to display all data?
+-Make page items dynamic, + and - buttons
 -Create HTML5 media player on landing page that can pull mp3s from file upload (Dropbox?) location to allow people to upload soundtrack titles (maybe videos?)
 -Investigate Google Hangouts/Skype (or other mechanism) for all to be listening to same music at the same time (low volume in background) (Google - listening party?)

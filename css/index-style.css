@@ -114,7 +114,7 @@ body {
 }
 
 #leeroy:hover{
-    border: 3px ridge #fcac45;;
+    border: 3px ridge #fcac45;
 }
 
 #whiteboardInputContainer{
@@ -125,4 +125,8 @@ body {
     color: black;
     font-size: 90%;
     width: 250px;
+}
+
+.player-span{
+    color:#fcac45;
 }

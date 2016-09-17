@@ -3,8 +3,15 @@
 $uploadDir = "uploads";
 $dataDir = "data";
 $characterDir = $dataDir."/characters";
-$blankCharacterFile = $characterDir."/blank-blank.json";
+$blankCharacterFile = "blank-blank.json";
+$blankCharacterPath = $characterDir."/".$blankCharacterFile;
 $gameDataFile = $dataDir."/game-data.json";
+$spaceReplacement = "--RSP--";
+$singleQuoteReplacement = "--RSQ--";
+$doubleQuoteReplacement = "--RDQ--";
+$charFileNameDelimiter = "--FND--";
+//$encodedDoubleQuote = "&quot;";
+//$encodedSingleQuote = "&apos;";
 
 //    print "REQUEST ARRAY: <pre>";
 //    print_r($_REQUEST);
@@ -24,7 +31,7 @@ function renderInfoSection($data) {
             echo "<div class=\"form-group form-inline row\">
                       <label for=\"$key\" class=\"col-sm-3 stat-label\">$key</label>
                       <div class=\"col-sm-9\">
-                          <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"$key\" value=\"$value\">
+                          <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"$key\" value=\"".htmlspecialchars($value)."\">
                       </div>
                   </div>";
         }
@@ -99,10 +106,10 @@ function renderSkillsSection($data) {
             $num = str_replace("skill", "", $key);
             echo "<div class=\"form-group form-inline row\">
                       <div class=\"col-sm-4 no-padding\">
-                          <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"skillName$num\" value=\"".$value->{'skillName'}."\">
+                          <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"skillName$num\" value=\"".htmlspecialchars($value->{'skillName'})."\">
                       </div>
                       <div class=\"col-sm-2 no-padding\">
-                          <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"skillLevel$num\" value=\"".$value->{'skillLevel'}."\">
+                          <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"skillLevel$num\" value=\"".htmlspecialchars($value->{'skillLevel'})."\">
                       </div>
                       <div class=\"col-sm-2 no-padding\">
                           <input type=\"text\" class=\"form-control wide-input input-sm skill\" id=\"skillFull$num\" value=\"".$value->{'skillFull'}."\">
@@ -139,10 +146,10 @@ function renderSkillsSection($data) {
             $num = str_replace("skill", "", $key);
             echo "<div class=\"form-group form-inline row\">
                       <div class=\"col-sm-4 no-padding\">
-                          <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"skillName$num\" value=\"".$value->{'skillName'}."\">
+                          <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"skillName$num\" value=\"".htmlspecialchars($value->{'skillName'})."\">
                       </div>
                       <div class=\"col-sm-2 no-padding\">
-                          <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"skillLevel$num\" value=\"".$value->{'skillLevel'}."\">
+                          <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"skillLevel$num\" value=\"".htmlspecialchars($value->{'skillLevel'})."\">
                       </div>
                       <div class=\"col-sm-2 no-padding\">
                           <input type=\"text\" class=\"form-control wide-input input-sm skill\" id=\"skillFull$num\" value=\"".$value->{'skillFull'}."\">
@@ -179,22 +186,22 @@ function renderWeaponsSection($data)
         echo "<div class=\"weapon-container\">
                   <div class=\"form-group form-inline row weapon-stats-container\">
                       <div class=\"col-sm-6 no-padding\">
-                          <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"weaponName$num\" value=\"".$value->{'weaponName'}."\">
+                          <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"weaponName$num\" value=\"".htmlspecialchars($value->{'weaponName'})."\">
                       </div>
                       <div class=\"col-sm-1 no-padding\">
-                      <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"weaponShort$num\" value=\"".$value->{'shortRange'}."\">
+                      <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"weaponShort$num\" value=\"".htmlspecialchars($value->{'shortRange'})."\">
                   </div>
                   <div class=\"col-sm-1 no-padding\">
-                      <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"weaponMed$num\" value=\"".$value->{'medRange'}."\">
+                      <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"weaponMed$num\" value=\"".htmlspecialchars($value->{'medRange'})."\">
                   </div>
                   <div class=\"col-sm-1 no-padding\">
-                      <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"weaponLong$num\" value=\"".$value->{'longRange'}."\">
+                      <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"weaponLong$num\" value=\"".htmlspecialchars($value->{'longRange'})."\">
                   </div>
                   <div class=\"col-sm-2 no-padding\">
-                      <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"weaponDamage$num\" value=\"".$value->{'damage'}."\">
+                      <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"weaponDamage$num\" value=\"".htmlspecialchars($value->{'damage'})."\">
                   </div>
                   <div class=\"col-sm-1 no-padding\">
-                      <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"weaponReload$num\" value=\"".$value->{'reload'}."\">
+                      <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"weaponReload$num\" value=\"".htmlspecialchars($value->{'reload'})."\">
                   </div>
               </div>
                   <div class=\"form-group form-inline row\">
@@ -202,7 +209,7 @@ function renderWeaponsSection($data)
                           <div class=\"col-sm-12 weapon-notes no-padding\">
                               <label for=\"weaponNotes1\" class=\"col-sm-1 ts-header\">Notes</label>
                               <div class=\"col-sm-11 no-padding\">
-                                  <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"weaponNotes$num\" value=\"".$value->{'notes'}."\">
+                                  <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"weaponNotes$num\" value=\"".htmlspecialchars($value->{'notes'})."\">
                               </div>
                           </div>
                       </div>
@@ -295,6 +302,7 @@ function renderHPSection($data) {
 
 function renderImagesSection($data, $uploadDir) {
     foreach ($data as $key => $value) {
+        $escapedValue = htmlspecialchars($value);
         $num=str_replace("image", "", $key);
         echo "<div class=\"col-sm-4 panel no-padding first-row\">
                   <div class=\"col-sm-12\">
@@ -303,7 +311,7 @@ function renderImagesSection($data, $uploadDir) {
                           <label class=\"no-padding\">File: </label>
                       </div>
                       <div class=\"col-sm-5 no-padding\">
-                          <input type=\"text\" class=\"form-control wide-input input-sm image-filename\" id=\"imageFile$num\" value=\"$value\">
+                          <input type=\"text\" class=\"form-control wide-input input-sm image-filename\" id=\"imageFile$num\" value=\"$escapedValue\">
                       </div>
                   </div>
                   <div class=\"col-sm-12 no-padding height-90\">
@@ -319,7 +327,6 @@ function renderImagesSection($data, $uploadDir) {
                           $value
                       </div>";
         }
-
         echo "</div></div></div>";
     }
 }
@@ -343,10 +350,10 @@ function renderEquipmentSection($data, $uploadDir) {
             $num = str_replace("equipment", "", $key);
             echo "<div class=\"form-group form-inline row\">
                       <div class=\"col-sm-7 no-padding\">
-                          <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"equipmentName$num\" value=\"".$value->{'equipmentName'}."\">
+                          <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"equipmentName$num\" value=\"".htmlspecialchars($value->{'equipmentName'})."\">
                       </div>
                   <div class=\"col-sm-4 no-padding\">
-                      <input type=\"text\" class=\"form-control wide-input input-sm equipment-image-filename\" id=\"equipmentImage$num\" value=\"".$value->{'equipmentImage'}."\">
+                      <input type=\"text\" class=\"form-control wide-input input-sm equipment-image-filename\" id=\"equipmentImage$num\" value=\"".htmlspecialchars($value->{'equipmentImage'})."\">
                   </div>
                   <div class=\"col-sm-1 no-padding\">
                       <div class=\"col-sm-9 no-padding\" id=\"equipmentImageContainer$num\">";
@@ -390,10 +397,10 @@ function renderEquipmentSection($data, $uploadDir) {
             $num = str_replace("equipment", "", $key);
             echo "<div class=\"form-group form-inline row\">
                       <div class=\"col-sm-7 no-padding\">
-                          <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"equipmentName$num\" value=\"".$value->{'equipmentName'}."\">
+                          <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"equipmentName$num\" value=\"".htmlspecialchars($value->{'equipmentName'})."\">
                       </div>
                       <div class=\"col-sm-4 no-padding\">
-                          <input type=\"text\" class=\"form-control wide-input input-sm equipment-image-filename\" id=\"equipmentImage$num\" value=\"".$value->{'equipmentImage'}."\">
+                          <input type=\"text\" class=\"form-control wide-input input-sm equipment-image-filename\" id=\"equipmentImage$num\" value=\"".htmlspecialchars($value->{'equipmentImage'})."\">
                       </div>
                       <div class=\"col-sm-1 no-padding\">
                           <div class=\"col-sm-9 no-padding\" id=\"equipmentImageContainer$num\">";
@@ -436,29 +443,42 @@ function renderGenericSection($heading, $data) {
               <label class=\"col-sm-12 ts-header\">$heading</label>
           </div>";
     foreach ($data as $key => $value) {
+        $escapedValue = htmlspecialchars($value);
         echo "<div class=\"form-group form-inline row\">
                   <div class=\"col-sm-12\">
-                      <input type=\"text\" class=\"form-control input-sm wide-input\" id=\"".$key."\" value=\"".$value."\">
+                      <input type=\"text\" class=\"form-control input-sm wide-input\" id=\"".$key."\" value=\"".$escapedValue."\">
                   </div>
               </div>";
     }
 }
 
+//function encodeQuotes($originalString, $encodedDoubleQuote, $encodedSingleQuote){
+//    $returnString = str_replace("\"", $encodedDoubleQuote, $originalString);
+//    return str_replace("'", $encodedSingleQuote, $returnString);
+//}
 
 //================================ INDEX PAGE FUNCTIONS =======================================
 
-function getCharacterList($agent){
-    $characterDir = "data/characters";
-    $blankCharacterFileName = "blank-blank.json";
+function getCharacterList($agent, $characterDir, $blankCharacterFile, $spaceReplacement, $singleQuoteReplacement, $doubleQuoteReplacement, $charFileNameDelimiter){
+
     $characterFileList = scandir($characterDir);
 //    print_r($characterFileList);
 
     foreach ($characterFileList as $arrayKey => $characterFile){
-        if ($characterFile != "." && $characterFile != ".." &&$characterFile != $blankCharacterFileName) {
-            $charPiecesArray = explode("-", $characterFile);
-            $playerName = str_replace("_", " ",$charPiecesArray[0]);
-            $characterName = str_replace(".json", "",str_replace("_", " ",$charPiecesArray[1]));
-            $linkText = $characterName." (".$playerName.")";
+        if ($characterFile != "." && $characterFile != ".." &&$characterFile != $blankCharacterFile) {
+            $charPiecesArray = explode($charFileNameDelimiter, $characterFile);
+
+            //Put back escaped characters in Player Name
+            $playerName = str_replace($spaceReplacement, " ",$charPiecesArray[0]);
+            $playerName = str_replace($singleQuoteReplacement, "'",$playerName);
+            $playerName = str_replace($doubleQuoteReplacement, "\"",$playerName);
+
+            //Put back escaped characters in Character Name
+            $characterName = str_replace(".json", "",str_replace($spaceReplacement, " ",$charPiecesArray[1]));
+            $characterName = str_replace($singleQuoteReplacement, "'",$characterName);
+            $characterName = str_replace($doubleQuoteReplacement, "\"",$characterName);
+
+            $linkText = $characterName." <span class=\"player-span\">(".$playerName.")</span>";
             echo "<div class=\"safe-house-link\">
                       <a href=\"character.php?characterFile=$characterFile&agent=$agent\" target=\"_blank\">$linkText</a>
                   </div>";

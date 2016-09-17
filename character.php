@@ -59,7 +59,7 @@
     {
         $characterFile = $characterDir."/".$_GET['characterFile'];
     } else{
-        $characterFile = $blankCharacterFile;
+        $characterFile = $blankCharacterPath;
     }
 
     $handle = fopen($characterFile, "r");
@@ -128,7 +128,7 @@
                 <div class="form-group form-inline row name">
                     <label for="Name" class="col-sm-2 white-text">Character Name</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control wide-input input-lg" id="Name" value="<?php echo $characterData->{'info'}->{'Name'}; ?>">
+                        <input type="text" class="form-control wide-input input-lg" id="Name" value="<?php echo htmlspecialchars($characterData->{'info'}->{'Name'}); ?>">
                     </div>
                 </div>
             </div>
@@ -136,7 +136,7 @@
                 <div class="form-group form-inline row name">
                     <label for="Player" class="col-sm-2 white-text">Player Name</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control wide-input input-lg" id="Player" value="<?php echo $characterData->{'info'}->{'Player'}; ?>">
+                        <input type="text" class="form-control wide-input input-lg" id="Player" value="<?php echo htmlspecialchars($characterData->{'info'}->{'Player'}); ?>">
                     </div>
                 </div>
             </div>
@@ -168,13 +168,13 @@
             <div class="col-sm-12 panel no-padding height-50">
                 <label class="col-sm-12 ts-header">Backstory</label>
                 <div class="col-sm-12 text-center">
-                    <textarea id="Backstory" class="form-control wide-input input-sm notes-textarea"><?php echo $characterData->{'info'}->{'Backstory'}; ?></textarea>
+                    <textarea id="Backstory" class="form-control wide-input input-sm notes-textarea"><?php echo htmlspecialchars($characterData->{'info'}->{'Backstory'}); ?></textarea>
                 </div>
             </div>
             <div class="col-sm-12 panel no-padding height-50">
                 <label class="col-sm-12 ts-header">Campaign Notes</label>
                 <div class="col-sm-12 text-center">
-                    <textarea id="Notes" class="form-control wide-input input-sm notes-textarea"><?php echo $characterData->{'info'}->{'Notes'}; ?></textarea>
+                    <textarea id="Notes" class="form-control wide-input input-sm notes-textarea"><?php echo htmlspecialchars($characterData->{'info'}->{'Notes'}); ?></textarea>
                 </div>
             </div>
         </div>

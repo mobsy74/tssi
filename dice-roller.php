@@ -302,7 +302,7 @@
             </div>
             <div class="col-sm-4 norm">
                 <input type="hidden" name="user" id="user" value="<?php echo $agent?>">
-                <audio id="audio" src="sounds/dice-1.ogg"></audio>
+                <audio id="audio" src="sounds/dice.ogg"></audio>
             </div>
             <div class="col-sm-4">
                 <button class="btn btn-default btn-lg pull-right" onclick="refreshPage()"><i class="fa fa-refresh" aria-hidden="true"></i> Refresh Page</button>

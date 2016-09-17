@@ -15,7 +15,6 @@ var whiteboardBaseURL = "https://awwapp.com";
 var defaultGameDataFileName = "game-data.json";
 var pageIsDirty = false;
 
-
 function indentJson(json){
     return JSON.stringify(json, null, 2);
 }
