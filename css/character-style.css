@@ -170,8 +170,19 @@ body {
 }
 
 .standard-input-textarea{
-    height: 2em !important;
+    /*height: 2em !important;*/
+    /*font-size: 12px;*/
+    /*min-height: 28px !important;*/
+    height: auto;
+}
+
+.input-div{
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    min-height: 30px;
+    padding: 5px 10px;
     font-size: 12px;
+    line-height: 1.5;
 }
 
 .first-row {
@@ -231,16 +242,24 @@ input[type=checkbox]:hover:enabled {
     position: relative;
     z-index: 100;
     width: 60px;
-    height: 70px;
+    height: 67px;
     padding: 0;
+}
+
+.hit-points-horizontal-sub{
+    height: 48px;
 }
 
 .hit-points-vertical{
     position: relative;
     z-index: 100;
     width: 48px;
-    height: 82px;
+    height: 79px;
     padding: 0;
+}
+
+.hit-points-vertical-sub{
+    height: 60px;
 }
 
 .hit-point {
@@ -285,7 +304,7 @@ input[type=checkbox]:hover:enabled {
 .hit-points-label-static{
     color: white;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 #hitPoints0{
@@ -294,7 +313,7 @@ input[type=checkbox]:hover:enabled {
 }
 
 #hitPoints1{
-    top: -90%;
+    top: -90.5%;
     left: 35%;
 }
 
@@ -396,27 +415,27 @@ input[type=checkbox]:hover:enabled {
 }
 
 .healthy-glow {
-    -webkit-box-shadow:0 0 20px #C1D3FD;
-    -moz-box-shadow: 0 0 20px #C1D3FD;
-    box-shadow:0 0 20px #C1D3FD;
+    -webkit-box-shadow:0 0 10px #C1D3FD;
+    -moz-box-shadow: 0 0 10px #C1D3FD;
+    box-shadow:0 0 10px #C1D3FD;
 }
 
 .low-danger-glow{
-    -webkit-box-shadow:0 0 30px yellow;
-    -moz-box-shadow: 0 0 30px yellow;
-    box-shadow:0 0 30px yellow;
+    -webkit-box-shadow:0 0 10px yellow;
+    -moz-box-shadow: 0 0 10px yellow;
+    box-shadow:0 0 10px yellow;
 }
 
 .medium-danger-glow{
-    -webkit-box-shadow:0 0 40px orange;
-    -moz-box-shadow: 0 0 40px orange;
-    box-shadow:0 0 40px orange;
+    -webkit-box-shadow:0 0 20px darkorange;
+    -moz-box-shadow: 0 0 20px darkorange;
+    box-shadow:0 0 20px darkorange;
 }
 
 .high-danger-glow{
-    -webkit-box-shadow:0 0 50px red;
-    -moz-box-shadow: 0 0 50px red;
-    box-shadow:0 0 50px red;
+    -webkit-box-shadow:0 0 20px red;
+    -moz-box-shadow: 0 0 20px red;
+    box-shadow:0 0 20px red;
 }
 
 .image-container{

@@ -454,19 +454,19 @@ function getCurrentStateCharacterJSON(json){
     }
 
     for (i=1; i <= numAdvantages; i++){
-        json['advantages']['advantage' + i] = $('#advantage' + i).val();
+        json['advantages']['advantage' + i] = $('#advantage' + i).html();
     }
 
     for (i=1; i <= numDisadvantages; i++){
-        json['disadvantages']['disadvantage' + i] = $('#disadvantage' + i).val();
+        json['disadvantages']['disadvantage' + i] = $('#disadvantage' + i).html();
     }
 
     for (i=1; i <= numDocuments; i++){
-        json['documents']['document' + i] = $('#document' + i).val();
+        json['documents']['document' + i] = $('#document' + i).html();
     }
 
     for (i=1; i <= numCombatTechniques; i++){
-        json['combatTechniques']['combatTechnique' + i] = $('#combatTechnique' + i).val();
+        json['combatTechniques']['combatTechnique' + i] = $('#combatTechnique' + i).html();
     }
 
     for (i=1; i <= numImages; i++){
@@ -475,7 +475,7 @@ function getCurrentStateCharacterJSON(json){
 
     for (i=1; i <= numSkills; i++){
         tempObject = {};
-        tempObject['skillName'] = $('#skillName' + i).val();
+        tempObject['skillName'] = $('#skillName' + i).html();
         tempObject['skillLevel'] = $('#skillLevel' + i).val();
         tempObject['skillFull'] = $('#skillFull' + i).val();
         json['skills']['skill' + i] = tempObject;
@@ -483,26 +483,25 @@ function getCurrentStateCharacterJSON(json){
 
     for (i=1; i <= numWeapons; i++){
         tempObject = {};
-        tempObject['weaponName'] = $('#weaponName' + i).val();
+        tempObject['weaponName'] = $('#weaponName' + i).html();
         tempObject['shortRange'] = $('#weaponShort' + i).val();
         tempObject['medRange'] = $('#weaponMed' + i).val();
         tempObject['longRange'] = $('#weaponLong' + i).val();
         tempObject['damage'] = $('#weaponDamage' + i).val();
         tempObject['reload'] = $('#weaponReload' + i).val();
-        tempObject['notes'] = $('#weaponNotes' + i).val();
+        tempObject['notes'] = $('#weaponNotes' + i).html();
         json['weapons']['weapon' + i] = tempObject;
     }
 
     for (i=1; i <= numEquipmentSlots; i++){
         tempObject = {};
-        tempObject['equipmentName'] = $('#equipmentName' + i).val();
+        tempObject['equipmentName'] = $('#equipmentName' + i).html();
         tempObject['equipmentImage'] = $('#equipmentImage' + i).val();
         tempObject['equipmentCarrying'] = $('#equipmentCarrying' + i).is(":checked");
         json['equipment']['equipment' + i] = tempObject;
     }
 
     return json;
-
 }
 
 
@@ -547,7 +546,63 @@ function changeHitpoint(){
     });
     $(div).addClass(hitpointStates[newValue.toString()]);
 
+    setHitpointBlockHealthGlow(div);
+
+    markPageAsDirty();
 }
+
+function setHitpointBlockHealthGlow(div) {
+    var containerDivIDBase = $(div).prop("id").split("-")[0];
+    var containerDivID = containerDivIDBase + "-sub";
+
+    var totalHPDamage = 0;
+    var totalHPAvail = 0;
+
+    for (i = 0; i < numHPs; i++) {
+        var damageValue = getHitPointValue(containerDivIDBase + "-" + i);
+        if (damageValue != 4) {
+            totalHPDamage += (damageValue - 1);
+            totalHPAvail += 1;
+        }
+    }
+
+    var totalDamageAvail = totalHPAvail * 2;
+    var percentDamage = totalHPDamage / totalDamageAvail;
+    var currentHealthClass;
+
+    if (percentDamage < .25) {
+        currentHealthClass = "healthy-glow";
+    } else {
+
+        if (percentDamage < .5) {
+            currentHealthClass = "low-danger-glow";
+        } else {
+
+            if (percentDamage < .75) {
+                currentHealthClass = "medium-danger-glow";
+            } else {
+                currentHealthClass = "high-danger-glow";
+            }
+        }
+    }
+
+
+    var hitpointHealthClasses = {
+        "1": "healthy-glow",
+        "2": "low-danger-glow",
+        "3": "medium-danger-glow",
+        "4": "high-danger-glow"
+    };
+
+    var containerDiv = $("#" + containerDivID);
+
+    $.each( hitpointHealthClasses, function( key, value ) {
+        containerDiv.removeClass(value);
+    });
+    containerDiv.addClass(currentHealthClass);
+
+}
+
 
 function recalculateAttributes(){
     var div = $(this);
@@ -1031,7 +1086,7 @@ function updateWhiteBoard(){
 
                     var URLHtmlString = '<a href="' + newWhiteboardURL + '" target="_blank" id="whiteBoardLink">' + newWhiteboardURL + '</a>';
                     URLHtmlString += '&nbsp;&nbsp;&nbsp';
-                    URLHtmlString += '<button class="btn btn-default btn-small" id="refreshWhiteBoardURL" onclick="refreshPage()" data-toggle="tooltip" title="Refresh Latest Whiteboard Link"><i class="fa fa-refresh" aria-hidden="true"></i></button>';
+                    URLHtmlString += '<button class="btn btn-default btn-small" id="refreshWhiteBoardURL" onclick="refreshPage()" data-toggle="tooltip" title="Refresh Latest Whiteboard Link"><i class="fa fa-refresh" aria-hidden="true"></i> Refresh</button>';
 
                     $("#whiteBoardLinkContainer").html(URLHtmlString);
                     $("#newWhiteboardURL").val("");

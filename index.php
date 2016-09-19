@@ -153,19 +153,22 @@
 
 
         <br><br><br><br>
-        <h4 class="section-title">Current White Board:</h4>
-        <div class="center-align link-container" id="whiteBoard">
+        <h4 class="section-title">Current White Board Link:</h4>
+        <div class="center-align link-container">
             <div class="safe-house-link" id="whiteBoardLinkContainer">
                 <a href="<?php echo $whiteBoardLink ?>" target="_blank" id="whiteBoardLink"><?php echo $whiteBoardLink ?></a>
                 &nbsp;&nbsp;&nbsp;
-                <button class="btn btn-default btn-small" id="refreshWhiteBoardURL" onclick="refreshPage()" data-toggle="tooltip" title="Refresh Latest Whiteboard Link"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+                <button class="btn btn-default btn-small" id="refreshWhiteBoardURL" onclick="refreshPage()"><i class="fa fa-refresh" aria-hidden="true"></i> Refresh</button>
             </div>
+        </div>
+
+
+        <br><br><br><br>
+        <h4 class="section-title">New White Board URL:</h4>
+        <div class="center-align link-container">
             <div clas="col-sm-12" id="whiteboardInputContainer">
-                New whiteboard URL:
-                <input type="text" placeholder="Paste in new whiteboard URL" id="newWhiteboardURL">
-            </div>
-            <div>
-                <button class="btn btn-default" onclick="updateWhiteBoard()">Submit New Whiteboard URL</button>
+                <input type="text" placeholder="Paste new whiteboard URL here" id="newWhiteboardURL">
+                <button class="btn btn-default" onclick="updateWhiteBoard()">Submit New URL</button>
             </div>
         </div>
 

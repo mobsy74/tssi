@@ -106,7 +106,7 @@ function renderSkillsSection($data) {
             $num = str_replace("skill", "", $key);
             echo "<div class=\"form-group form-inline row\">
                       <div class=\"col-sm-4 no-padding\">
-                          <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"skillName$num\" value=\"".htmlspecialchars($value->{'skillName'})."\">
+                         <div id=\"skillName$num\" class=\"wide-input input-div\" contentEditable=\"true\">".$value->{'skillName'}."</div>
                       </div>
                       <div class=\"col-sm-2 no-padding\">
                           <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"skillLevel$num\" value=\"".htmlspecialchars($value->{'skillLevel'})."\">
@@ -146,7 +146,7 @@ function renderSkillsSection($data) {
             $num = str_replace("skill", "", $key);
             echo "<div class=\"form-group form-inline row\">
                       <div class=\"col-sm-4 no-padding\">
-                          <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"skillName$num\" value=\"".htmlspecialchars($value->{'skillName'})."\">
+                         <div id=\"skillName$num\" class=\"wide-input input-div\" contentEditable=\"true\">".$value->{'skillName'}."</div>
                       </div>
                       <div class=\"col-sm-2 no-padding\">
                           <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"skillLevel$num\" value=\"".htmlspecialchars($value->{'skillLevel'})."\">
@@ -186,7 +186,7 @@ function renderWeaponsSection($data)
         echo "<div class=\"weapon-container\">
                   <div class=\"form-group form-inline row weapon-stats-container\">
                       <div class=\"col-sm-6 no-padding\">
-                          <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"weaponName$num\" value=\"".htmlspecialchars($value->{'weaponName'})."\">
+                          <div id=\"weaponName$num\" class=\"wide-input input-div\" contentEditable=\"true\">".$value->{'weaponName'}."</div>
                       </div>
                       <div class=\"col-sm-1 no-padding\">
                       <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"weaponShort$num\" value=\"".htmlspecialchars($value->{'shortRange'})."\">
@@ -209,7 +209,7 @@ function renderWeaponsSection($data)
                           <div class=\"col-sm-12 weapon-notes no-padding\">
                               <label for=\"weaponNotes1\" class=\"col-sm-1 ts-header\">Notes</label>
                               <div class=\"col-sm-11 no-padding\">
-                                  <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"weaponNotes$num\" value=\"".htmlspecialchars($value->{'notes'})."\">
+                                  <div id=\"weaponNotes$num\" class=\"wide-input input-div\" contentEditable=\"true\">".$value->{'notes'}."</div>
                               </div>
                           </div>
                       </div>
@@ -245,6 +245,38 @@ function getHitpointsOrientationClass($section) {
     }
 }
 
+function getHitpointBlockHealthClass($hpArray) {
+
+    $totalHPDamage = 0;
+    $totalHPAvail = 0;
+
+    foreach ($hpArray as $arrayKey => $hpValue){
+        if ($hpValue != 4) {
+            $totalHPDamage += ($hpValue - 1);
+            $totalHPAvail += 1;
+        };
+    }
+
+    $totalDamageAvail = $totalHPAvail * 2;
+    $percentDamage = $totalHPDamage/$totalDamageAvail;
+
+    if ($percentDamage < .25) {
+        return "healthy-glow";
+    } else {
+
+        if ($percentDamage < .5) {
+            return "low-danger-glow";
+        } else {
+
+            if ($percentDamage < .75) {
+                return "medium-danger-glow";
+            } else {
+                return "high-danger-glow";
+            }
+        }
+    }
+}
+
 function renderHPSection($data) {
 
     echo "<div class=\"col-md-4 no-padding\" id=\"hitPoints\">
@@ -259,13 +291,14 @@ function renderHPSection($data) {
                       <div class=\"text-center no-padding\">
                           <div class=\"hit-points-label-static\" id=\"hitPointsLabel$num\">$num</div>
                       </div>
-                  </div>";
+                  </div>
+                  <div class=\"no-padding hit-points-horizontal-sub ".getHitpointBlockHealthClass($value)."\" id=\"hitPoints$num-sub\">";
 
 
         foreach ($value as $arrayKey => $arrayValue){
             echo "<div class=\"hit-point hit-point-clickable ".getHitpointClass($arrayValue)."\" id=\"$key-$arrayKey\"></div>";
         }
-        echo "</div>";
+        echo "</div></div>";
     }
 
     echo "<div id=\"hitPointLegend\">
@@ -350,7 +383,7 @@ function renderEquipmentSection($data, $uploadDir) {
             $num = str_replace("equipment", "", $key);
             echo "<div class=\"form-group form-inline row\">
                       <div class=\"col-sm-7 no-padding\">
-                          <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"equipmentName$num\" value=\"".htmlspecialchars($value->{'equipmentName'})."\">
+                          <div id=\"equipmentName$num\" class=\"wide-input input-div\" contentEditable=\"true\">".$value->{'equipmentName'}."</div>
                       </div>
                   <div class=\"col-sm-4 no-padding\">
                       <input type=\"text\" class=\"form-control wide-input input-sm equipment-image-filename\" id=\"equipmentImage$num\" value=\"".htmlspecialchars($value->{'equipmentImage'})."\">
@@ -397,7 +430,7 @@ function renderEquipmentSection($data, $uploadDir) {
             $num = str_replace("equipment", "", $key);
             echo "<div class=\"form-group form-inline row\">
                       <div class=\"col-sm-7 no-padding\">
-                          <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"equipmentName$num\" value=\"".htmlspecialchars($value->{'equipmentName'})."\">
+                          <div id=\"equipmentName$num\" class=\"wide-input input-div\" contentEditable=\"true\">".$value->{'equipmentName'}."</div>
                       </div>
                       <div class=\"col-sm-4 no-padding\">
                           <input type=\"text\" class=\"form-control wide-input input-sm equipment-image-filename\" id=\"equipmentImage$num\" value=\"".htmlspecialchars($value->{'equipmentImage'})."\">
@@ -443,19 +476,13 @@ function renderGenericSection($heading, $data) {
               <label class=\"col-sm-12 ts-header\">$heading</label>
           </div>";
     foreach ($data as $key => $value) {
-        $escapedValue = htmlspecialchars($value);
         echo "<div class=\"form-group form-inline row\">
                   <div class=\"col-sm-12\">
-                      <input type=\"text\" class=\"form-control input-sm wide-input\" id=\"".$key."\" value=\"".$escapedValue."\">
+                      <div id=\"".$key."\" class=\"wide-input input-div\" contentEditable=\"true\">".$value."</div>
                   </div>
               </div>";
     }
 }
-
-//function encodeQuotes($originalString, $encodedDoubleQuote, $encodedSingleQuote){
-//    $returnString = str_replace("\"", $encodedDoubleQuote, $originalString);
-//    return str_replace("'", $encodedSingleQuote, $returnString);
-//}
 
 //================================ INDEX PAGE FUNCTIONS =======================================
 

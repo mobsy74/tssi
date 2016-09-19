@@ -259,6 +259,7 @@
 <script>
     $(":input").on("input", markPageAsDirty);
     $(":checkbox").on("click", markPageAsDirty);
+    $(".input-div").on("input", markPageAsDirty);
 </script>
 
 </body>
