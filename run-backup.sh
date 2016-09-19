@@ -8,9 +8,9 @@ newBackupPath=$backupDir/$newBackupName
 
 numBackups=`ls $backupDir | wc -l`
 
-if [ $numBackups -gt 5 ]
+if [ $numBackups -gt 12 ]
 then
-	fileList=`ls -tr $backupDir | grep -v run-backup.sh`
+	fileList=`ls -tr $backupDir | grep -v run-backup.sh | grep -v static-archive`
 	read -ra files <<< "$fileList"
 	rm -rf $backupDir/"${files[0]}"
 fi
