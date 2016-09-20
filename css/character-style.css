@@ -93,6 +93,12 @@ body {
     font-size: 125%;
 }
 
+.ts-sub-header {
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 100%;
+}
+
 #saveCharacter{
     margin-top: 10px;
 }

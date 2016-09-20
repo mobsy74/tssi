@@ -168,16 +168,16 @@ function renderSkillsSection($data) {
 }
 
 
-function renderWeaponsSection($data)
+function renderWeaponsSection($data, $uploadDir)
 {
     echo "<div class=\"row\" id=\"weapons\">
               <div class=\"panel\">
                   <div class=\"form-group form-inline row\">
-                      <label class=\"col-sm-6 ts-header\">Weapon</label>
+                      <label class=\"col-sm-7 ts-header\">Weapon</label>
                       <label class=\"col-sm-1 ts-header\">Short</label>
                       <label class=\"col-sm-1 ts-header\">Med</label>
                       <label class=\"col-sm-1 ts-header\">Long</label>
-                      <label class=\"col-sm-2 ts-header\">Dmg</label>
+                      <label class=\"col-sm-1 ts-header\">Dmg</label>
                       <label class=\"col-sm-1 ts-header\">Rel</label>
                   </div>";
 
@@ -185,7 +185,7 @@ function renderWeaponsSection($data)
         $num = str_replace("weapon", "", $key);
         echo "<div class=\"weapon-container\">
                   <div class=\"form-group form-inline row weapon-stats-container\">
-                      <div class=\"col-sm-6 no-padding\">
+                      <div class=\"col-sm-7 no-padding\">
                           <div id=\"weaponName$num\" class=\"wide-input input-div\" contentEditable=\"true\">".$value->{'weaponName'}."</div>
                       </div>
                       <div class=\"col-sm-1 no-padding\">
@@ -197,7 +197,7 @@ function renderWeaponsSection($data)
                   <div class=\"col-sm-1 no-padding\">
                       <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"weaponLong$num\" value=\"".htmlspecialchars($value->{'longRange'})."\">
                   </div>
-                  <div class=\"col-sm-2 no-padding\">
+                  <div class=\"col-sm-1 no-padding\">
                       <input type=\"text\" class=\"form-control wide-input input-sm\" id=\"weaponDamage$num\" value=\"".htmlspecialchars($value->{'damage'})."\">
                   </div>
                   <div class=\"col-sm-1 no-padding\">
@@ -206,11 +206,30 @@ function renderWeaponsSection($data)
               </div>
                   <div class=\"form-group form-inline row\">
                       <div class=\"col-sm-12 weapon-notes-container no-padding\">
-                          <div class=\"col-sm-12 weapon-notes no-padding\">
-                              <label for=\"weaponNotes1\" class=\"col-sm-1 ts-header\">Notes</label>
+                          <div class=\"col-sm-9 weapon-notes no-padding\">
+                              <label for=\"weaponNotes1\" class=\"col-sm-1 ts-sub-header\">Notes</label>
                               <div class=\"col-sm-11 no-padding\">
                                   <div id=\"weaponNotes$num\" class=\"wide-input input-div\" contentEditable=\"true\">".$value->{'notes'}."</div>
                               </div>
+                          </div>
+                          <div class=\"col-sm-3 weapon-notes no-padding\">
+                              <label for=\"weaponNotes1\" class=\"col-sm-3 ts-sub-header no-padding\">Image</label>
+                              <div class=\"col-sm-7 no-padding\">
+                                  <input type=\"text\" class=\"form-control wide-input input-sm weapon-image-filename\" id=\"weaponImage$num\" value=\"".htmlspecialchars($value->{'imageFile'})."\">
+                              </div>
+                              <div class=\"col-sm-2 no-padding\" id=\"weaponImageContainer$num\">";
+
+        $trueValue = preg_replace('/\s+/', '', $value->{'imageFile'});
+        if ($trueValue != "") {
+            echo "<a href=\"$uploadDir/" . $value->{'imageFile'} . "\" class=\"highslide\" onclick=\"return hs.expand(this, {captionId: 'weaponImageCaption" . $num . "'})\">
+                          <img class=\"image\" src=\"img/photo1-sm.jpg\" title=\"Click to enlarge\"/>
+                      </a>
+                      <div class=\"highslide-caption\" id=\"weaponImageCaption$num\">
+                          " . $value->{'imageFile'} . "
+                      </div>";
+        }
+
+        echo "                </div>
                           </div>
                       </div>
                   </div>
@@ -371,7 +390,7 @@ function renderEquipmentSection($data, $uploadDir) {
                   <div class=\"col-sm-6 right-border\" id=\"equipment1\">
                       <div class=\"form-group form-inline row\">
                           <label class=\"col-sm-7 ts-header\">Equipment</label>
-                          <label class=\"col-sm-3 ts-header\">File</label>
+                          <label class=\"col-sm-3 ts-header\">Image</label>
                           <label class=\"col-sm-2 ts-header no-padding label-right-align\">On Hand</label>
                       </div>";
 
@@ -417,7 +436,7 @@ function renderEquipmentSection($data, $uploadDir) {
     echo "<div class=\"col-sm-6 \" id=\"equipment1\">
               <div class=\"form-group form-inline row\">
                   <label class=\"col-sm-7 ts-header\">Equipment</label>
-                  <label class=\"col-sm-3 ts-header\">File</label>
+                  <label class=\"col-sm-3 ts-header\">Image</label>
                   <label class=\"col-sm-2 ts-header no-padding label-right-align\">On Hand</label>
               </div>";
 

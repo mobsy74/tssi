@@ -1,7 +1,6 @@
+-image link for Advantages/Disadvantages?
 -Download fonts?
 -Confirm on tab close to save if dirty
--image link for weapons?
-	-Advantages/Disadvantages?
 -Timed auto-save for characters?  Only on your own character!
 -Mike's car diagram - online?
 -Adjust minimum/maximum widths for shot calculator

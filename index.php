@@ -77,7 +77,7 @@
 
         <div class="center-align welcome">
             <div class="center-align">
-                <img src="img/orion.png" id="logo">
+                <img src="img/orion.jpg" id="logo">
             </div>
             <br>
 
@@ -184,6 +184,12 @@
             </div>
             <div class="safe-house-link">
                 <a href="docs/tsr-top-secret-s-i-rpg-equipment-inventory-boxed-set.pdf" target="_blank">Equipment & Inventory</a>
+            </div>
+            <div class="safe-house-link">
+                <a href="docs/guns-gadgets-and-getaway-gear.pdf" target="_blank">Guns, Gadgets and Getwaway Gear</a>
+            </div>
+            <div class="safe-house-link">
+                <a href="docs/commando.pdf" target="_blank">Commando</a>
             </div>
             <div class="safe-house-link">
                 <a href="docs/tsr-top-secret-s-i-rpg-settings-scenarios-boxed-set.pdf" target="_blank">Scenarios</a>

@@ -196,7 +196,8 @@ function generateEmptyCharacterJSON(save) {
         "longRange": "",
         "damage": "",
         "reload": "",
-        "notes": ""
+        "notes": "",
+        "imageFile": ""
     };
     for (i=1; i <= numWeapons; i++) {
         tempObj["weapon" + i] = tempObj2;
@@ -327,7 +328,8 @@ function generateDummyCharacterJSON() {
             "longRange": "200",
             "damage": "d6+1",
             "reload": "1",
-            "notes": "Three clips (10 capacity) of .45 dum-dum"
+            "notes": "Three clips (10 capacity) of .45 dum-dum",
+            "imageFile": ""
         };
         tempObj["weapon" + i] = tempObj2;
     }
@@ -490,6 +492,7 @@ function getCurrentStateCharacterJSON(json){
         tempObject['damage'] = $('#weaponDamage' + i).val();
         tempObject['reload'] = $('#weaponReload' + i).val();
         tempObject['notes'] = $('#weaponNotes' + i).html();
+        tempObject['imageFile'] = $('#weaponImage' + i).val();
         json['weapons']['weapon' + i] = tempObject;
     }
 
@@ -685,10 +688,31 @@ function updateEquipmentImage(){
     if (fileName == ""){
         $("#" + imageContainerID).html("");
     }else{
-        var imageHTML = '<a href="' + uploadDir + '/' + fileName + '" class="highslide" onclick="return hs.expand(this, {captionId: \'imageCaption' + imageNum + '\'})">';
+        var imageHTML = '<a href="' + uploadDir + '/' + fileName + '" class="highslide" onclick="return hs.expand(this, {captionId: \'equipmentImageCaption' + imageNum + '\'})">';
         imageHTML += '       <img class="image" src="img/photo1-sm.jpg" title="Click to enlarge"/>';
         imageHTML += '   </a>';
-        imageHTML += '   <div class="highslide-caption" id="imageCaption' + imageNum + '">';
+        imageHTML += '   <div class="highslide-caption" id="equipmentImageCaption' + imageNum + '">';
+        imageHTML += '       ' + fileName;
+        imageHTML += '   </div>';
+
+        $("#" + imageContainerID).html(imageHTML);
+    }
+}
+
+function updateWeaponImage(){
+    var div = $(this);
+    var divID = div.prop("id");
+    var fileName = div.val();
+    var imageNum = divID.replace("weaponImage", "");
+    var imageContainerID = "weaponImageContainer" + imageNum;
+
+    if (fileName == ""){
+        $("#" + imageContainerID).html("");
+    }else{
+        var imageHTML = '<a href="' + uploadDir + '/' + fileName + '" class="highslide" onclick="return hs.expand(this, {captionId: \'weaponImageCaption' + imageNum + '\'})">';
+        imageHTML += '       <img class="image" src="img/photo1-sm.jpg" title="Click to enlarge"/>';
+        imageHTML += '   </a>';
+        imageHTML += '   <div class="highslide-caption" id="weaponImageCaption' + imageNum + '">';
         imageHTML += '       ' + fileName;
         imageHTML += '   </div>';
 
@@ -1150,6 +1174,8 @@ function main() {
             $(".image-filename").on("input", updateImage);
 
             $(".equipment-image-filename").on("input", updateEquipmentImage);
+
+            $(".weapon-image-filename").on("input", updateWeaponImage);
 
             $(".shot-calc-input").on("input", calculateShot);
 

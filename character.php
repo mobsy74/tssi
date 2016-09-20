@@ -226,7 +226,7 @@
     <?php renderSkillsSection($characterData->{'skills'}); ?>
 
     <!--======================== START WEAPONS ==========================-->
-    <?php renderWeaponsSection($characterData->{'weapons'}); ?>
+    <?php renderWeaponsSection($characterData->{'weapons'}, $uploadDir); ?>
 
     <!--======================== START EQUIPMENT ==========================-->
     <?php renderEquipmentSection($characterData->{'equipment'}, $uploadDir); ?>
