@@ -494,8 +494,8 @@
                 <div class="col-sm-12 roll-section-header">Hit Locations</div>
                 <div class="col-sm-12" id="hit-location-img-container">
 
-                    <a href="./img/hit-location.png" class="highslide" onclick="return hs.expand(this, {captionId: 'hitLocations'})">
-                    <img class="image" src="./img/hit-location.png" title="Click to enlarge" id="hit-location-img" />
+                    <a href="./img/hit-location2.png" class="highslide" onclick="return hs.expand(this, {captionId: 'hitLocations'})">
+                    <img class="image" src="./img/hit-location2.png" title="Click to enlarge" id="hit-location-img" />
                     </a>
                     <div class="highslide-caption" id="hitLocations">
                         Hit Locations
