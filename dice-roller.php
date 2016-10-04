@@ -404,100 +404,103 @@
             <div class="row">
                 <div class="col-sm-2 die-result-container">
                     <div class="die-result center-align" id="die1">
-
                     </div>
                 </div>
                 <div class="col-sm-2 die-result-container">
                     <div class="die-result center-align" id="die2">
-
                     </div>
                 </div>
                 <div class="col-sm-2 die-result-container">
                     <div class="die-result center-align" id="die3">
-
                     </div>
                 </div>
                 <div class="col-sm-2 die-result-container">
                     <div class="die-result center-align" id="die4">
-
                     </div>
                 </div>
                 <div class="col-sm-2 die-result-container">
                     <div class="die-result center-align" id="die5">
-
                     </div>
                 </div>
                 <div class="col-sm-2 die-result-container">
                     <div class="die-result center-align" id="die6">
-
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-2 die-result-container">
                     <div class="die-result center-align" id="die7">
-
                     </div>
                 </div>
                 <div class="col-sm-2 die-result-container">
                     <div class="die-result center-align" id="die8">
-
                     </div>
                 </div>
                 <div class="col-sm-2 die-result-container">
                     <div class="die-result center-align" id="die9">
-
                     </div>
                 </div>
                 <div class="col-sm-2 die-result-container">
                     <div class="die-result center-align" id="die10">
-
                     </div>
                 </div>
                 <div class="col-sm-2 die-result-container">
                     <div class="die-result center-align" id="die11">
-
                     </div>
                 </div>
                 <div class="col-sm-2 die-result-container">
                     <div class="die-result center-align" id="die12">
-
                     </div>
                 </div>
             </div>
         </div>
         <div class="row" id="historyContainer">
-            <div class="col-sm-12" id="historyHeader">
-                Die Roll History
+            <div class="col-sm-9">
+<!--                <div class="col-sm-12" id="historyHeader">-->
+<!--                    Die Roll History-->
+<!--                </div>-->
+                <div class="col-sm-12" id="history">
+                    <?php
+
+                    $dieRolls = $gameData->{'dieRolls'};
+                    $numRolls = (count((array)$dieRolls)) - 1;
+
+                    for ($i = ($numRolls); $i >= 0; $i--) {
+                        if ($i == $numRolls){
+                            echo "<div class=\"roll-section-header\">Last Roll: </div><div class=\"last-roll\">";
+                        } else {
+                            if ($i == ($numRolls - 1)){
+                                echo "<div class=\"roll-section-header\">Previous Rolls:</div>";
+                            }
+                            echo "<div class=\"historical-roll\">";
+                        }
+
+                        echo "<span class=\"".$dieRolls[$i]->{'user'}."\">".$dieRolls[$i]->{'user'}."</span> rolled ".$dieRolls[$i]->{'dieCount'}." d".$dieRolls[$i]->{'dieType'}.": [";
+                        for ($j = 0; $j < (count((array)$dieRolls[$i]->{'values'})); $j++){
+                            echo $dieRolls[$i]->{'values'}[$j];
+                            if ($j != ((count((array)$dieRolls[$i]->{'values'})) - 1)) {
+                                echo ", ";
+                            }
+                        }
+
+                        echo "]&nbsp;&nbsp; <span class=\"history-timestamp\">(".$dieRolls[$i]->{'timestamp'}.")</span></div>";
+                    }
+
+                    ?>
+                </div>
             </div>
-            <div class="col-sm-12" id="history">
-                <?php
 
-                $dieRolls = $gameData->{'dieRolls'};
-                $numRolls = (count((array)$dieRolls)) - 1;
+            <div class="col-sm-3 center-align">
+                <div class="col-sm-12 roll-section-header">Hit Locations</div>
+                <div class="col-sm-12" id="hit-location-img-container">
 
-                for ($i = ($numRolls); $i >= 0; $i--) {
-                    if ($i == $numRolls){
-                        echo "<div class=\"roll-section-header\">Last Roll: </div><div class=\"last-roll\">";
-                    } else {
-                        if ($i == ($numRolls - 1)){
-                            echo "<div class=\"roll-section-header\">Previous Rolls:</div>";
-                        }
-                        echo "<div class=\"historical-roll\">";
-                    }
-
-                    echo "<span class=\"".$dieRolls[$i]->{'user'}."\">".$dieRolls[$i]->{'user'}."</span> rolled ".$dieRolls[$i]->{'dieCount'}." d".$dieRolls[$i]->{'dieType'}.": [";
-                    for ($j = 0; $j < (count((array)$dieRolls[$i]->{'values'})); $j++){
-                        echo $dieRolls[$i]->{'values'}[$j];
-                        if ($j != ((count((array)$dieRolls[$i]->{'values'})) - 1)) {
-                            echo ", ";
-                        }
-                    }
-
-                    echo "]&nbsp;&nbsp; <span class=\"history-timestamp\">(".$dieRolls[$i]->{'timestamp'}.")</span></div>";
-                }
-
-                ?>
+                    <a href="./img/hit-location.png" class="highslide" onclick="return hs.expand(this, {captionId: 'hitLocations'})">
+                    <img class="image" src="./img/hit-location.png" title="Click to enlarge" id="hit-location-img" />
+                    </a>
+                    <div class="highslide-caption" id="hitLocations">
+                        Hit Locations
+                    </div>
+                </div>
             </div>
 
         </div>
